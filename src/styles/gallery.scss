@@ -1,0 +1,45 @@
+$card_border_radius: 16px;
+$margin-y: 15px;
+
+.gallery-section {
+    column-count: 4; // Adjust for responsiveness
+    column-gap: 15px;
+    width: 95vw;
+    margin: auto;
+    height: max-content;
+    margin-top: $margin-y;
+    margin-bottom: $margin-y;
+
+    .image,
+    video {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        overflow: hidden;
+        width: 100%;
+        border-radius: $card_border_radius;
+        margin-bottom: 15px;
+        display: block; // Prevents spacing issues
+    }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+    .gallery-section {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-section {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-section {
+        width: 100%;
+        column-count: 1;
+    }
+}

@@ -1,0 +1,42 @@
+$color: #000000;
+
+.custom-black-field {
+    input, 
+    .custom-black-field input {
+        color: $color;
+        border: 1px solid $color; // Ensure border exists
+        border-top: 1px solid transparent !important; // Make only top transparent on default
+
+        &:focus {
+            border-top-color: transparent !important;
+            outline: none !important; // Remove default focus outline
+        }
+    }
+
+    label, 
+    .custom-black-field label {
+        color: $color;
+    }
+}
+
+// $custom-field-color: #757575;
+$custom-field-color: $color;
+
+.custom-select-field {
+    height: 100% !important;
+    border-radius: 8px !important;
+    .ant-select-selector {
+        border-color: $custom-field-color !important;
+        box-shadow: none !important;
+    }
+    
+    .ant-select-focused {
+        border-color: $custom-field-color !important;
+        outline: $custom-field-color !important;
+        box-shadow: none !important;
+    }
+
+    .ant-select-arrow {
+        color: $custom-field-color !important;
+    }
+}
