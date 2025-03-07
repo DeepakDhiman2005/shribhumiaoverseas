@@ -2,7 +2,12 @@ import { useForm } from "react-hook-form";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
 import MyButton from "../../../components/buttons/MyButton";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../../configs/validations";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/store";
+import { authLoginRedux } from "../../../redux/features/user";
+import { useNavigate } from "react-router-dom";
 
 interface loginInterface {
     email: string;
@@ -10,6 +15,9 @@ interface loginInterface {
 }
 
 const Login = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+
     const {
         control,
         formState: {
@@ -17,7 +25,7 @@ const Login = () => {
         },
         handleSubmit,
     } = useForm<loginInterface>({
-        // resolver: yupResolver(),
+        resolver: yupResolver<loginInterface>(loginSchema),
         defaultValues: {
             email: '',
             password: '',
@@ -25,7 +33,10 @@ const Login = () => {
     });
 
     const onSubmit = (e: loginInterface) => {
-        console.log(e)
+        // console.log(e)
+        dispatch(authLoginRedux(e, () => {
+            navigate('/admin/dashboard');
+        }));
     }
 
     return <>
@@ -45,17 +56,9 @@ const Login = () => {
                         name="password"
                         errors={errors}
                     />
-                    {/* <Input
-                        crossOrigin="anonymous"
-                        label="Password"
-                        type="password"
-                        color="black"
-                        className="!text-black w-full placeholder-shown:!border-black focus:!border-t-transparent"
-                        icon={<MdOutlineMailOutline size={18} className="text-black" />}
-                    /> */}
                     <p className="text-blue-600 hover:text-blue-700 transition-all duration-300 hover:underline cursor-pointer">forget password</p>
                     <div className="flex justify-start items-center">
-                        <MyButton className="rounded-full py-2 px-8 text-[16px] bg-green-800">Log in</MyButton>
+                        <MyButton type="submit" className="rounded-full py-2 px-8 text-[16px] bg-green-800">Log in</MyButton>
                     </div>
                 </form>
             </div>

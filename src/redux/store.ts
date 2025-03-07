@@ -6,11 +6,13 @@ import actionReducer from './features/action';
 import authReducer from './features/auth';
 import galleryReducer from './features/gallery';
 import productReducer from './features/products';
+import userReducer from './features/user';
 
 export const store = configureStore({
   reducer: {
     action: actionReducer,
     auth: authReducer,
+    user: userReducer,
     gallery: galleryReducer, 
     products: productReducer,
   },

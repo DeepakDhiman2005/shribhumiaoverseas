@@ -11,17 +11,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setDashboardSidebar } from "../../redux/features/action";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { logoutAuth } from "../../redux/features/auth";
 
 const DashboardSidebar = () => {
     const { dashboardSidebar } = useSelector((state: RootState) => state.action);
     const dispatch = useDispatch();
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     const handleSidebar = () => dispatch(setDashboardSidebar(false));
+    const handleLogout = () => {
+        dispatch(logoutAuth());
+        navigate('/auth/login');
+    }
 
     useEffect(() => {
-        if(pathname){
+        if (pathname) {
             handleSidebar();
         }
     }, [pathname]);
@@ -34,7 +40,7 @@ const DashboardSidebar = () => {
     ];
 
     return (
-        <aside className={`h-screen py-4 flex-col justify-between overflow-hidden transition-all duration-300 ${dashboardSidebar ? 'w-full px-4': 'w-0 px-auto'} lg:w-[20%] fixed z-40 lg:sticky lg:px-4 top-0 left-0 bg-gray-900 text-white`}>
+        <aside className={`h-screen py-4 flex-col justify-between overflow-hidden transition-all duration-300 ${dashboardSidebar ? 'w-full px-4' : 'w-0 px-auto'} lg:w-[20%] fixed z-40 lg:sticky lg:px-4 top-0 left-0 bg-gray-900 text-white`}>
             {/* Sidebar Header */}
             <div className="w-full flex justify-between items-center px-1 py-2">
                 <h2 className="font-semibold text-[18px]">Shri Bhumia</h2>
@@ -52,7 +58,7 @@ const DashboardSidebar = () => {
 
             {/* Logout Button */}
             <div className="w-full">
-                <MyButton className="bg-red-600 flex justify-start items-center rounded-md gap-x-2 py-3 w-full text-[16px]">
+                <MyButton className="bg-red-600 flex justify-start items-center rounded-md gap-x-2 py-3 w-full text-[16px]" onClick={handleLogout}>
                     <FiLogOut size={18} />
                     <span>Logout</span>
                 </MyButton>

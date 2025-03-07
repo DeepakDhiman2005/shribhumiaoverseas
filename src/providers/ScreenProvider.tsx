@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import React from "react";
 import DashboardSidebar from "../common/sidebar/DashboardSidebar";
 import Sidebar from "../common/sidebar/Sidebar";
-import MyNavbar from "../common/navbar/MyNavbar";
+import Navbar from "../common/navbar/Navbar";
 
 const ScreenProvider = ({
     children
@@ -20,7 +20,7 @@ const ScreenProvider = ({
         </div>
     </> : <>
         {/* <Navbar /> */}
-        <MyNavbar />
+        <Navbar />
         <Sidebar />
         {children}
         <Footer />

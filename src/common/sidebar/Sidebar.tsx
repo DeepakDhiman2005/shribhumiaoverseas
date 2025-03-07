@@ -8,6 +8,10 @@ import {
     Accordion,
     AccordionHeader,
     AccordionBody,
+    MenuHandler,
+    MenuList,
+    Menu,
+    MenuItem,
 } from "@material-tailwind/react";
 import { GoHomeFill } from "react-icons/go";
 import { AiOutlineProduct } from "react-icons/ai";
@@ -21,10 +25,11 @@ import { GrGallery } from "react-icons/gr";
 import { useDispatch, useSelector } from 'react-redux';
 // import { setAction } from '@/redux/features/action';
 import { setSidebar } from '../../redux/features/action';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import navLinkConfig from '../../configs/navLinkConfig';
 import { RootState } from '../../redux/store';
-import Categories from '../../configs/categories';
+// import Categories from '../../configs/categories';
+import categories from '../../configs/myCategories';
 import NavSearch from '../navbar/NavSearch';
 import MyButton from '../../components/buttons/MyButton';
 
@@ -32,6 +37,7 @@ const Sidebar = () => {
     const sidebar = useSelector((state: RootState) => state.action.sidebar);
     const dispatch = useDispatch();
     const { pathname } = useLocation();
+    const [search] = useSearchParams();
     const navigate = useNavigate()
     const [open, setOpen] = React.useState<number>(0);
 
@@ -43,7 +49,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         closeSidebar();
-    }, [pathname]);
+    }, [pathname, search]);
 
     return (
         <Card className={`h-screen rounded-none p-4 shadow-xl shadow-blue-gray-900/5 fixed top-0 left-0 z-50 transition-all duration-500 overflow-hidden ${sidebar ? "w-full px-auto" : "w-0 px-0"}`}>
@@ -59,9 +65,11 @@ const Sidebar = () => {
                 <div className='flex justify-center flex-col gap-y-4 sm:flex-row items-center gap-x-2'>
                     <NavSearch />
                 </div>
-                <MyButton className='bg-green-700'>
-                    Get a Quote
-                </MyButton>
+                <Link to={"/contact"}>
+                    <MyButton className='bg-green-700'>
+                        Get a Quote
+                    </MyButton>
+                </Link>
             </div>
             <List>
                 {
@@ -90,11 +98,28 @@ const Sidebar = () => {
                                         </ListItem>
                                         <AccordionBody className="py-1 h-[160px] overflow-y-scroll">
                                             <List className="p-0">
-                                                {item.menu ? Categories.map((it, index) => (
-                                                    <ListItem key={index} className="capitalize" onClick={() => navigate(`/products?category=${it.category}`)}>
-                                                        <div className='flex justify-start items-center gap-x-2'>
+                                                {item.menu ? categories.map((it, index) => (
+                                                    <ListItem key={index} className="capitalize p-0">
+                                                        <div className='flex justify-start w-full h-full items-center px-4 gap-x-2'>
                                                             <FaRegDotCircle size={12} />
-                                                            <span>{it.name}</span>
+                                                            {
+                                                                it.subCategories && it.subCategories.length > 0 ?
+                                                                    <Menu allowHover placement='bottom-start'>
+                                                                        <MenuHandler>
+                                                                            <span className='w-full block py-2'>{it.category}</span>
+                                                                        </MenuHandler>
+                                                                        <MenuList className='max-h-[300px]'>
+                                                                            {it.subCategories.map((itl, i) => (
+                                                                                <MenuItem key={i} className='p-0 w-full rounded-md my-0.5 group'>
+                                                                                    <Link to={`/products?category=${it.category.toLowerCase().split(' ').join('-')}&subcategory=${itl.toLowerCase().split(' ').join("-")}`} className='w-full py-1.5 group-hover:text-green-700 transition-all duration-300 px-2 block'>{itl}</Link>
+                                                                                </MenuItem>
+                                                                            ))
+                                                                            }
+                                                                        </MenuList>
+                                                                    </Menu> : <Link to={`/products?category=${it.category.toLowerCase().split(' ').join('-')}`} className='block w-full py-2'>
+                                                                        <span>{it.category}</span>
+                                                                    </Link>
+                                                            }
                                                         </div>
                                                     </ListItem>
                                                 )) : null}

@@ -1,6 +1,10 @@
 import * as yup from 'yup';
 
 // admin
+export const loginSchema = yup.object().shape({
+    email: yup.string().required('Email is required'),
+    password: yup.string().required('Password is required'),
+})
 export const productSchema = yup.object().shape({
     name: yup.string().required("Product name is required"),
     category: yup.string().required("Category is required"),

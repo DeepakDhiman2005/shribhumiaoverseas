@@ -29,7 +29,7 @@ const PasswordField = ({ control, name, errors, label }: InputFieldProps) => {
                         className="!text-black w-full placeholder-shown:!border-black focus:!border-t-transparent"
                         type={isShow ? "text": 'password'}
                         icon={
-                            <button onClick={() => setIsShow(!isShow)}>
+                            <button type="button" onClick={() => setIsShow(!isShow)}>
                                 {
                                     isShow ? <FaRegEyeSlash size={18} className="text-black" />: <FaRegEye size={18} className="text-black" />
                                 }

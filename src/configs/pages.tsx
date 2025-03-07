@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import MiddlewareProvider from "../middleware/MiddlewareProvider";
 
 // react lazy
@@ -24,9 +24,15 @@ const TermsAndCondition = React.lazy(() => import("../pages/terms-and-condition/
 
 // dashboard
 const Dashboard = React.lazy(() => import("../admin/dashboard/Dashboard"));
+// - products
 const DashboardProducts = React.lazy(() => import("../admin/products/DashboardProducts"));
 const AddProduct = React.lazy(() => import("../admin/products/AddProduct"));
 const EditProduct = React.lazy(() => import("../admin/products/EditProduct"));
+// -blogs
+const DashboardBlogs = React.lazy(() => import("../admin/blogs/DashboardBlogs"));
+const AddBlog = React.lazy(() => import("../admin/blogs/AddBlog"));
+// -settings
+const DashboardSettings = React.lazy(() => import("../admin/settings/DashboardSettings"))
 
 export interface pagesInterface {
     path?: string,
@@ -107,7 +113,8 @@ const pages: Array<pagesChildrenInterface> = [
     // auth
     {
         path: '/auth',
-        element: <Outlet />,
+        // element: <Outlet />,
+        element: <MiddlewareProvider back="/admin/dashboard" />,
         children: [
             {
                 path: 'login',
@@ -147,6 +154,7 @@ const pages: Array<pagesChildrenInterface> = [
                     title: 'Dashboard - Shri bhumia'
                 }
             },
+            // products
             {
                 path: 'products',
                 element: <DashboardProducts />,
@@ -168,9 +176,46 @@ const pages: Array<pagesChildrenInterface> = [
                     title: 'Edit Product',
                 }
             },
+            // blogs
+            {
+                path: 'blogs',
+                element: <DashboardBlogs />,
+                meta: {
+                    title: 'Blogs - Dashboard'
+                }
+            },
+            {
+                path: 'add-blog',
+                element: <AddBlog />,
+                meta: {
+                    title: 'Add Blog'
+                }
+            },
+            // settings
+            {
+                path: 'settings',
+                element: <DashboardSettings />,
+                meta: {
+                    title: 'Settings - Dashboard'
+                }
+            },
+            {
+                path: '*',
+                element: <Navigate to={"/admin/dashboard"} />,
+                meta: {
+                    title: ''
+                }
+            }
         ],
         meta: {
             title: 'Dashboard - Shri bhumia'
+        }
+    },
+    {
+        path: '*',
+        element: <h2>404 page not found!</h2>,
+        meta: {
+            title: '404 - page not found'
         }
     }
 ]
