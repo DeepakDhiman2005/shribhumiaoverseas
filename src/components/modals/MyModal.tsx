@@ -7,6 +7,7 @@ interface MyModalInterface {
     setIsOpen: (value: boolean) => void,
     title?: string,
     children?: React.ReactNode,
+    size?: 'sm' | 'md' | 'lg' | 'xl' | 'xs' | 'xxl',
 }
 
 const MyModal: React.FC<MyModalInterface> = ({
@@ -14,6 +15,7 @@ const MyModal: React.FC<MyModalInterface> = ({
     setIsOpen,
     title = "",
     children,
+    size = "md"
 }) => {
     const handleOpen = () => setIsOpen(false);
     return <>
@@ -24,11 +26,12 @@ const MyModal: React.FC<MyModalInterface> = ({
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0.9, y: -100 },
         }}
+        size={size}
       >
         <div className="w-full">
             <div className="flex justify-between items-center px-6 py-4">
-                <h2 className="font-semibold text-[18px]">{title}</h2>
-                <button onClick={handleOpen} className="hover:text-red-600 transition-all duration-300 active:text-red-800">
+                <h2 className="font-semibold text-[18px] text-gray-900">{title}</h2>
+                <button onClick={handleOpen} className="hover:text-red-600 transition-all text-gray-900 duration-300 active:text-red-800">
                     <RxCross2 size={22} />
                 </button>
             </div>

@@ -2,20 +2,15 @@ import React, { useRef, useState } from "react";
 import { Controller, Control, FieldErrors } from "react-hook-form";
 import { FiUpload } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
-import { AddProductInterface } from "../../admin/products/productInterface";
-
-interface FormValues {
-    image: File | string | null;
-}
 
 export interface ImageFieldProps {
-    name: keyof FormValues; // Ensures only valid form keys are allowed
-    control: Control<AddProductInterface>;
+    name: string; // Ensures only valid form keys are allowed
+    control: Control<any>;
     errors?: FieldErrors;
     defaultValue?: string; // Default image URL
 }
 
-const ImageField: React.FC<ImageFieldProps> = ({ name, control, errors, defaultValue }) => {
+const ImageField = ({ name, control, errors, defaultValue }: ImageFieldProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [_, setFileName] = useState<string | null>(defaultValue ? "Existing Image" : null);
     const errorMessage = errors?.[name]?.message as string | undefined;
@@ -23,7 +18,7 @@ const ImageField: React.FC<ImageFieldProps> = ({ name, control, errors, defaultV
     return (
         <div className="flex flex-col justify-start items-start gap-y-2 w-full">
             <Controller
-                name={name}
+                name={name as string}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                     const uploadImage = () => inputRef.current?.click();

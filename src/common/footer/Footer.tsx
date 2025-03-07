@@ -37,25 +37,29 @@ const Footer = () => {
 
     const informationLinks: Array<{ name?: string, link?: string }> = [
         {
-            name: 'Shopping Bags',
-            link: '/products?category=shopping-bags'
+            name: 'Cotton Bags',
+            link: '/products?category=cotton-bags'
         },
         {
-            name: 'Tote Bags',
-            link: '/products?category=tote-bags'
+            name: 'Jute Bags',
+            link: '/products?category=jute-bags'
         },
         {
-            name: 'Laptop Bags',
-            link: '/products?category=laptop-bags'
+            name: 'Juco Bags',
+            link: '/products?category=juco-bags'
         },
         {
-            name: 'Conference Bags',
-            link: '/products?category=conference-bags'
+            name: 'Canvas Bags',
+            link: '/products?category=canvas-bags'
         },
         {
-            name: 'View All',
-            link: '/products?category=shopping-bags'
+            name: 'Handicrafts',
+            link: '/products?category=handicrafts'
         },
+        // {
+        //     name: 'View All',
+        //     link: '/products?category=shopping-bags'
+        // },
     ]
 
     return <>

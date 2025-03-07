@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteProductRedux, getAllProductsRedux, ProductsInterface } from "../../redux/features/products";
 import TableSkeleton from "../../components/skeletons/TableSkeleton";
 import DeleteModal from "../../components/modals/DeleteModal";
+import AddCategory from "../../components/modals/AddCategory";
 
 const DashboardProducts: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -44,6 +45,9 @@ const DashboardProducts: React.FC = () => {
                 setIsSelected('');
             }}
         />
+        <AddCategory
+
+        />
         <DashboardProvider title="Products" className="space-y-2">
             <div className="w-full py-2 px-3 flex justify-between items-center">
                 <div>
@@ -52,12 +56,18 @@ const DashboardProducts: React.FC = () => {
                         label="Search"
                     />
                 </div>
-                <Link to={"/admin/add-product"} className="w-auto h-auto">
-                    <MyButton className="flex justify-center items-center bg-blue-700 gap-x-2">
+                <div className="flex justify-center items-center gap-x-2">
+                    <MyButton className="flex justify-center items-center bg-purple-700 gap-x-2">
                         <FaPlus size={16} />
-                        <span>Add Product</span>
+                        <span>Add Category</span>
                     </MyButton>
-                </Link>
+                    <Link to={"/admin/add-product"} className="w-auto h-auto">
+                        <MyButton className="flex justify-center items-center bg-blue-700 gap-x-2">
+                            <FaPlus size={16} />
+                            <span>Add Product</span>
+                        </MyButton>
+                    </Link>
+                </div>
             </div>
             <div className="w-full">
                 <DataTable
@@ -66,7 +76,7 @@ const DashboardProducts: React.FC = () => {
                     progressComponent={<TableSkeleton />}
                     columns={columns({
                         onDelete: (_id: string) => {
-                            setIsSelected(_id);   
+                            setIsSelected(_id);
                             setIsDelete(true);
                         },
                     })}

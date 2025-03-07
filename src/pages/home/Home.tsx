@@ -14,6 +14,8 @@ import { AppDispatch } from '../../redux/store';
 import { getAllProductsRedux } from '../../redux/features/products';
 import MyButton from '../../components/buttons/MyButton';
 import { Link } from 'react-router-dom';
+import OurClientsSlider from './OurClientsSlider';
+import CustomizeSection from './CustomizeSection';
 // import MyButton from '../../components/buttons/MyButton';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -148,14 +150,23 @@ const Home = () => {
         return () => ctx.revert();
     }, []);
 
-    // const products: Array<ProductCardInterface> = Array(8).fill(0).map((_, index) => ({
-    //     image: `IMG-20250224-WA000${index + 1}.jpg`,
-    //     id: `${index + 1}`,
-    //     height: '14 inches',
-    //     width: '15 inches',
-    //     gusset: '17 inches',
-    //     title: 'Color Full Bags',
-    // }))
+    const SubHeading = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
+        return <h2 className={`text-green-600 font-semibold text-[30px] ${className}`}>{children}</h2>
+    }
+
+    const Div = ({
+        children,
+        className = "",
+    }: {
+        children: React.ReactNode,
+        className?: string,
+    }) => {
+        return <>
+            <div className={`w-full flex justify-start items-start gap-x-6 ${className}`}>
+                {children}
+            </div>
+        </>
+    }
 
     return <>
         <main ref={containerRef} className="w-full">
@@ -177,7 +188,6 @@ const Home = () => {
                             alt="image"
                             className="rounded-md w-full h-full"
                         />
-                        {/* <div className="absolute w-full h-full border-[3px] border-solid border-green-700 rounded-md -right-6 -z-[1] -bottom-6"></div> */}
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-y-4 right">
@@ -188,7 +198,6 @@ const Home = () => {
                     <Link to={'/about'}>
                         <MyButton className='rounded-full bg-green-800'>Learn More...</MyButton>
                     </Link>
-                    {/* <p>Our wide range of products includes shopping bags, tote bags, promotional bags, wine bottle bags, and much more. We prioritize using natural and biodegradable materials that have minimal impact on the environment. Our range of products includes durable jute and cotton and Recycle cotton bags that are not only stylish but also sustainable alternatives to single-use plastic bags.</p> */}
                 </div>
             </div>
 
@@ -199,10 +208,8 @@ const Home = () => {
                 <OurProductsSlider products={[]} />
             </div>
 
-            <Testimonials />
-
             {/* vision */}
-            <div ref={visionRef} className="my-8 w-full bg-gray-300 py-2 flex justify-center overflow-hidden flex-col md:flex-row-reverse items-center px-4 sm:px-12  gap-y-8 md:gap-y-auto">
+            <div ref={visionRef} className="my-5 w-full bg-gray-300 py-2 flex justify-center overflow-hidden flex-col md:flex-row-reverse items-center px-4 sm:px-12  gap-y-8 md:gap-y-auto">
                 <div className="w-full md:w-1/2 left flex justify-center md:justify-center p-auto md:pl-20 items-center">
                     {/* <div className="w-3/4 relative -translate-y-10"> */}
                     <div className="w-full relative">
@@ -222,34 +229,36 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
-            {/* <div ref={visionRef} className="my-16 w-full overflow-hidden bg-gray-300 py-8 flex justify-center gap-x-20 flex-col md:flex-row-reverse items-center px-8">
-                <div className="w-full md:w-1/2 left">
-                    <div className="w-3/4 relative -translate-y-10">
-                        <img
-                            src={"/product-images/IMG-20250224-WA0008.jpg"}
-                            alt="image"
-                            className="rounded-md w-full h-full"
-                        />
-                        <div className="absolute w-full h-full border-[3px] border-solid border-green-700 rounded-md -right-6 -z-[1] -bottom-6"></div>
+
+            <OurClientsSlider />
+
+            <Div className='flex-col-reverse lg:flex-row-reverse my-5 justify-center items-center'>
+                <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
+                    <div className='flex flex-col justify-start items-start px-4 sm:px-10 md:px-auto'>
+                    <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
+                        <SubHeading>Mission & Vision</SubHeading>
+                    </Div>
+                        <p><b>Mission:</b> We are committed to reducing plastic waste by promoting eco-friendly, reusable bags, contributing to a greener planet.</p>
+                        <p><b>Vision:</b> To see Jute and Cotton bags in every household, eliminating single-use plastics and encouraging sustainable choices worldwide.</p>
+                        <b>Core Values:</b>
+                        <ul className='list-disc pl-4'>
+                            <li><b>Sustainability -</b> Prioritizing eco-friendly materials with minimal environmental impact.</li>
+                            <li><b>Quality Excellence -</b> Ensuring top-tier craftsmanship in every product.</li>
+                            <li><b>Ethical Manufacturing -</b> Supporting fair employment and local artisan empowerment.</li>
+                            <li><b>Customer Satisfaction -</b> Delivering timely service with exceptional quality.</li>
+                        </ul>
                     </div>
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-y-5 right">
-                    <h2 className="font-semibold text-[35px] text-gray-900 leading-tight">Our Clients</h2>
-                    <p>We are proud to serve renowned brands across the globe, including:</p>
-                    <ul>
-                        <li>PARRS PRODUCTS (New Zealand)</li>
-                        <li>Re-loved Apparel (Australia)</li>
-                        <li>Al Haddad (Malaysia)</li>
-                        <li>Koopman International BV (The Netherlands)</li>
-                        <li>Dabur (India)</li>
-                        <li>Tree Top Trading (Colombia)</li>
-                        <li>The Domensch Gonza (Uruguay)</li>
-                    </ul>
+                <div className='w-full sm:w-3/4 lg:w-1/2 flex justify-center items-center'>
+                    <img src="/images/mission-vision.png" alt="image" className='w-3/4 object-fill rounded-lg' />
                 </div>
-            </div> */}
+            </Div>
+
             <WhyChooseUs />
+            <CustomizeSection />
             <OurBlogsSection />
             <OurCertificates />
+            <Testimonials />
             <ContactForm />
         </main>
     </>

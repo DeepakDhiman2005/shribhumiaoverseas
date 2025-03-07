@@ -106,7 +106,7 @@ const OurBlogsSection = () => {
     };
 
     return (
-        <div className="flex justify-start items-start flex-col gap-y-10 sm:flex-row gap-x-8 px-4 sm:px-6 py-12">
+        <div className="flex justify-start items-start flex-col gap-y-10 sm:flex-row gap-x-8 px-4 sm:px-6 py-8">
             <div className="w-full sm:w-1/2 md:w-[60%] lg:w-[70%] flex flex-col justify-start items-start gap-y-4">
                 <div className="flex justify-between items-end w-full">
                     <div className="flex flex-col justify-start items-start gap-y-1">
@@ -148,7 +148,7 @@ const OurBlogsSection = () => {
             </div>
 
             {/* Latest Updates Section */}
-            <div className="w-full sm:w-1/2 md:w-[60%] bg-gray-100 lg:w-[30%] flex flex-col justify-start items-start gap-y-4">
+            <div className="w-full sm:w-1/2 md:w-[60%] p-3 rounded-lg bg-gray-100 lg:w-[30%] flex flex-col justify-start items-start gap-y-4">
                 <div className="flex flex-col justify-start items-start gap-y-1">
                     <h2 className="text-green-500">Shri Bhumia Overseas</h2>
                     <h2 className="font-semibold text-[24px]">Latest Updates</h2>

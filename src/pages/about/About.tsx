@@ -9,9 +9,6 @@ const About = () => {
     const isMobile = useMediaQuery({ maxWidth: 720 });
     const containerRef = useRef<HTMLDivElement | null>(null);
 
-    const SubHeading = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
-        return <h2 className={`text-green-600 font-semibold text-[30px] ${className}`}>{children}</h2>
-    }
 
     // const LineHeading = ({
     //     children,
@@ -26,6 +23,10 @@ const About = () => {
     //         <div className='h-[2px] w-[10%] bg-green-600'></div>
     //     </div>
     // }
+    
+    const SubHeading = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
+        return <h2 className={`text-green-600 font-semibold text-[30px] ${className}`}>{children}</h2>
+    }
 
     const Div = ({
         children,
@@ -66,7 +67,7 @@ const About = () => {
                         <p>We take pride in delivering stylish, durable, and sustainable alternatives to plastic bags while supporting local artisans and eco-conscious initiatives.</p>
                     </div>
                     <div className='w-full sm:w-3/4 lg:w-1/2 flex justify-center items-center'>
-                        <img src="https://media.istockphoto.com/id/1400739452/vector/about-us-web-header-design-icon-interconnected-symbol-of-company-profile-corporate.jpg?s=612x612&w=0&k=20&c=-zgp-xnEqh8zBEjNajlPZmDF5PXuqlXVUu7RjBf_UGU=" alt="image" className='w-full object-fill rounded-lg' />
+                        <img src="/images/about-us.jpg" alt="image" className='w-full object-fill rounded-lg' />
                     </div>
                 </Div>
                 <Div className='flex-col-reverse lg:flex-row-reverse justify-center items-center'>
@@ -85,7 +86,7 @@ const About = () => {
                         </ul>
                     </div>
                     <div className='w-full sm:w-3/4 lg:w-1/2 flex justify-center items-center'>
-                        <img src="https://nonprofithub.org/wp-content/uploads/2023/02/Untitled-design-4-1.png" alt="image" className='w-3/4 object-fill rounded-lg' />
+                        <img src="/images/mission-vision.png" alt="image" className='w-3/4 object-fill rounded-lg' />
                     </div>
                 </Div>
 
@@ -117,7 +118,7 @@ const About = () => {
                         </ul>
                     </div>
                     <div className='w-full sm:w-3/4 lg:w-1/2 flex justify-center items-center'>
-                        <img src="https://miro.medium.com/v2/resize:fit:1024/1*EdjiMV0jgOFg5FG1gm7vwA.jpeg" alt="image" className='w-1/2 rounded-lg' />
+                        <img src="/images/why-choose-us.png" alt="image" className='w-1/2 rounded-lg' />
                     </div>
                 </Div>
             </div>
