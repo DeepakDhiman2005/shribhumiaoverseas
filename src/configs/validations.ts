@@ -13,3 +13,9 @@ export const productSchema = yup.object().shape({
     height: yup.number().typeError("Height must be a number").positive("Height must be positive").required("Height is required"),
     gusset: yup.number().typeError("Gusset must be a number").positive("Gusset must be positive").required("Gusset is required"),
 });
+
+export const categorySchema = yup.object().shape({
+    name: yup.string().required('Category name is required'),
+    image: yup.mixed<File>().nullable().required("Image is required"),
+    description: yup.string(),
+})

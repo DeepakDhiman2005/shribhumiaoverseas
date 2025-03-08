@@ -34,10 +34,10 @@ const navLinkConfig: Array<navLinkMenuConfigInterface> = [
         name: 'Blogs',
         link: '/blogs',
     },
-    // {
-    //     name: 'Gallery',
-    //     link: '/gallery',
-    // },
+    {
+        name: 'Gallery',
+        link: '/gallery',
+    },
     {
         name: 'Contact Us',
         link: '/contact'

@@ -1,37 +1,26 @@
-import { Input, Textarea } from "@material-tailwind/react";
 import MyButton from "../../components/buttons/MyButton";
+import ContactInput from "../contact/ContactInput";
+import ContactMessage from "../contact/ContactMessage";
 // import MyInputField from "../../components/fields/MyInputField";
 // import "../../styles/custom-form-field.scss";
 
 const ContactForm = () => {
     return <>
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-x-7 gap-y-8 py-2 px-4 sm:px-8 bg-gray-100">
-            <form className="py-2 px-12 w-full bg-gray-200 rounded-lg flex flex-col justify-center items-center gap-y-2">
-                <h2 className="font-semibold text-[35px]">Contact Us</h2>
-                <div className="flex flex-col justify-start items-start gap-y-4 w-full">
-                    <Input
-                        crossOrigin="anonymous"
-                        label="Full Name"
-                        color="black"
-                        className="!text-black placeholder-shown:!border-black focus:!border-t-transparent"
+            <form className="py-2 px-12 w-full bg-green-700 rounded-lg flex flex-col justify-start items-start gap-y-3">
+                <h2 className="font-semibold text-[25px] text-gray-50 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-3/4 after:bg-green-400 after:h-[2px]">Get In Touch With Us</h2>
+                <div className="flex flex-col justify-start items-start gap-y-3 w-full">
+                    <ContactInput
+                        placeholder="Full Name"
                     />
-                    <Input
-                        crossOrigin="anonymous"
-                        label="Email ID"
-                        color="black"
-                        className="!text-black placeholder-shown:!border-black focus:!border-t-transparent"
+                    <ContactInput
+                        placeholder="Email"
                     />
-                    <Textarea
-                        label="Message"
-                        placeholder=" "
-                        // color="black"
-                        className="!text-black placeholder-shown:!border-black focus:!border-t-transparent !border-t-transparent"
-                        labelProps={{
-                            className: '!text-black'
-                        }}
+                    <ContactMessage
+                        placeholder="Message"
                     />
                     <div className="flex justify-start items-center">
-                        <MyButton className="bg-green-700">Contact Now</MyButton>
+                        <MyButton className="bg-white border border-green-700 hover:border-green-900 transition-all duration-300 hover:text-white hover:bg-green-900 text-green-700">Submit Now</MyButton>
                     </div>
                 </div>
             </form>

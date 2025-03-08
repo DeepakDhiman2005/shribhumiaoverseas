@@ -65,15 +65,15 @@ const CustomizeSection = () => {
                 <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                     <div className='flex flex-col justify-start items-start px-5 sm:px-7 md:px-auto'>
                         <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
-                            <SubHeading>Customize Your Handicraft</SubHeading>
+                            <SubHeading>Make Your Own Bag</SubHeading>
                         </Div>
-                        <p>At <Bold>Shri Bhumia Overseas,</Bold> we specialize in crafting eco-friendly jute, cotton, recycled cotton, Juco, and canvas bags tailored to your unique needs. Whether you require <Bold>custom sizes, exclusive prints, branded logos, or intricate embroidery,</Bold> our skilled artisans ensure top-notch craftsmanship with a focus on sustainability.</p>
-                        <p>From <Bold>corporate gifting and promotional bags</Bold> to <Bold>retail and personal use,</Bold> we transform your ideas into high-quality, durable, and stylish eco-friendly products. <Bold>Your vision, our craftsmanship—crafted with care, delivered with excellence!</Bold></p>
+                        <p>At <Bold>Shri Bhumia Overseas,</Bold> we specialize in crafting eco-friendly jute and cotton bags customized to your preferences. Whether you need <Bold>unique sizes, personalized prints, branded logos, or detailed embroidery,</Bold> our artisans ensure top-quality craftsmanship with sustainability at the core.</p>
+                        <p>Perfect for <Bold>corporate branding, promotional campaigns,</Bold> and <Bold>everyday use,</Bold> our durable and stylish jute and cotton bags bring your vision to life. <Bold>Designed for sustainability, crafted for excellence!</Bold></p>
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 flex justify-center items-center">
-                    <div className='w-full sm:w-[65%] flex justify-center items-center'>
-                        <img src="/images/customize.jpg" alt="image" className='w-3/4 object-fill rounded-lg' />
+                    <div className='w-full sm:w-3/4 flex justify-center items-center'>
+                        <img src="/images/crafted-image.png" alt="Customized Jute and Cotton Bags" className='object-fill rounded-lg' />
                     </div>
                 </div>
             </Div>
@@ -82,15 +82,15 @@ const CustomizeSection = () => {
                 <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                     <div className='flex flex-col justify-start items-start px-5 sm:px-7 md:px-auto'>
                         <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
-                            <SubHeading>Customize Your Handicraft</SubHeading>
+                            <SubHeading>Personalize Your Eco-Friendly Bags</SubHeading>
                         </Div>
-                        <p>At <Bold>Shri Bhumia Overseas,</Bold> we specialize in crafting eco-friendly jute, cotton, recycled cotton, Juco, and canvas bags tailored to your unique needs. Whether you require <Bold>custom sizes, exclusive prints, branded logos, or intricate embroidery,</Bold> our skilled artisans ensure top-notch craftsmanship with a focus on sustainability.</p>
-                        <p>From <Bold>corporate gifting and promotional bags</Bold> to <Bold>retail and personal use,</Bold> we transform your ideas into high-quality, durable, and stylish eco-friendly products. <Bold>Your vision, our craftsmanship—crafted with care, delivered with excellence!</Bold></p>
+                        <p>At <Bold>Shri Bhumia Overseas,</Bold> we craft high-quality, sustainable jute and cotton bags, tailored to your needs. Choose from <Bold>custom sizes, prints, logos, and embroidery</Bold> to create a unique and eco-conscious product.</p>
+                        <p>Ideal for <Bold>business promotions, gifting, and retail,</Bold> our eco-friendly bags offer durability, style, and sustainability. <Bold>Your brand, our expertise—crafted with precision, delivered with care!</Bold></p>
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 flex justify-center items-center">
                     <div className='w-full sm:w-3/4 flex justify-center items-center'>
-                        <img src="/images/customize-with-us.png" alt="image" className='w-3/4 object-fill rounded-lg' />
+                        <img src="/images/make-your-own-bag.png" alt="Personalized Jute and Cotton Bags" className='w-full object-fill rounded-lg' />
                     </div>
                 </div>
             </Div>
@@ -99,14 +99,14 @@ const CustomizeSection = () => {
                 <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                     <div className='flex flex-col justify-start items-start px-5 sm:px-7 md:px-auto'>
                         <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
-                            <SubHeading>Crafted Just for You!</SubHeading>
+                            <SubHeading>Crafted for You, Naturally</SubHeading>
                         </Div>
-                        <p>At Shri Bhumia Overseas, we create custom eco-friendly bags tailored to your needs. From unique prints and logos to custom sizes and embroidery, our expert craftsmanship ensures quality, style, and sustainability.</p>
+                        <p>At Shri Bhumia Overseas, we design and produce custom jute and cotton bags that blend sustainability with style. Whether for promotions or everyday use, our bags are crafted to your exact specifications.</p>
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 flex justify-center items-center">
-                    <div className='w-full sm:w-[65%] flex justify-center items-center'>
-                        <img src="/images/customize.jpg" alt="image" className='w-3/4 object-fill rounded-lg' />
+                    <div className='w-full sm:w-3/4 flex justify-center items-center'>
+                        <img src="/images/personalize-your-eco-friendly.png" alt="Eco-Friendly Custom Bags" className='object-fill rounded-lg' />
                     </div>
                 </div>
             </Div>

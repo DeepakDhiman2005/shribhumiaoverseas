@@ -21,13 +21,18 @@ const GalleryImageCard = ({ item }: { item?: string }) => {
                 <RxCross2 size={30} />
             </button>
             <div
-                className="overflow-y-scroll h-[90vh] flex justify-center items-start"
+                className="h-auto flex justify-center items-start"
             >
-                <img src={item} alt="Gallery Image" className="w-3/4 h-auto my-10" />
+                <img src={item} alt="Gallery Image" className="object-fill w-3/4 md:w-1/2 my-5" />
             </div>
         </Dialog>
-        <div className="image overflow-hidden rounded-xl" onClick={handleOpen}>
-            <img src={item} alt="Gallery Image" className="cursor-pointer hover:scale-110 transition-all duration-300" />
+        <div className="image overflow-hidden w-full flex justify-center items-center h-[250px] rounded-sm border-2 border-green-700 group relative cursor-pointer" onClick={handleOpen}>
+            <div
+                className="w-full h-full scale-0 group-hover:scale-100 overflow-hidden text-white bg-black/60 transition-all absolute top-0 left-0 font-medium duration-300 text-[18px] flex justify-center items-center"
+            >
+                View to Click
+            </div>
+            <img src={item} alt="Gallery Image" className="object-fill w-full h-full" />
         </div>
     </>
 }

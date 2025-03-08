@@ -110,7 +110,7 @@ const Navbar = () => {
                                 </Menu> */}
                             </> : <>
                                 <Link to={item.link as string}>
-                                    <NavLink text={item.name} link={item.link} className={!isShow ? "!text-gray-900" : ''} />
+                                    <NavLink text={item.name} link={item.link} className={`font-medium ${!isShow ? "!text-gray-900" : ''}`} />
                                 </Link>
                             </>
                         }
@@ -144,7 +144,7 @@ const Navbar = () => {
                 </div> */}
                 <div className='flex justify-around flex-row w-full items-center'>
                     <div className='flex justify-center items-start gap-x-1 sm:gap-x-2'>
-                        <div className='w-[55px] mix-blend-multiply'>
+                        <div className='w-[60px] mix-blend-multiply'>
                             <img src="/logo.png" alt="logo" className='w-full h-full rounded-full' />
                         </div>
                         <h2 className='font-semibold text-green-600 block py-2 text-[18px]'>Shri Bhumia Overseas</h2>
@@ -196,7 +196,7 @@ const Navbar = () => {
                 </div>
             </section>
 
-            <section className={`w-full hidden md:flex justify-center items-center gap-x-10 ${!isShow ? "pb-2 -mt-2" : "py-2"} border-b border-solid border-b-gray-300`}>
+            <section className={`w-full hidden md:flex justify-center items-center gap-x-10 ${!isShow ? "pb-2 -mt-2" : "py-1.5"} border-b border-solid border-b-gray-300`}>
                 {
                     categories.map((item, index) => (
                         <div key={index}>

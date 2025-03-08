@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from 'react-responsive';
+import OurClientsSlider from '../home/OurClientsSlider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ const About = () => {
     //         <div className='h-[2px] w-[10%] bg-green-600'></div>
     //     </div>
     // }
-    
+
     const SubHeading = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
         return <h2 className={`text-green-600 font-semibold text-[30px] ${className}`}>{children}</h2>
     }
@@ -90,7 +91,21 @@ const About = () => {
                     </div>
                 </Div>
 
-                <Div className='justify-center flex-col-reverse lg:flex-row items-center'>
+                <Div className='flex-col-reverse lg:flex-row justify-center items-center'>
+                    <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
+                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
+                            <SubHeading>Our Clients</SubHeading>
+                        </Div>
+                        <p>We take pride in our strong, long-standing partnerships with esteemed global brands, including PARRS PRODUCTS (New Zealand), Re-loved Apparel (Australia), Al Haddad (Malaysia), Koopman International BV (Netherlands), Dabur (India), Tree Top Trading (Colombia), and The Domensch Gonza (Uruguay), along with key partners in America, the Gulf, and Russia. Our commitment to excellence and reliability has earned us the trust of industry leaders worldwide.</p>
+                    </div>
+                    <div className='w-full sm:w-3/4 lg:w-1/2 flex justify-center items-center'>
+                        <img src="/images/map.png" alt="image" className='w-3/4 object-fill rounded-lg' />
+                    </div>
+                </Div>
+
+                <OurClientsSlider />
+
+                <Div className='justify-center flex-col-reverse lg:flex-row-reverse items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                         <SubHeading>Our Product</SubHeading>
                         <p>Our products are designed with sustainability and functionality at their core, offering a wide range of eco-friendly bag solutions. Shopping bags provide a stylish and durable alternative for everyday use, while tote bags cater to both casual and professional needs with their versatile design. Promotional bags serve as an excellent branding tool, customized to enhance corporate identity. </p>
@@ -105,7 +120,7 @@ const About = () => {
                     <LineHeading>Quality Processes</LineHeading>
                 </Div> */}
 
-                <Div className='flex-col-reverse lg:flex-row-reverse justify-center items-center'>
+                <Div className='flex-col-reverse lg:flex-row justify-center items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                         <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
                             <SubHeading>Why Choose Us?</SubHeading>

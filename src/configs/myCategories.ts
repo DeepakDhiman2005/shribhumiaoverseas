@@ -53,26 +53,26 @@ const categories: Array<categoriesInterface> = [
     },
     {
         category: "Juco Bags",
-        subCategories: [
-            "Juco Promotional Bag"
-        ]
+        // subCategories: [
+        //     "Juco Promotional Bag"
+        // ]
     },
     {
         category: "Canvas Bags",
     },
-    {
-        category: "Handicrafts",
-        subCategories: [
-            "Cotton Webbing",
-            "Jute Rugs",
-            "Jute Slipper",
-            "Jute Twine",
-            "Jute Webbing",
-            "Terracotta",
-            "Dokra",
-            "Wooden Handicrafts",
-        ]
-    }
+    // {
+    //     category: "Handicrafts",
+    //     subCategories: [
+    //         "Cotton Webbing",
+    //         "Jute Rugs",
+    //         "Jute Slipper",
+    //         "Jute Twine",
+    //         "Jute Webbing",
+    //         "Terracotta",
+    //         "Dokra",
+    //         "Wooden Handicrafts",
+    //     ]
+    // }
 ]
 
 export default categories;

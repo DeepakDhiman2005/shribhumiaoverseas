@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import BlogCard from "../../components/cards/BlogCard";
 import { useMediaQuery } from "react-responsive";
 import { blogs } from "../home/OurBlogsSection";
+import LineHeading from "../../components/headings/LineHeading";
 // import BlogCardSkeleton from "../../components/skeletons/BlogCardSkeleton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -28,8 +29,8 @@ const Blogs = () => {
                     ease: 'power1.inOut',
                     scrollTrigger: {
                         trigger: item,
-                        start: 'start 120%',
-                        end: 'start 20%',
+                        start: 'top 80%',
+                        end: 'top 70%',
                         scrub: 0.5,
                     }
                 });
@@ -57,9 +58,10 @@ const Blogs = () => {
                 alt="image"
                 className="w-full h-auto"
             />
-            <div className="w-full px-4 sm:px-10 py-14 flex flex-col justify-center items-center gap-y-10">
+            <div className="w-full px-4 sm:px-10 py-4 flex flex-col justify-center items-center gap-y-10">
+            <LineHeading>Our Blogs</LineHeading>
                 {/* <h2 className="font-semibold text-[40px] text-green-500" id="blogs-heading">Our Blogs</h2> */}
-                <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14" id="blogs-section">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden" id="blogs-section">
                     {/* {
                     Array(10).fill(0).map((_, index) => (
                         <BlogCardSkeleton key={index} />

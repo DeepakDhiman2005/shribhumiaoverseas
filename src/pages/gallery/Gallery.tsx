@@ -1,39 +1,45 @@
-import { useEffect, useState } from "react";
-import { GalleryInterface, getGalleryImage, getGalleryRedux } from "../../redux/features/gallery";
+import { useEffect, useMemo } from "react";
+import { GalleryInterface, getGalleryRedux } from "../../redux/features/gallery";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import "../../styles/gallery.scss";
 import GalleryImageCard from "../../components/cards/GalleryImageCard";
+import getAllProducts from "../../functions/getAllProducts";
+import LineHeading from "../../components/headings/LineHeading";
 
 const Gallery = () => {
     const gallery: GalleryInterface = useSelector((state: RootState) => state.gallery);
     const dispatch: AppDispatch = useDispatch();
-    const [images, setImages] = useState<string[]>([]);
+    // const [images, setImages] = useState<string[]>([]);
     // const [videos, setVideos] = useState<string[]>([]);
+
+    const galleryImages = useMemo(() => {
+        return getAllProducts(57);
+    }, []);
 
     useEffect(() => {
         dispatch(getGalleryRedux());
     }, []);
 
     useEffect(() => {
-        if (gallery.images && gallery.images.length > 0) {
-            // Reset state before setting new images
-            setImages([]);
+        // if (gallery.images && gallery.images.length > 0) {
+        //     // Reset state before setting new images
+        //     setImages([]);
 
-            // Fetch each image
-            const newImageUrls: string[] = [];
-            gallery.images.forEach((image) => {
-                dispatch(getGalleryImage(image, (imageBlob: Blob) => {
-                    const imageUrl = URL.createObjectURL(imageBlob);
-                    newImageUrls.push(imageUrl);
+        //     // Fetch each image
+        //     const newImageUrls: string[] = [];
+        //     gallery.images.forEach((image) => {
+        //         dispatch(getGalleryImage(image, (imageBlob: Blob) => {
+        //             const imageUrl = URL.createObjectURL(imageBlob);
+        //             newImageUrls.push(imageUrl);
 
-                    // Only update state once after all images are processed
-                    if (newImageUrls.length === gallery.images?.length) {
-                        setImages(newImageUrls);
-                    }
-                }));
-            });
-        }
+        //             // Only update state once after all images are processed
+        //             if (newImageUrls.length === gallery.images?.length) {
+        //                 setImages(newImageUrls);
+        //             }
+        //         }));
+        //     });
+        // }
     }, [gallery]);
 
 
@@ -44,19 +50,15 @@ const Gallery = () => {
                 alt="image"
                 className="w-full h-auto"
             />
-            <div className="flex flex-col justify-center items-center py-10 w-full">
-                {/* <div className="flex flex-col justify-center items-center gap-y-4 text-center">
-                    <h1 className="font-semibold text-[35px] leading-tight sm:text-[40px] text-green-500">Explore the Shri Bhumia Gallery</h1>
-                    <p className="font-semibold text-[16] sm:text-[20px]">Welcome to the Shri Bhumia Gallery, where we showcase a collection of captivating images and videos. Immerse yourself in the visual journey that reflects the essence, heritage, and moments that define our story.</p>
-                </div> */}
-                <h1 className="font-semibold text-start text-[35px] leading-tight sm:text-[40px] text-green-500">Gallery Images</h1>
+            <div className="flex flex-col justify-center items-center py-4 w-full">
+                <LineHeading>our products</LineHeading>
 
-                <div className="w-full py-6 px-4">
+                <div className="w-full py-8 px-4">
                     {/* <div className="gallery-section w-full"> */}
-                    <div className="grid grid-cols-3 gap-x-5 w-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-6 lg:px-8 w-full">
                         {
-                            images && images.length > 0 ? images.map((item, index) => (
-                                <GalleryImageCard key={index} item={item} />
+                            galleryImages.length > 0 ? galleryImages.map((item, index) => (
+                                <GalleryImageCard key={index} item={item.image} />
                             )) : Array(10).fill(0).map((_, index) => (
                                 <div key={index} className="skeleton w-full h-[200px] my-2 bg-gray-300 animate-pulse rounded-lg" />
                             ))

@@ -34,7 +34,7 @@ const Contact = () => {
             showDirection: false,
             direction: 'https://www.google.co.in/maps/dir//28.67666780,77.37120260',
             // content: 'A 112/3 Vrindavan Garden Near Gurudwara Sahibabad Ghaziabad-201005 Regd.',
-            content: 'A 112/3, Janakpuri, Vrindavan Garden Near Raj bagh Metro Station',
+            content: 'A-112/3, Janakpuri, Vrindavan Garden Near Raj bagh Metro Station',
         },
         // {
         //     title: 'Kolkata Office',
@@ -87,7 +87,7 @@ const Contact = () => {
                                 <div className="flex justify-start flex-col sm:flex-row gap-y-2 sm:justify-between w-full items-start sm:items-center">
                                     <div className="flex justify-start items-center gap-x-2">
                                         {item.icon}
-                                        <span>{item.title}:</span>
+                                        <span className='font-medium'>{item.title}: <span className='font-normal'>{item.content}</span></span>
                                     </div>
                                     {
                                         item.showDirection ? <>
@@ -98,7 +98,7 @@ const Contact = () => {
                                         </> : null
                                     }
                                 </div>
-                                <p>{item.content}</p>
+                                {/* <p>{item.content}</p> */}
                             </div>
                         ))
                     }
@@ -116,7 +116,7 @@ const Contact = () => {
                         <ContactInput placeholder='Address' />
                         <ContactMessage placeholder='Message' />
                         <div className="flex justify-start items-center">
-                            <MyButton className="bg-white text-green-700 hover:bg-green-900 transition-all duration-700 hover:text-white">Contact Now</MyButton>
+                            <MyButton className="bg-white text-green-700 hover:bg-green-900 transition-all duration-700 hover:text-white">Submit Now</MyButton>
                         </div>
                     </div>
                 </div>

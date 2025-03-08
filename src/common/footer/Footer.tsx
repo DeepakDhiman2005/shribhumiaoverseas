@@ -25,10 +25,10 @@ const Footer = () => {
             name: 'Blogs',
             link: '/blogs'
         },
-        // {
-        //     name: 'Gallery',
-        //     link: '/gallery',
-        // },
+        {
+            name: 'Gallery',
+            link: '/gallery',
+        },
         {
             name: 'Contact Us',
             link: '/contact us'
@@ -51,10 +51,6 @@ const Footer = () => {
         {
             name: 'Canvas Bags',
             link: '/products?category=canvas-bags'
-        },
-        {
-            name: 'Handicrafts',
-            link: '/products?category=handicrafts'
         },
         // {
         //     name: 'View All',
@@ -133,7 +129,7 @@ const Footer = () => {
                                     <FaMapMarkedAlt size={16} className="text-green-700" />
                                 </div>
                                 <div className="flex justify-start w-[88%] flex-col text-[12px] items-start">
-                                    <p className="w-full">A 112/3, Janakpuri, Vrindavan Garden Near Raj bagh Metro Station</p>
+                                    <p className="w-full">Registered Office: A 112/3, Janakpuri, Vrindavan Garden Near Raj bagh Metro Station</p>
                                 </div>
                             </div>
                         </div>

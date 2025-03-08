@@ -1,6 +1,8 @@
-import { Dialog, DialogBody } from "@material-tailwind/react";
+// import { Dialog, DialogBody } from "@material-tailwind/react";
 import { useState } from "react";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
+import QuoteModal from "../modals/QuoteModal";
+import { useNavigate } from "react-router-dom";
 // import { AppDispatch } from "../../redux/store";
 // import { useDispatch } from "react-redux";
 // import { getProductImageRedux } from "../../redux/features/products";
@@ -26,7 +28,8 @@ const ProductCard = ({
     const [isOpen, setIsOpen] = useState<boolean>(false);
     // const dispatch: AppDispatch = useDispatch();
 
-    const handleOpen = () => setIsOpen(!isOpen);
+    // const handleOpen = () => setIsOpen(!isOpen);
+    const navigate = useNavigate();
 
     // useEffect(() => {
     //     let objectUrl: string | null = null;
@@ -46,7 +49,7 @@ const ProductCard = ({
 
     return (
         <>
-            <Dialog
+            {/* <Dialog
                 open={isOpen}
                 handler={handleOpen}
                 animate={{
@@ -69,14 +72,21 @@ const ProductCard = ({
                         className="transition-all duration-300 w-[90%] sm:w-1/2"
                     />
                 </DialogBody>
-            </Dialog>
+            </Dialog> */}
+
+            <QuoteModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+            />
 
             <div
-                className={`w-full h-auto border border-solid cursor-pointer group border-gray-300 ${blobImage ? "" : "pointer-events-none"
-                    }`}
-                onClick={blobImage ? handleOpen : undefined}
+                className={`w-full h-auto border border-solid cursor-pointer group border-gray-300`}
+                // onClick={blobImage ? handleOpen : undefined}
+                // onClick={blobImage ? handleOpen : undefined}
+                onClick={() => navigate('/contact')}
+
             >
-                <div className="w-full h-[180px] flex justify-center items-center overflow-hidden">
+                <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden">
                     {blobImage ? (
                         <img
                             // src={blobImage}
@@ -87,6 +97,7 @@ const ProductCard = ({
                     ) : (
                         <div className="w-full h-[150px] bg-gray-200 animate-pulse"></div>
                     )}
+                    <div className="absolute top-1/2 scale-0 group-hover:scale-100 transition-all duration-500  px-4 py-2 bg-green-600/80 text-white font-medium">Get a Quote</div>
                 </div>
                 <div className="bg-gray-200  transition-all duration-500">
                     <h2 className="uppercase font-semibold py-1 bg-green-600 text-center text-white w-full">{name}</h2>
