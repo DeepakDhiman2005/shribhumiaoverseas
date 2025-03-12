@@ -5,7 +5,7 @@ import { RxCross2 } from "react-icons/rx";
 interface MyModalInterface {
     isOpen: boolean;
     setIsOpen: (value: boolean) => void,
-    title?: string,
+    title?: string | React.ReactNode,
     titleClass?: string,
     children?: React.ReactNode,
     size?: 'sm' | 'md' | 'lg' | 'xl' | 'xs' | 'xxl',
@@ -31,7 +31,7 @@ const MyModal: React.FC<MyModalInterface> = ({
             size={size}
         >
             <div className="w-full">
-                <div className="flex justify-between items-center px-6 py-4">
+                <div className="flex justify-between items-center px-4 py-3">
                     <h2 className={`font-semibold text-[18px] text-gray-900 ${titleClass}`}>{title}</h2>
                     <button onClick={handleOpen} className="hover:text-red-600 transition-all text-gray-900 duration-300 active:text-red-800">
                         <RxCross2 size={22} />

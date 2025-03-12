@@ -9,12 +9,21 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { getProductRedux, ProductsInterface } from "../../redux/features/products";
 import { useMediaQuery } from "react-responsive";
 import getAllProducts from "../../functions/getAllProducts";
+import filterCategory from "../../assets/filterCategory";
 
 const ProductsMain = () => {
     const isMobile = useMediaQuery({ minWidth: 720 });
     const [search, setSearch] = useSearchParams();
     const dispatch: AppDispatch = useDispatch();
     const products: ProductsInterface = useSelector((state: RootState) => state.products.products);
+
+    const categoryName = useMemo(() => {
+        return search.get('category') || null;
+    }, [search]);
+
+    const subCategoryName = useMemo(() => {
+        return search.get('subcategory') || null;
+    }, [search]);
 
     const myProducts = useMemo(() => {
         return getAllProducts(57);
@@ -43,16 +52,37 @@ const ProductsMain = () => {
     return (
         <main className="w-full md:w-[80%]">
             <h2 className="font-semibold text-[24px] pb-3">{category?.name}</h2>
-
-            {category?.banner && (
-                <img
-                    src={isMobile ? `/images/banners/${category?.banner}` : `/images/banners/${category?.mobileBanner}`}
-                    className="w-full"
-                />
-            )}
+            {categoryName && subCategoryName ? (
+                filterCategory
+                    .filter((item) => item.category?.name === categoryName)
+                    .flatMap((item) =>
+                        item.subCategories
+                            ?.filter((it) => it.name === subCategoryName)
+                            .map((it, index) => (
+                                <img
+                                    key={index}
+                                    src={isMobile ? it.banner : it.mobileBanner}
+                                    className="w-full"
+                                    alt={it.name}
+                                />
+                            )) ?? []
+                    )
+            ) : categoryName ? (
+                filterCategory
+                    .filter((item) => item.category?.name === categoryName)
+                    .map((item, index) => (
+                        <img
+                            key={index}
+                            src={isMobile ? item.category?.banner : item.category?.mobileBanner}
+                            className="w-full"
+                            alt={item.category?.name}
+                        />
+                    ))
+            ) : null}
 
             <p className="text-start w-full my-6">
-                {category?.description}
+                {/* {category?.description} */}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid delectus doloremque eveniet autem odio provident ipsam tempore quos, suscipit temporibus commodi dolore numquam, dolorum dolorem accusamus maiores corrupti blanditiis esse ducimus! Amet perspiciatis doloribus, cum mollitia laudantium sed officiis quis illum magni eveniet veritatis vitae voluptatem tempora odit ipsa nobis commodi labore aut minus a. Minus mollitia nobis, neque magnam cupiditate dolore ex, aliquid soluta aut, perspiciatis assumenda blanditiis nisi maiores aliquam repellendus laudantium labore laborum amet voluptas! Maxime beatae tempore fugiat architecto saepe dolore aut accusamus, magnam, illo, ullam officiis enim ad. Tempora, dignissimos autem dicta ad error repellendus magnam. Voluptatem, nihil! Numquam iste repellat ad voluptas adipisci est quod porro ducimus aspernatur magnam! Sunt rem expedita assumenda sed?
             </p>
 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6">

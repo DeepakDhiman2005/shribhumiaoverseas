@@ -1,6 +1,6 @@
-import { MdDelete } from "react-icons/md";
-import MyModal from "./MyModal";
+// import { MdDelete } from "react-icons/md";
 import MyButton from "../buttons/MyButton";
+import { Dialog } from "@material-tailwind/react";
 
 interface DeleteModalInterface {
     isOpen: boolean,
@@ -13,28 +13,29 @@ const DeleteModal = ({
     setIsOpen,
     onDelete,
 }: DeleteModalInterface) => {
+    const handleClose = () => setIsOpen(false);
     return <>
-        <MyModal
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            title="Delete Product"
+        <Dialog
+            open={isOpen}
+            handler={handleClose}
+            size="xs"
         >
             <div className="w-full flex flex-col justify-center px-8 py-4 items-center gap-y-6">
-                <MdDelete size={80} />
-                <p className="text-center text-black font-medium">Are you sure you want to delete this product? This action cannot be undone.</p>
-
-                <div className="flex justify-end w-full items-center gap-x-2">
+                <p className="text-[#000000] font-medium text-[18px] text-center w-3/4">
+                    Are you sure item will be deleted?
+                </p>
+                <div className="flex justify-center w-full items-center gap-x-2">
                     <MyButton
-                        className="bg-gray-500"
+                        className="bg-blue-700 rounded-sm"
                         onClick={() => setIsOpen(false)}
                     >Cancel</MyButton>
                     <MyButton
-                        className="bg-red-700 text-white"
+                        className="bg-red-700 text-white rounded-sm"
                         onClick={() => onDelete(true)}
-                    >Delete</MyButton>
+                    >Yes, delete it!</MyButton>
                 </div>
             </div>
-        </MyModal>
+        </Dialog>
     </>
 }
 

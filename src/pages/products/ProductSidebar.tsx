@@ -2,6 +2,7 @@
 import categories from "../../configs/myCategories";
 import { IoIosArrowForward } from "react-icons/io";
 import { Menu, MenuHandler, MenuList } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 // import Categories from "../../configs/categories";
 
 const ProductSidebar = () => {
@@ -33,13 +34,17 @@ const ProductSidebar = () => {
                                         <MenuList className="max-h-[350px] w-[20%] p-1">
                                             {
                                                 item.subCategories?.map((it, i) => (
-                                                    <h2 key={i} className="hover:bg-gray-300 outline-none w-full rounded-md py-1 px-2 cursor-pointer text-gray-900">{it}</h2>
+                                                    <Link key={i} to={`/products?category=${item.category.toLowerCase().split(' ').join('-')}&subcategory=${it.toLowerCase().split(' ').join("-")}`} className="outline-none">
+                                                        <h2 className="hover:bg-gray-300 outline-none w-full rounded-md py-1 px-2 cursor-pointer text-gray-900">{it}</h2>
+                                                    </Link>
                                                 ))
                                             }
                                         </MenuList>
                                     </Menu>
                                     :
-                                    <h2>{item.category}</h2>
+                                    <Link to={`/products?category=${item.category.toLowerCase().split(' ').join('-')}`} className="outline-none">
+                                        <h2>{item.category}</h2>
+                                    </Link>
                             }
                         </div>
                     ))

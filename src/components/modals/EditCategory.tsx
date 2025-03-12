@@ -9,17 +9,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { categorySchema } from "../../configs/validations";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { addCategoryRedux } from "../../redux/features/category";
+import { editCategoryRedux } from "../../redux/features/category";
+import { useEffect } from "react";
+import { RiEditLine } from "react-icons/ri";
 
-const AddCategory = ({
+const EditCategory = ({
     isOpen = false,
+    data = null,
     setIsOpen,
-}:{
+}: {
     isOpen: boolean,
+    data?: CategoryInterface | null,
     setIsOpen: (value: boolean) => void,
 }) => {
     const dispatch = useDispatch<AppDispatch>();
-    
+
     const {
         control,
         formState: {
@@ -27,14 +31,25 @@ const AddCategory = ({
         },
         handleSubmit,
         reset,
+        setValue,
     } = useForm<CategoryInterface>({
         resolver: yupResolver<CategoryInterface>(categorySchema),
         defaultValues: {
-            name: '',
-            image: null,
-            description: '',
+            name: data?.name || '',
+            image: data?.image || null,
+            description: data?.description || '',
+            _id: data?._id || '',
         }
     });
+
+    useEffect(() => {
+        if (data) {
+            setValue('name', data?.name as string);
+            setValue('description', data?.description as string);
+            setValue('image', data?.image);
+            setValue('_id', data?._id as string);
+        }
+    }, [data]);
 
     const onSubmit = (event: CategoryInterface) => {
         console.log(event);
@@ -42,7 +57,8 @@ const AddCategory = ({
         formData.append('name', event.name as string);
         formData.append('image', event.image as File);
         formData.append('description', event.description as string);
-        dispatch(addCategoryRedux(formData, () => {
+        formData.append('_id', event?._id as string);
+        dispatch(editCategoryRedux(formData, () => {
             reset();
             setIsOpen(false);
         }));
@@ -52,11 +68,15 @@ const AddCategory = ({
         <MyModal
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            title="Add Category"
-            size="lg"
+            // title="Edit Category"
+            title={<div className="flex justify-center items-center gap-x-2">
+                <RiEditLine size={18} />
+                <span>Edit Category</span>
+            </div>}
+            size="md"
         >
             <form onSubmit={handleSubmit(onSubmit)} className="w-full px-6 py-4 flex flex-col justify-start items-start gap-y-6">
-                <div className="grid grid-cols-2 w-full gap-x-4 gap-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-x-4 gap-y-6">
                     <InputField
                         control={control}
                         errors={errors}
@@ -86,4 +106,4 @@ const AddCategory = ({
     </>
 }
 
-export default AddCategory;
+export default EditCategory;

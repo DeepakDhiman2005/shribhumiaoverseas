@@ -2,8 +2,8 @@ import { Select } from "antd";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 import "../../styles/custom-form-field.scss";
 
-interface OptionInterface {
-    value: string;
+export interface OptionInterface {
+    value: string | undefined;
     label: string;
 }
 
@@ -18,7 +18,7 @@ const SelectField: React.FC<SelectFieldProps> = ({ name, control, options = [], 
     const errorMessage = errors?.[name]?.message as string | undefined; // ✅ Dynamically extract the error
 
     return (
-        <div className="flex flex-col justify-start items-start gap-y-2 w-full">
+        <div className="flex flex-col justify-start items-start gap-y-2 w-full  h-full">
             <Controller
                 name={name}
                 control={control}
@@ -33,6 +33,9 @@ const SelectField: React.FC<SelectFieldProps> = ({ name, control, options = [], 
                             (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
                         }
                         style={{ width: "100%" }}
+                        dropdownStyle={{
+                            zIndex: 10000,
+                        }}
                         className={`custom-select-field ${errorMessage ? "border-red-600" : ""}`} // ✅ Add red border if error exists
                     />
                 )}

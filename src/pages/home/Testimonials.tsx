@@ -1,42 +1,41 @@
-"use client";
-
 // styles
-import "../../styles/slider.scss";
+// import "../../styles/slider.scss";
 
-import Slider from "react-slick";
-import { useEffect, useRef } from "react";
+import Slider, { Settings } from "react-slick";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialCard from "../../components/cards/TestimonialCard";
+import Dot from "../../components/dots/Dot";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
-    const testimonialsRef = useRef<HTMLDivElement | null>(null);
+    const sliderRef = useRef<Slider | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const [activeSlide, setActiveSlide] = useState<number>(0);
 
-    const settings = {
+    const settings: Settings = {
         arrows: false,
         slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
         speed: 500,
         autoplay: true,
-        dots: true,
-        customPaging: () => (
-            <div className="w-2 h-2 bg-gray-400 rounded-full transition-all duration-300 hover:bg-gray-600"></div>
-        ),
-        dotsClass: "slick-dots custom-dots",
+        beforeChange: (_, next: number) => setActiveSlide(next),
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
+                    slidesToScroll: 1
                 }
             },
             {
                 breakpoint: 650,
                 settings: {
                     slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             },
         ]
@@ -89,56 +88,47 @@ const Testimonials = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const heading = (testimonialsRef.current as HTMLElement).querySelector('h2');
-            const desc = (testimonialsRef.current as HTMLElement).querySelector('p');
-            const slides = (testimonialsRef.current as HTMLElement).querySelector('div');
+            const heading = containerRef.current?.querySelector('h2') as HTMLElement;
+            const desc = containerRef.current?.querySelector('p') as HTMLElement;
+            const sliderContainer = containerRef.current?.querySelector('.slider-container') as HTMLElement;
 
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: testimonialsRef.current,
-                    start: 'top 80%',
-                    end: 'top 50%',
+                    trigger: containerRef.current,
+                    start: "top 80%",
+                    end: "top 50%",
                     scrub: 0.5,
-                }
-            });
-            tl.fromTo(heading, {
-                y: 100,
-                opacity: 0,
-            }, {
-                y: 0,
-                opacity: 1,
-                duration: 0.2,
-                ease: "power2.inOut",
-            });
-            tl.fromTo(desc, {
-                y: 100,
-                opacity: 0,
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.3,
-                ease: "power2.inOut",
-            });
-            tl.fromTo(slides, {
-                y: 100,
-                opacity: 0,
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.4,
-                ease: "power2.inOut",
+                },
             });
 
-        }, testimonialsRef);
+            tl.fromTo(
+                heading,
+                { y: 100, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.3, ease: "power2.inOut" }
+            )
+                .fromTo(
+                    desc,
+                    { y: 100, opacity: 0 },
+                    { opacity: 1, y: 0, duration: 0.4, ease: "power2.inOut" },
+                    "-=0.2"
+                )
+                .fromTo(
+                    sliderContainer,
+                    { y: 100, opacity: 0 },
+                    { opacity: 1, y: 0, duration: 0.5, ease: "power2.inOut" },
+                    "-=0.3"
+                );
+        }, containerRef);
+
         return () => ctx.revert();
     }, []);
 
     return <>
-        <div ref={testimonialsRef} className="flex flex-col justify-center items-center w-full my-6">
+        <div ref={containerRef} className="flex flex-col justify-center items-center w-full my-6">
             <h2 className="font-semibold text-[35px]">Testimonials</h2>
             <p className="text-center w-full font-medium px-4 md:px-16">Our clients trust us for high-quality, eco-friendly bags, timely service, and exceptional craftsmanship. Their satisfaction drives our commitment to sustainability and excellence.</p>
-            <div className="w-full">
-                <Slider {...settings}>
+            <div className="w-full slider-container">
+                <Slider ref={sliderRef} {...settings}>
                     {
                         details.map((item, index) => (
                             <div key={index} className="px-8 my-2 w-full">
@@ -147,6 +137,17 @@ const Testimonials = () => {
                         ))
                     }
                 </Slider>
+            </div>
+            {/* Dots */}
+            <div className="w-full flex justify-center items-center gap-3 mt-6">
+                {details.map((_, index) => (
+                    <Dot
+                        key={index}
+                        index={index}
+                        onClick={() => sliderRef.current?.slickGoTo(index)}
+                        activeSlide={activeSlide}
+                    />
+                ))}
             </div>
         </div>
     </>

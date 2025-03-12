@@ -1,17 +1,60 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Slider, { Settings } from "react-slick";
 import BlogCard from "../../components/cards/BlogCard";
 import MyButton from "../../components/buttons/MyButton";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+// import { useDispatch } from "react-redux";
 import { blogs } from "../home/OurBlogsSection";
+// import { AppDispatch } from "../../redux/store";
+// import { getBlogImageRedux } from "../../redux/features/blog";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import BlogCardSkeleton from "../../components/skeletons/BlogCardSkeleton";
+import { blogInterface } from "../../interfaces/blogInterface";
 
 const BlogDetails = () => {
     const { search } = useLocation();
+    // const dispatch = useDispatch<AppDispatch>();
+    // const blogDetails = useSelector((state: RootState) => state.blogs.blogDetails);
+    // const blogs = useSelector((state: RootState) => state.blogs.blogs);
+    const descriptionRef = useRef<HTMLDivElement | null>(null);
+    // const [imageUrl, setImageUrl] = useState<string>('');
+
     const blogName = useMemo(() => {
         const query = new URLSearchParams(search);
         return query.get("blog");
     }, [search]);
+
+    const blogDetails = useMemo<blogInterface | null>(() => {
+        if (search) {
+            return blogs.filter((item) => (
+                item._id === blogName
+            ))[0];
+        }
+        return null;
+    }, [search]);
+
+    useEffect(() => {
+        // dispatch(getAllBlogsRedux());
+    }, []);
+
+    useEffect(() => {
+        if (blogName && blogName !== '') {
+            // dispatch(getBlogDetailsRedux(blogName as string));
+        }
+    }, [blogName]);
+
+    // useEffect(() => {
+    //     if (blogDetails?.description && descriptionRef.current) {
+    //         descriptionRef.current.innerHTML = blogDetails.description;
+    //     }
+    //     if (blogDetails?.image) {
+    //         dispatch(getBlogImageRedux(blogDetails?._id as string, (blob: Blob) => {
+    //             const _url = URL.createObjectURL(blob);
+    //             setImageUrl(_url);
+    //         }));
+    //     }
+    // }, [blogDetails]);
 
     const sliderRef = useRef<Slider | null>(null);
     const [activeSlide, setActiveSlide] = useState<number>(0);
@@ -40,23 +83,6 @@ const BlogDetails = () => {
                 }
             }
         ]
-    };
-
-    const Div = ({
-        title = "",
-        children,
-    }: {
-        title?: string,
-        children: React.ReactNode,
-    }) => {
-        return (
-            <div className="w-full flex flex-col justify-start items-start gap-y-2">
-                <h2 className="font-semibold text-[22px]">{title}</h2>
-                <div className="flex flex-col justify-start items-start gap-y-4">
-                    {children}
-                </div>
-            </div>
-        );
     };
 
     const ArrowsWrapper = ({
@@ -88,66 +114,88 @@ const BlogDetails = () => {
         );
     };
 
-    return (
-        <div className="w-full flex flex-col justify-center items-center my-10 gap-y-6">
-            <h1 className="font-semibold text-[50px] capitalize">{blogName}</h1>
-            <img
-                src="/product-images/IMG-20250224-WA0001.jpg"
-                className="w-3/4 sm:w-1/2 h-auto"
-                alt="Blog"
-            />
+    return <>
+        <div className="w-full flex flex-col justify-start items-start my-4 px-5 sm:px-8 md:px-14 gap-y-3">
 
-            <div className="w-full flex flex-col justify-start items-start gap-y-4 px-5 sm:px-8 md:px-14">
-                <Div title="Wool Rugs">
-                    <p>
-                        Are you looking to achieve a royal appearance that is also aesthetically pleasing? A wool rug is all you need. One can find a limited variety of woollen rugs in the market. Oriental rugs made of wool and silk have a traditional feel, whereas shaggy wool rugs have a more modern appearance. Wool Persian rugs instantly transform a space into a classic one. These rugs are handmade & the process can take months or even longer. Although pricey, they are worthwhile to purchase as a family heirloom.
-                    </p>
-                    <p>
-                        Wool rugs are resilient to heavy foot traffic and cosy for the feet. Since wool comes from sheep, it contains oil, which shields it from stains. Due to fibre density, thicker carpets can be made.
-                    </p>
-                </Div>
+            {/* {
+                imageUrl && imageUrl !== '' ?
+                    <img
+                        src={imageUrl}
+                        className="w-[95%] h-auto"
+                        loading="lazy"
+                        alt="Blog"
+                    /> :
+                    <div
+                        className="w-3/4 sm:w-1/2 h-auto animate-pulse"
+                    ></div>
+            } */}
+            {
+                blogDetails?.image && blogDetails.image !== '' ?
+                    <img
+                        src={blogDetails.image as string}
+                        className="w-full h-auto"
+                        loading="lazy"
+                        alt="Blog"
+                    /> :
+                    <div
+                        className="w-full h-[200px] animate-pulse"
+                    ></div>
+            }
+            <div className="leading-[40px]">
+                <h1 className="font-semibold text-[40px] text-green-700 text-center capitalize">{blogDetails?.title || ''}</h1>
+                <div className="text-[16px] flex justify-start items-center gap-x-2">
+                    <FaRegCalendarAlt size={13} />
+                    {blogDetails?.date || '-'}
+                </div>
             </div>
 
-            <div className="w-full flex flex-col justify-start items-start gap-y-3 py-4">
-                <h2 className="text-green-500 font-semibold text-[30px] px-5 sm:px-8 md:px-14">
-                    Latest Blogs
-                </h2>
+            <div ref={descriptionRef} className="w-full flex flex-col justify-start items-start gap-y-4"></div>
+        </div>
+        <div className="w-full flex flex-col justify-start items-start gap-y-3 py-4">
+            <h2 className="text-green-500 font-semibold text-[30px] px-5 sm:px-8 md:px-14">
+                Latest Blogs
+            </h2>
 
-                <div className="w-full px-0 sm:px-8">
-                    <Slider ref={sliderRef} {...settings}>
-                        {blogs.map((item, index) => (
-                                <div key={index} className="px-6">
-                                    <BlogCard {...item} />
-                                </div>
-                            ))}
-                    </Slider>
+            <div className="w-full px-0 sm:px-8">
+                <Slider ref={sliderRef} {...settings}>
+                    {blogs?.length > 0 ? blogs.map((item, index) => (
+                        <div key={index} className="px-6">
+                            <BlogCard {...item} />
+                        </div>
+                    )) : Array(6).fill(0).map((_, index) => (
+                        <div key={index} className="px-6">
+                            <BlogCardSkeleton />
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+
+            <div className="w-full flex justify-center gap-x-1 items-center py-4">
+                <ArrowsWrapper onClick={() => sliderRef.current?.slickPrev()}>
+                    <IoIosArrowBack
+                        size={15}
+                        className="group-hover:-translate-x-1 transition-all duration-500"
+                    />
+                </ArrowsWrapper>
+
+
+                <div className="flex justify-center items-center gap-x-3">
+                    {blogs.length > 0 ? blogs.map((_, index) => (
+                        <Dot key={index} index={index} />
+                    )) : Array(6).fill(0).map((_, index) => (
+                        <Dot key={index} index={index} />
+                    ))}
                 </div>
 
-                <div className="w-full flex justify-center gap-x-1 items-center py-4">
-                    <ArrowsWrapper onClick={() => sliderRef.current?.slickPrev()}>
-                        <IoIosArrowBack
-                            size={15}
-                            className="group-hover:-translate-x-1 transition-all duration-500"
-                        />
-                    </ArrowsWrapper>
-
-
-                    <div className="flex justify-center items-center gap-x-3">
-                        {blogs.map((_, index) => (
-                                <Dot key={index} index={index} />
-                            ))}
-                    </div>
-
-                    <ArrowsWrapper onClick={() => sliderRef.current?.slickNext()}>
-                        <IoIosArrowForward
-                            size={15}
-                            className="group-hover:translate-x-1 transition-all duration-500"
-                        />
-                    </ArrowsWrapper>
-                </div>
+                <ArrowsWrapper onClick={() => sliderRef.current?.slickNext()}>
+                    <IoIosArrowForward
+                        size={15}
+                        className="group-hover:translate-x-1 transition-all duration-500"
+                    />
+                </ArrowsWrapper>
             </div>
         </div>
-    );
+    </>
 };
 
 export default BlogDetails;

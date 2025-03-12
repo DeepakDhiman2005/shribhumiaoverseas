@@ -31,8 +31,10 @@ const EditProduct = React.lazy(() => import("../admin/products/EditProduct"));
 // -blogs
 const DashboardBlogs = React.lazy(() => import("../admin/blogs/DashboardBlogs"));
 const AddBlog = React.lazy(() => import("../admin/blogs/AddBlog"));
+const EditBlog = React.lazy(() => import("../admin/blogs/EditBlog"));
 // -settings
-const DashboardSettings = React.lazy(() => import("../admin/settings/DashboardSettings"))
+const DashboardSettings = React.lazy(() => import("../admin/settings/DashboardSettings"));
+const DashboardCategory = React.lazy(() => import("../admin/category/Category"));
 
 export interface pagesInterface {
     path?: string,
@@ -176,6 +178,14 @@ const pages: Array<pagesChildrenInterface> = [
                     title: 'Edit Product',
                 }
             },
+            // category
+            {
+                path: 'category',
+                element: <DashboardCategory />,
+                meta: {
+                    title: 'All Category'
+                }
+            },
             // blogs
             {
                 path: 'blogs',
@@ -189,6 +199,13 @@ const pages: Array<pagesChildrenInterface> = [
                 element: <AddBlog />,
                 meta: {
                     title: 'Add Blog'
+                }
+            },
+            {
+                path: 'edit-blog',
+                element: <EditBlog />,
+                meta: {
+                    title: 'Edit Blog',
                 }
             },
             // settings

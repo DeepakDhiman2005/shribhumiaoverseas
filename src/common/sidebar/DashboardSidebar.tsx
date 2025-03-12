@@ -1,7 +1,7 @@
 import { RxHamburgerMenu } from "react-icons/rx";
-import { LuLayoutDashboard } from "react-icons/lu";
+import { LuLayoutDashboard, LuShoppingCart } from "react-icons/lu";
+import { TbCategory } from "react-icons/tb";
 import { FaBlog } from "react-icons/fa6";
-import { AiOutlineProduct } from "react-icons/ai";
 import { IoMdSettings } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
 import { Button } from "@material-tailwind/react";
@@ -33,24 +33,28 @@ const DashboardSidebar = () => {
     }, [pathname]);
 
     const links = [
-        { text: "Dashboard", icon: <LuLayoutDashboard size={18} />, path: "/dashboard" },
-        { text: "Products", icon: <AiOutlineProduct size={18} />, path: "/products" },
-        { text: "Blogs", icon: <FaBlog size={18} />, path: "/blogs" },
-        { text: "Settings", icon: <IoMdSettings size={18} />, path: "/settings" },
+        { text: "Dashboard", icon: <LuLayoutDashboard size={18} strokeWidth={2} />, path: "/dashboard" },
+        { text: "Products", icon: <LuShoppingCart size={18} strokeWidth={2} />, path: "/products" },
+        { text: "Category", icon: <TbCategory size={18} strokeWidth={2} />, path: "/category" },
+        { text: "Blogs", icon: <FaBlog size={18} strokeWidth={0.5} />, path: "/blogs" },
+        { text: "Settings", icon: <IoMdSettings size={18} strokeWidth={0.5} />, path: "/settings" },
     ];
 
     return (
-        <aside className={`h-screen py-4 flex-col justify-between overflow-hidden transition-all duration-300 ${dashboardSidebar ? 'w-full px-4' : 'w-0 px-auto'} lg:w-[20%] fixed z-40 lg:sticky lg:px-4 top-0 left-0 bg-gray-900 text-white`}>
+        <aside className={`h-screen py-4 flex-col justify-between overflow-hidden transition-all duration-300 ${dashboardSidebar ? 'w-full px-4' : 'w-0 px-auto'} lg:w-[20%] fixed z-40 lg:sticky lg:px-4 top-0 left-0 bg-gray-200 text-[#000000]`}>
             {/* Sidebar Header */}
-            <div className="w-full flex justify-between items-center px-1 py-2">
-                <h2 className="font-semibold text-[18px]">Shri Bhumia</h2>
+            <div className="w-full flex justify-between items-center py-2">
+                <div className="flex justify-center items-center gap-x-2">  
+                    <img src="/logo.png" alt="logo" className="w-14" />
+                    <h2 className="font-semibold text-[18px] leading-tight">Shri Bhumia Overseas</h2>
+                </div>
                 <Button className="shadow-none hover:shadow-none rounded-md p-1 block lg:hidden bg-transparent" onClick={handleSidebar}>
                     <RxHamburgerMenu size={22} />
                 </Button>
             </div>
 
             {/* Sidebar Links */}
-            <div className="flex flex-col w-full justify-start items-start my-4 gap-y-3">
+            <div className="flex flex-col w-full justify-start items-start my-4 gap-y-2">
                 {links.map((item, index) => (
                     <DashboardSidebarButton key={index} {...item} />
                 ))}
@@ -58,7 +62,7 @@ const DashboardSidebar = () => {
 
             {/* Logout Button */}
             <div className="w-full">
-                <MyButton className="bg-red-600 flex justify-start items-center rounded-md gap-x-2 py-3 w-full text-[16px]" onClick={handleLogout}>
+                <MyButton className="bg-transparent text-blue-600 hover:text-blue-800 px-2.5 py-0 flex justify-start items-center rounded-md gap-x-2 w-full text-[16px]" onClick={handleLogout}>
                     <FiLogOut size={18} />
                     <span>Logout</span>
                 </MyButton>

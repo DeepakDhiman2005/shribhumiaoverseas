@@ -1,6 +1,11 @@
+import DashboardProvider from "../../providers/DashboardProvider";
+import DashboardCards from "./DashboardCards";
+
 const Dashboard = () => {
     return <>
-        <h2>dashboard!</h2>
+        <DashboardProvider title="Dashboard">
+            <DashboardCards />
+        </DashboardProvider>
     </>
 }
 

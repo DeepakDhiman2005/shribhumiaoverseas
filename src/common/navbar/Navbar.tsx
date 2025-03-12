@@ -143,7 +143,7 @@ const Navbar = () => {
                     <NavSearch />
                 </div> */}
                 <div className='flex justify-around flex-row w-full items-center'>
-                    <div className='flex justify-center items-start gap-x-1 sm:gap-x-2'>
+                    <div className='flex justify-center items-center gap-x-1 sm:gap-x-2'>
                         <div className='w-[60px] mix-blend-multiply'>
                             <img src="/logo.png" alt="logo" className='w-full h-full rounded-full' />
                         </div>

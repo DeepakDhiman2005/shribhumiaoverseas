@@ -56,7 +56,7 @@ const About = () => {
                     className='w-full h-auto'
                 />
             </div>
-            <div className='w-full flex flex-col py-4 gap-y-6 px-4 sm:px-14 justify-start items-start'>
+            <div className='w-full flex flex-col py-4 gap-y-6 px-4 sm:px-8 justify-start items-start'>
                 <Div className='justify-center flex-col-reverse lg:flex-row items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                         <Div className='flex flex-col -space-x-1 -space-y-1 w-full text-start'>

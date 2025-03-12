@@ -46,7 +46,7 @@ const ImageField = ({ name, control, errors, defaultValue }: ImageFieldProps) =>
                             onClick={uploadImage}
                         >
                             <FiUpload size={16} className="text-black" />
-                            <h2 className="font-medium text-[14px] text-black">
+                            <h2 className="font-medium text-[14px] text-black truncate">
                                 {value instanceof File ? value.name : value || "Upload Image"}
                             </h2>
                             {value && (

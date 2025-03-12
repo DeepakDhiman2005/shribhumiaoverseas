@@ -6,13 +6,22 @@ import BlogCard from "../../components/cards/BlogCard";
 import { useMediaQuery } from "react-responsive";
 import { blogs } from "../home/OurBlogsSection";
 import LineHeading from "../../components/headings/LineHeading";
-// import BlogCardSkeleton from "../../components/skeletons/BlogCardSkeleton";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import BlogCardSkeleton from "../../components/skeletons/BlogCardSkeleton";
+import { getAllBlogsRedux } from "../../redux/features/blog";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Blogs = () => {
     const containerRef = useRef(null);
     const isMobile = useMediaQuery({ maxWidth: 720 });
+    // const blogs = useSelector((state: RootState) => state.blogs.blogs);
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(getAllBlogsRedux());
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -21,7 +30,7 @@ const Blogs = () => {
 
             blogsSection.forEach((item) => {
                 gsap.fromTo(item, {
-                    y: 200,
+                    y: 150,
                     opacity: 0,
                 }, {
                     opacity: 1,
@@ -31,7 +40,7 @@ const Blogs = () => {
                         trigger: item,
                         start: 'top 80%',
                         end: 'top 70%',
-                        scrub: 0.5,
+                        scrub: 0.7,
                     }
                 });
             });
@@ -40,40 +49,38 @@ const Blogs = () => {
                 scale: 0.5,
             }, {
                 scale: 1,
-                duration: 0.4,
-                ease: 'power1.inOut'
+                duration: 3,
+                ease: 'power2.inOut'
             });
         }, containerRef);
         return () => ctx.revert();
-    }, []);
+    }, [blogs]);
+
     return <>
         <main ref={containerRef} className="w-full">
             <img
                 src={
                     isMobile ?
-                    "/images/banners/blog.jpg"
-                    :"/images/banners/blog.png"
+                        "/images/banners/blog.jpg"
+                        : "/images/banners/blog.png"
                 }
                 loading="lazy"
                 alt="image"
                 className="w-full h-auto"
             />
             <div className="w-full px-4 sm:px-10 py-4 flex flex-col justify-center items-center gap-y-10">
-            <LineHeading>Our Blogs</LineHeading>
+                <LineHeading>Our Blogs</LineHeading>
                 {/* <h2 className="font-semibold text-[40px] text-green-500" id="blogs-heading">Our Blogs</h2> */}
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden" id="blogs-section">
-                    {/* {
-                    Array(10).fill(0).map((_, index) => (
-                        <BlogCardSkeleton key={index} />
-                    ))
-                } */}
                     {
-                        blogs.map((item, index) => (
+                        blogs?.length > 0 ? blogs.map((item, index) => (
                             <div key={index}>
-                                <BlogCard 
+                                <BlogCard
                                     {...item}
                                 />
                             </div>
+                        )) : Array(10).fill(0).map((_, index) => (
+                            <BlogCardSkeleton key={index} />
                         ))
                     }
                 </div>

@@ -8,10 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { getProductDetails, updateProductRedux } from "../../redux/features/products";
 import SelectField from "../../components/fields/SelectField";
-import Categories from "../../configs/categories";
 import { AddProductInterface } from "./productInterface";
 import InputField from '../../components/fields/InputField';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FiEdit3 } from "react-icons/fi";
 
@@ -22,6 +21,18 @@ const EditProduct = () => {
     const dispatch: AppDispatch = useDispatch();
     const details = useSelector<RootState>(state => state.products.product) as AddProductInterface;
     // console.log(details);
+
+    const categories = useSelector((state: RootState) => state.category.categories);
+    const subCategories = useSelector((state: RootState) => state.category.subCategories);
+
+    const allCategories = useMemo(() => {
+        return categories.map((item) => ({ label: item.name, value: item._id }));
+    }, [categories]);
+
+    const allSubCategories = useMemo(() => {
+        return subCategories.map((item) => ({ label: item.name, value: item._id }));
+    }, [subCategories]);
+
     const {
         control,
         handleSubmit,
@@ -46,6 +57,7 @@ const EditProduct = () => {
         setValue('width', details?.width || 0);
         setValue('gusset', details?.gusset || 0);
         setValue('image', details?.image || '');
+        setValue('subCategory', details?.subCategory || '');
     }, [details]);
 
     useEffect(() => {
@@ -59,6 +71,7 @@ const EditProduct = () => {
         const formData = new FormData();
         formData.append("name", e?.name || "");
         formData.append("category", e?.category || "");
+        formData.append("subCategory", e?.subCategory || "");
 
         if (e?.image) {
             formData.append("image", e.image);
@@ -73,7 +86,7 @@ const EditProduct = () => {
     };
 
     return (
-        <DashboardProvider title="Edit Product">
+        <DashboardProvider backShow={true} title="Edit Product">
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 w-full gap-y-4">
                     <InputField
@@ -84,13 +97,23 @@ const EditProduct = () => {
                     />
 
                     <ImageField control={control} name="image" errors={errors} />
-
-                    <SelectField
-                        control={control}
-                        name="category"
-                        options={[{ label: 'Select a Category', value: '' }, ...Categories.map(({ name, category }) => ({ label: name as string, value: category as string }))]}
-                        errors={errors}
-                    />
+                    <div className='w-full h-full'>
+                        <SelectField
+                            control={control}
+                            name="category"
+                            options={[{ label: 'Select a Category', value: '' }, ...allCategories]}
+                            errors={errors}
+                        />
+                    </div>
+                    
+                    <div className='w-full h-full'>
+                        <SelectField
+                            control={control}
+                            name="subCategory"
+                            options={[{ label: 'Select a SubCategory', value: '' }, ...allSubCategories]}
+                            errors={errors}
+                        />
+                    </div>
 
                     <InputField
                         errors={errors}

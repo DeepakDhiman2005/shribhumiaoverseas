@@ -12,6 +12,7 @@ import { deleteProductRedux, getAllProductsRedux, ProductsInterface } from "../.
 import TableSkeleton from "../../components/skeletons/TableSkeleton";
 import DeleteModal from "../../components/modals/DeleteModal";
 import AddCategory from "../../components/modals/AddCategory";
+import AddSubCategory from "../../components/modals/AddSubCategory";
 
 const DashboardProducts: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -19,6 +20,11 @@ const DashboardProducts: React.FC = () => {
     const products: ProductsInterface = useSelector((state: RootState) => state.products.products);
     const [isSelected, setIsSelected] = useState<string>('');
     const [isDelete, setIsDelete] = useState<boolean>(false);
+    const [isCategoryOpen, setIsCategoryOpen] = useState<boolean>(false);
+    const [isSubCategoryOpen, setIsSubCategoryOpen] = useState<boolean>(false);
+
+    const handleCategoryOpen = () => setIsCategoryOpen(true);
+    const handleSubCategoryOpen = () => setIsSubCategoryOpen(true);
 
     const callApi = () => {
         setLoading(true);
@@ -46,10 +52,15 @@ const DashboardProducts: React.FC = () => {
             }}
         />
         <AddCategory
-
+            isOpen={isCategoryOpen}
+            setIsOpen={setIsCategoryOpen}
+        />
+        <AddSubCategory
+            isOpen={isSubCategoryOpen}
+            setIsOpen={setIsSubCategoryOpen}
         />
         <DashboardProvider title="Products" className="space-y-2">
-            <div className="w-full py-2 px-3 flex justify-between items-center">
+            <div className="w-full py-2 flex justify-between items-center">
                 <div>
                     <Input
                         crossOrigin={"anonymous"}
@@ -57,9 +68,13 @@ const DashboardProducts: React.FC = () => {
                     />
                 </div>
                 <div className="flex justify-center items-center gap-x-2">
-                    <MyButton className="flex justify-center items-center bg-purple-700 gap-x-2">
+                    <MyButton className="flex justify-center items-center bg-[#000000] gap-x-2" onClick={handleCategoryOpen}>
                         <FaPlus size={16} />
                         <span>Add Category</span>
+                    </MyButton>
+                    <MyButton className="flex justify-center items-center bg-[#000000] gap-x-2" onClick={handleSubCategoryOpen}>
+                        <FaPlus size={16} />
+                        <span>Add SubCategory</span>
                     </MyButton>
                     <Link to={"/admin/add-product"} className="w-auto h-auto">
                         <MyButton className="flex justify-center items-center bg-blue-700 gap-x-2">
@@ -90,7 +105,7 @@ const DashboardProducts: React.FC = () => {
                         },
                         headCells: {
                             style: {
-                                fontSize: '15px',
+                                fontSize: '14px',
                                 textAlign: 'center',
                                 fontWeight: 'bold',
                             }

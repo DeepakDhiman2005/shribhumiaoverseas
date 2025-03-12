@@ -4,13 +4,15 @@ import { TableColumn } from "react-data-table-component";
 // icons
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
-import Categories from "../../configs/categories";
+// import Categories from "../../configs/categories";
 import { Link } from "react-router-dom";
+import { CategoryInterface, SubCategoryInterface } from "../../interfaces/categoryInterface";
 
 // Define TypeScript interface for product data
 export interface ProductRow {
     name?: string,
-    category?: string,
+    category?: CategoryInterface,
+    subCategory?: SubCategoryInterface,
     width?: string,
     height?: string,
     gusset?: string,
@@ -18,12 +20,12 @@ export interface ProductRow {
     image?: string,
 }
 
-const findCategoryName = (category: string | null) => {
-    if (category || category !== "") {
-        return Categories.filter(item => item.category === category)[0]?.name;
-    }
-    return null;
-}
+// const findCategoryName = (category: string | null) => {
+//     if (category || category !== "") {
+//         return Categories.filter(item => item.category === category)[0]?.name;
+//     }
+//     return null;
+// }
 
 // Define columns with proper TypeScript typing
 const columns = ({
@@ -39,7 +41,14 @@ const columns = ({
         },
         {
             name: "Category",
-            selector: (row) => findCategoryName(row.category as string) || "-",
+            // selector: (row) => findCategoryName(row.category as string) || "-",
+            selector: row => row?.category?.name as string || '-',
+            sortable: true,
+            wrap: true,
+        },
+        {
+            name: "Sub Category",
+            selector: row => row?.subCategory?.name as string || '-',
             sortable: true,
             wrap: true,
         },

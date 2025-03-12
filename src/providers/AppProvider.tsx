@@ -24,6 +24,9 @@ const AppProvider = ({
                 <ToastContainer
                     position="top-center"
                     autoClose={1000}
+                    style={{
+                        zIndex: 1000000,
+                    }}
                 />
                 <ScreenProvider>
                     {children}

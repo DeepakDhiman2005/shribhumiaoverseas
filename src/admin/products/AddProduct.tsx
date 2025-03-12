@@ -5,16 +5,34 @@ import MyButton from "../../components/buttons/MyButton";
 import { FaPlus } from "react-icons/fa";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { productSchema } from "../../configs/validations";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
 import { uploadProductRedux } from "../../redux/features/products";
 import SelectField from "../../components/fields/SelectField";
-import Categories from "../../configs/categories";
+// import Categories from "../../configs/categories";
 import { AddProductInterface } from "./productInterface";
 import InputField from '../../components/fields/InputField';
+import { useEffect, useMemo } from 'react';
+import { getCategoriesRedux, getSubCategoriesRedux } from '../../redux/features/category';
 
 const AddProduct = () => {
     const dispatch: AppDispatch = useDispatch();
+    const categories = useSelector((state: RootState) => state.category.categories);
+    const subCategories = useSelector((state: RootState) => state.category.subCategories);
+
+    const allCategories = useMemo(() => {
+        return categories.map((item) => ({ label: item.name, value: item._id }));
+    }, [categories]);
+
+    const allSubCategories = useMemo(() => {
+        return subCategories.map((item) => ({ label: item.name, value: item._id }));
+    }, [subCategories]);
+
+    useEffect(() => {
+        dispatch(getCategoriesRedux());
+        dispatch(getSubCategoriesRedux())
+    }, []);
+
     const {
         control,
         handleSubmit,
@@ -24,6 +42,7 @@ const AddProduct = () => {
         defaultValues: {
             name: '',
             category: '',
+            subCategory: '',
             image: undefined,
             width: 0,
             height: 0,
@@ -36,6 +55,7 @@ const AddProduct = () => {
         const formData = new FormData();
         formData.append("name", e?.name || "");
         formData.append("category", e?.category || "");
+        formData.append('subCategory', e?.subCategory || '');
 
         if (e?.image) {
             formData.append("image", e.image);
@@ -49,7 +69,7 @@ const AddProduct = () => {
     };
 
     return (
-        <DashboardProvider title="Add Product">
+        <DashboardProvider title="Add Product" backShow={true}>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 w-full gap-y-4">
                     <InputField
@@ -64,7 +84,13 @@ const AddProduct = () => {
                     <SelectField
                         control={control}
                         name="category"
-                        options={[{ label: 'Select a Category', value: '' }, ...Categories.map(({ name, category }) => ({ label: name as string, value: category as string }))]}
+                        options={[{ label: 'Select a Category', value: '' }, ...allCategories]}
+                        errors={errors}
+                    />
+                    <SelectField
+                        control={control}
+                        name="subCategory"
+                        options={[{ label: 'Select a Category', value: '' }, ...allSubCategories]}
                         errors={errors}
                     />
 

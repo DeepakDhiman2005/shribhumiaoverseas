@@ -1,7 +1,8 @@
 $color: #000000;
 
 .custom-black-field {
-    input, 
+
+    input,
     .custom-black-field input {
         color: $color;
         border: 1px solid $color; // Ensure border exists
@@ -13,7 +14,7 @@ $color: #000000;
         }
     }
 
-    label, 
+    label,
     .custom-black-field label {
         color: $color;
     }
@@ -25,11 +26,24 @@ $custom-field-color: $color;
 .custom-select-field {
     height: 100% !important;
     border-radius: 8px !important;
+    $padding-y: 4.5px !important;
+
     .ant-select-selector {
         border-color: $custom-field-color !important;
         box-shadow: none !important;
+        padding-top: $padding-y;
+        padding-bottom: $padding-y;
+
+        input {
+            color: $custom-field-color;
+            font-weight: 500;
+        }
+
+        .ant-select-selection-placeholder {
+            color: #000000 !important;
+        }
     }
-    
+
     .ant-select-focused {
         border-color: $custom-field-color !important;
         outline: $custom-field-color !important;
@@ -38,5 +52,24 @@ $custom-field-color: $color;
 
     .ant-select-arrow {
         color: $custom-field-color !important;
+    }
+}
+
+.custom-date-field {
+    $padding-y: 7.5px !important;
+    height: 100% !important;
+    border-color: $color !important;
+    outline: none !important;
+    padding-top: $padding-y;
+    padding-bottom: $padding-y;
+
+    .ant-picker-input {
+        input::placeholder {
+            color: $color !important;
+        }
+
+        .ant-picker-suffix {
+            color: $color !important;
+        }
     }
 }

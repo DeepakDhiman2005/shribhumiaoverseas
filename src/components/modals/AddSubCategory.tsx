@@ -4,22 +4,36 @@ import MyModal from "./MyModal";
 import ImageField from "../fields/ImageField";
 import MessageField from "../fields/MessageField";
 import MyButton from "../buttons/MyButton";
-import { CategoryInterface } from "../../interfaces/categoryInterface";
+import { SubCategoryInterface } from "../../interfaces/categoryInterface";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { categorySchema } from "../../configs/validations";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
-import { addCategoryRedux } from "../../redux/features/category";
+import { subCategorySchema } from "../../configs/validations";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { addSubCategoryRedux, getCategoriesRedux } from "../../redux/features/category";
+import { useEffect, useMemo } from "react";
+import SelectField, { OptionInterface } from "../fields/SelectField";
 
-const AddCategory = ({
+const AddSubCategory = ({
     isOpen = false,
     setIsOpen,
-}:{
+}: {
     isOpen: boolean,
     setIsOpen: (value: boolean) => void,
 }) => {
     const dispatch = useDispatch<AppDispatch>();
-    
+    const categories = useSelector((state: RootState) => state.category.categories);
+
+    useEffect(() => {
+        if (isOpen) {
+            dispatch(getCategoriesRedux());
+        }
+    }, [isOpen]);
+
+    const allCategories = useMemo<OptionInterface[]>(() => {
+        return categories.map((item) => ({ label: item.name, value: item._id }));
+    }, [categories]);
+
+
     const {
         control,
         formState: {
@@ -27,22 +41,24 @@ const AddCategory = ({
         },
         handleSubmit,
         reset,
-    } = useForm<CategoryInterface>({
-        resolver: yupResolver<CategoryInterface>(categorySchema),
+    } = useForm<SubCategoryInterface>({
+        resolver: yupResolver<SubCategoryInterface>(subCategorySchema),
         defaultValues: {
             name: '',
             image: null,
             description: '',
+            category: '',
         }
     });
 
-    const onSubmit = (event: CategoryInterface) => {
-        console.log(event);
+    const onSubmit = (event: SubCategoryInterface) => {
+        // console.log(event);
         const formData = new FormData();
         formData.append('name', event.name as string);
         formData.append('image', event.image as File);
+        formData.append('category', event.category as string);
         formData.append('description', event.description as string);
-        dispatch(addCategoryRedux(formData, () => {
+        dispatch(addSubCategoryRedux(formData, () => {
             reset();
             setIsOpen(false);
         }));
@@ -52,7 +68,7 @@ const AddCategory = ({
         <MyModal
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            title="Add Category"
+            title="Add SubCategory"
             size="lg"
         >
             <form onSubmit={handleSubmit(onSubmit)} className="w-full px-6 py-4 flex flex-col justify-start items-start gap-y-6">
@@ -61,7 +77,14 @@ const AddCategory = ({
                         control={control}
                         errors={errors}
                         name="name"
-                        label="Category Name"
+                        label="Sub Category Name"
+                    />
+                    
+                    <SelectField 
+                        control={control}
+                        name="category"
+                        errors={errors}
+                        options={[{label: 'Select an category', value: ''}, ...allCategories]}
                     />
 
                     <ImageField
@@ -86,4 +109,4 @@ const AddCategory = ({
     </>
 }
 
-export default AddCategory;
+export default AddSubCategory;
