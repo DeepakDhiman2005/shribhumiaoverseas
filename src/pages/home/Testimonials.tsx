@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TestimonialCard from "../../components/cards/TestimonialCard";
 import Dot from "../../components/dots/Dot";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ const Testimonials = () => {
     const sliderRef = useRef<Slider | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const [activeSlide, setActiveSlide] = useState<number>(0);
+    const isMobile = useMediaQuery({ maxWidth: 850 });
 
     const settings: Settings = {
         arrows: false,
@@ -88,46 +90,48 @@ const Testimonials = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const heading = containerRef.current?.querySelector('h2') as HTMLElement;
-            const desc = containerRef.current?.querySelector('p') as HTMLElement;
-            const sliderContainer = containerRef.current?.querySelector('.slider-container') as HTMLElement;
+            if (!isMobile) {
+                const heading = containerRef.current?.querySelector('h2') as HTMLElement;
+                const desc = containerRef.current?.querySelector('p') as HTMLElement;
+                const sliderContainer = containerRef.current?.querySelector('.slider-container-testimonials') as HTMLElement;
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",
-                    end: "top 50%",
-                    scrub: 0.5,
-                },
-            });
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 80%",
+                        end: "top 50%",
+                        scrub: 0.5,
+                    },
+                });
 
-            tl.fromTo(
-                heading,
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.3, ease: "power2.inOut" }
-            )
-                .fromTo(
-                    desc,
+                tl.fromTo(
+                    heading,
                     { y: 100, opacity: 0 },
-                    { opacity: 1, y: 0, duration: 0.4, ease: "power2.inOut" },
-                    "-=0.2"
+                    { y: 0, opacity: 1, duration: 0.3, ease: "power2.inOut" }
                 )
-                .fromTo(
-                    sliderContainer,
-                    { y: 100, opacity: 0 },
-                    { opacity: 1, y: 0, duration: 0.5, ease: "power2.inOut" },
-                    "-=0.3"
-                );
+                    .fromTo(
+                        desc,
+                        { y: 100, opacity: 0 },
+                        { opacity: 1, y: 0, duration: 0.4, ease: "power2.inOut" },
+                        "-=0.2"
+                    )
+                    .fromTo(
+                        sliderContainer,
+                        { y: 100, opacity: 0 },
+                        { opacity: 1, y: 0, duration: 0.5, ease: "power2.inOut" },
+                        "-=0.3"
+                    );
+            }
         }, containerRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [isMobile]);
 
     return <>
         <div ref={containerRef} className="flex flex-col justify-center items-center w-full my-6">
             <h2 className="font-semibold text-[35px]">Testimonials</h2>
             <p className="text-center w-full font-medium px-4 md:px-16">Our clients trust us for high-quality, eco-friendly bags, timely service, and exceptional craftsmanship. Their satisfaction drives our commitment to sustainability and excellence.</p>
-            <div className="w-full slider-container">
+            <div className="w-full slider-container-testimonials">
                 <Slider ref={sliderRef} {...settings}>
                     {
                         details.map((item, index) => (

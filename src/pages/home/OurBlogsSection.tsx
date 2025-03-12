@@ -19,7 +19,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Switching to eco-friendly bags is a simple yet impactful step toward a greener planet. Choose sustainability and make a difference—one bag at a time!</p>
 `,
-        date: 'Monday, March 4',
+        date: '08-March-2025',
         _id: '1'
     },
     {
@@ -37,7 +37,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Investing in a premium leather bag ensures longevity, style, and practicality. Choose the one that best fits your lifestyle and elevate your everyday carry with elegance!</p>
 `,
-        date: 'Monday, March 4',
+        date: '08-March-2025',
         _id: '2'
     },
     {
@@ -55,7 +55,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>With their practicality and sustainability, canvas bags are a must-have for those who value both style and environmental responsibility. Make the switch today and enjoy a reliable, eco-friendly companion for all your daily activities!</p>
 `,
-        date: 'Wednesday, March 6',
+        date: '07-March-2025',
         _id: '3'
     },
     {
@@ -73,7 +73,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Whether you prefer a minimalist tote or a bold statement piece, these bags offer the perfect combination of fashion and utility. Elevate your everyday carry with a stylish and functional tote bag today!</p>
 `,
-        date: 'Thursday, March 7',
+        date: '06-March-2025',
         _id: '4'
     },
     {
@@ -91,7 +91,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Finding the right backpack enhances your travel experience by keeping essentials secure and comfortable to carry. Choose wisely and embark on your adventures with ease!</p>
 `,
-        date: 'Friday, March 8',
+        date: '04-March-2025',
         _id: '5'
     },
     {
@@ -109,7 +109,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>While designer handbags require a significant upfront cost, their quality, durability, and potential resale value make them a worthwhile addition to any wardrobe. If chosen wisely, a designer handbag can be both a fashion statement and a long-term asset.</p>
 `,
-        date: 'Saturday, March 9',
+        date: '04-March-2025',
         _id: '6'
     },
     {
@@ -127,7 +127,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Jute bags are more than just a trend; they represent a commitment to sustainability while keeping your fashion game strong. Make the switch today and enjoy the perfect blend of style and responsibility!</p>
 `,
-        date: 'Sunday, March 10',
+        date: '03-March-2025',
         _id: '7'
     },
     {
@@ -145,7 +145,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Whether you're looking for a sleek leather messenger bag or a casual canvas style, these bags offer a perfect blend of utility and fashion. Upgrade your everyday carry with a messenger bag that suits your lifestyle!</p>
 `,
-        date: 'Monday, March 11',
+        date: '03-March-2025',
         _id: '8'
     },
     {
@@ -163,7 +163,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>Whether you're gifting a fine wine or carrying a bottle to a special occasion, a wine bottle bag adds a classy and practical touch. Elevate your wine presentation with a beautifully designed wine bag today!</p>
 `,
-        date: 'Tuesday, March 12',
+        date: '02-March-2025',
         _id: '9'
     },
     {
@@ -181,7 +181,7 @@ export const blogs: BlogCardInterface[] = [
 </ul>
 <p>From sleek leather designs to trendy fabric styles, there’s a purse for every occasion. Choose one that complements your personality and keeps your essentials organized while adding a touch of elegance to your outfit.</p>
 `,
-        date: 'Wednesday, March 13',
+        date: '02-March-2025',
         _id: '10'
     }
 ];

@@ -19,7 +19,7 @@ const SocialMediaButton = ({
             }}
         >
             <Button
-                className={`shadow-none hover:shadow-none rounded-sm cursor-pointer bg-gray-800 p-0 transition-all duration-300 ${className}`}
+                className={`shadow-none hover:shadow-none rounded-sm cursor-pointer bg-[#000000] p-0 transition-all duration-300 ${className}`}
             >
                 <span className="w-8 h-8 flex items-center justify-center">
                     {icon}

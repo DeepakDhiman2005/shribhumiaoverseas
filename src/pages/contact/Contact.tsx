@@ -125,6 +125,7 @@ const Contact = () => {
                 src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d112013.97187311274!2d77.28881919467095!3d28.676582953764356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d28.676667799999997!2d77.37120259999999!5e0!3m2!1sen!2sin!4v1740817977798!5m2!1sen!2sin"
                 width="100%"
                 height="300px"
+                className='bg-gray-400'
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"

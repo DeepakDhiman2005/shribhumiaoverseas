@@ -183,13 +183,13 @@ const Navbar = () => {
                                 <div className='block md:hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:text-green-500' onClick={openSidebar}>
                                     <RxHamburgerMenu size={24} />
                                 </div>
-                                <Tooltip title="Open Admin Panel" placement='bottom' className="-mb-1.5">
+                                {/* <Tooltip title="Open Admin Panel" placement='bottom' className="-mb-1.5"> */}
                                     <Link to={"/admin/dashboard"}>
                                         <button className='cursor-pointer'>
                                             <RxAvatar size={30} />
                                         </button>
                                     </Link>
-                                </Tooltip>
+                                {/* </Tooltip> */}
                             </div>
                         </>
                     }

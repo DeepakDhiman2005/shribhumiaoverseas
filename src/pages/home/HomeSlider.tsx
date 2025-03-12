@@ -20,7 +20,7 @@ const HomeSlider = ({
         arrows: false,
         infinite: true,
         autoplay: true,
-        speed: 1200,
+        speed: 2000,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplaySpeed: 2400,

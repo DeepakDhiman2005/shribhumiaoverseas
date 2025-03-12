@@ -37,7 +37,7 @@ const About = () => {
         className?: string,
     }) => {
         return <>
-            <div className={`w-full flex justify-start items-start gap-x-6 ${className}`}>
+            <div className={`w-full flex justify-start px-4 sm:px-8 items-start gap-x-6 ${className}`}>
                 {children}
             </div>
         </>
@@ -56,10 +56,10 @@ const About = () => {
                     className='w-full h-auto'
                 />
             </div>
-            <div className='w-full flex flex-col py-4 gap-y-6 px-4 sm:px-8 justify-start items-start'>
+            <div className='w-full flex flex-col py-4 gap-y-6 justify-start items-start'>
                 <Div className='justify-center flex-col-reverse lg:flex-row items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
-                        <Div className='flex flex-col -space-x-1 -space-y-1 w-full text-start'>
+                        <Div className='flex flex-col -space-x-1 -space-y-1 w-full text-start !px-0'>
                             <h2>About us</h2>
                             <SubHeading>Shri Bhumia Overseas</SubHeading>
                         </Div>
@@ -73,7 +73,7 @@ const About = () => {
                 </Div>
                 <Div className='flex-col-reverse lg:flex-row-reverse justify-center items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
-                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
+                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start !px-0'>
                             <SubHeading>Mission & Vision</SubHeading>
                         </Div>
                         <p><b>Mission:</b> We are committed to reducing plastic waste by promoting eco-friendly, reusable bags, contributing to a greener planet.</p>
@@ -93,7 +93,7 @@ const About = () => {
 
                 <Div className='flex-col-reverse lg:flex-row justify-center items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
-                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
+                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start !px-0'>
                             <SubHeading>Our Clients</SubHeading>
                         </Div>
                         <p>We take pride in our strong, long-standing partnerships with esteemed global brands, including PARRS PRODUCTS (New Zealand), Re-loved Apparel (Australia), Al Haddad (Malaysia), Koopman International BV (Netherlands), Dabur (India), Tree Top Trading (Colombia), and The Domensch Gonza (Uruguay), along with key partners in America, the Gulf, and Russia. Our commitment to excellence and reliability has earned us the trust of industry leaders worldwide.</p>
@@ -103,7 +103,9 @@ const About = () => {
                     </div>
                 </Div>
 
-                <OurClientsSlider />
+                <div className='w-full'>
+                    <OurClientsSlider />
+                </div>
 
                 <Div className='justify-center flex-col-reverse lg:flex-row-reverse items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
@@ -122,7 +124,7 @@ const About = () => {
 
                 <Div className='flex-col-reverse lg:flex-row justify-center items-center'>
                     <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
-                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
+                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start !px-0'>
                             <SubHeading>Why Choose Us?</SubHeading>
                         </Div>
                         <ul className='list-disc pl-4'>

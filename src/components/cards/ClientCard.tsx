@@ -6,7 +6,7 @@ const ClientCard = ({
     description = "",
 }: ClientInterface) => {
     return <>
-        <div className="h-max-[400px] h-[350px] sm:h-auto lg:h-[380px] px-6 lg:px-8 py-4 rounded-lg bg-green-300 my-2 text-black flex flex-col justify-evenly items-center gap-y-2 w-full">
+        <div className="h-max-[400px] h-[450px] sm:h-auto lg:h-[380px] px-6 lg:px-8 py-4 rounded-lg bg-green-300 my-2 text-black flex flex-col justify-evenly items-center gap-y-2 w-full">
             <p className="font-medium text-center w-full">"{description}"</p>
             <div>
                 <div className="flex justify-center items-center gap-x-1">

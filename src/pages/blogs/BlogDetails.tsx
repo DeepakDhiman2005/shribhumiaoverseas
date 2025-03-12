@@ -11,6 +11,7 @@ import { blogs } from "../home/OurBlogsSection";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import BlogCardSkeleton from "../../components/skeletons/BlogCardSkeleton";
 import { blogInterface } from "../../interfaces/blogInterface";
+import { useMediaQuery } from "react-responsive";
 
 const BlogDetails = () => {
     const { search } = useLocation();
@@ -18,6 +19,7 @@ const BlogDetails = () => {
     // const blogDetails = useSelector((state: RootState) => state.blogs.blogDetails);
     // const blogs = useSelector((state: RootState) => state.blogs.blogs);
     const descriptionRef = useRef<HTMLDivElement | null>(null);
+    const isMobile = useMediaQuery({ maxWidth: 720 });
     // const [imageUrl, setImageUrl] = useState<string>('');
 
     const blogName = useMemo(() => {
@@ -62,7 +64,7 @@ const BlogDetails = () => {
 
     const settings: Settings = {
         arrows: false,
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         infinite: true,
         autoplay: true,
@@ -71,7 +73,7 @@ const BlogDetails = () => {
         beforeChange: (_, next) => setActiveSlide(next),
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 720,
                 settings: {
                     slidesToShow: 2,
                 }
@@ -115,9 +117,20 @@ const BlogDetails = () => {
     };
 
     return <>
-        <div className="w-full flex flex-col justify-start items-start my-4 px-5 sm:px-8 md:px-14 gap-y-3">
+        <img
+            src={
+                isMobile ?
+                    "/images/banners/blog.jpg"
+                    : "/images/banners/blog.png"
+            }
+            loading="lazy"
+            alt="image"
+            className="w-full h-auto"
+        />
+        <div className="flex justify-start flex-col md:flex-row items-start w-full">
+            <div className="flex flex-col justify-start items-start w-full md:w-[70%] my-4 px-4 sm:px-6 md:px-10 gap-y-3">
 
-            {/* {
+                {/* {
                 imageUrl && imageUrl !== '' ?
                     <img
                         src={imageUrl}
@@ -129,70 +142,71 @@ const BlogDetails = () => {
                         className="w-3/4 sm:w-1/2 h-auto animate-pulse"
                     ></div>
             } */}
-            {
-                blogDetails?.image && blogDetails.image !== '' ?
-                    <img
-                        src={blogDetails.image as string}
-                        className="w-full h-auto"
-                        loading="lazy"
-                        alt="Blog"
-                    /> :
-                    <div
-                        className="w-full h-[200px] animate-pulse"
-                    ></div>
-            }
-            <div className="leading-[40px]">
-                <h1 className="font-semibold text-[40px] text-green-700 text-center capitalize">{blogDetails?.title || ''}</h1>
-                <div className="text-[16px] flex justify-start items-center gap-x-2">
-                    <FaRegCalendarAlt size={13} />
-                    {blogDetails?.date || '-'}
-                </div>
-            </div>
-
-            <div ref={descriptionRef} className="w-full flex flex-col justify-start items-start gap-y-4"></div>
-        </div>
-        <div className="w-full flex flex-col justify-start items-start gap-y-3 py-4">
-            <h2 className="text-green-500 font-semibold text-[30px] px-5 sm:px-8 md:px-14">
-                Latest Blogs
-            </h2>
-
-            <div className="w-full px-0 sm:px-8">
-                <Slider ref={sliderRef} {...settings}>
-                    {blogs?.length > 0 ? blogs.map((item, index) => (
-                        <div key={index} className="px-6">
-                            <BlogCard {...item} />
-                        </div>
-                    )) : Array(6).fill(0).map((_, index) => (
-                        <div key={index} className="px-6">
-                            <BlogCardSkeleton />
-                        </div>
-                    ))}
-                </Slider>
-            </div>
-
-            <div className="w-full flex justify-center gap-x-1 items-center py-4">
-                <ArrowsWrapper onClick={() => sliderRef.current?.slickPrev()}>
-                    <IoIosArrowBack
-                        size={15}
-                        className="group-hover:-translate-x-1 transition-all duration-500"
-                    />
-                </ArrowsWrapper>
-
-
-                <div className="flex justify-center items-center gap-x-3">
-                    {blogs.length > 0 ? blogs.map((_, index) => (
-                        <Dot key={index} index={index} />
-                    )) : Array(6).fill(0).map((_, index) => (
-                        <Dot key={index} index={index} />
-                    ))}
+                {
+                    blogDetails?.image && blogDetails.image !== '' ?
+                        <img
+                            src={blogDetails.image as string}
+                            className="w-full h-auto"
+                            loading="lazy"
+                            alt="Blog"
+                        /> :
+                        <div
+                            className="w-full h-[200px] animate-pulse"
+                        ></div>
+                }
+                <div className="leading-[40px]">
+                    <h1 className="font-semibold text-[30px] sm:text-[40px] text-green-700 text-center capitalize">{blogDetails?.title || ''}</h1>
+                    <div className="text-[16px] flex justify-start items-center gap-x-2">
+                        <FaRegCalendarAlt size={13} />
+                        {blogDetails?.date || '-'}
+                    </div>
                 </div>
 
-                <ArrowsWrapper onClick={() => sliderRef.current?.slickNext()}>
-                    <IoIosArrowForward
-                        size={15}
-                        className="group-hover:translate-x-1 transition-all duration-500"
-                    />
-                </ArrowsWrapper>
+                <div ref={descriptionRef} className="w-full flex flex-col justify-start items-start gap-y-4"></div>
+            </div>
+            <div className="w-full md:w-[30%] flex sticky top-[55px] left-0 md:px-auto flex-col justify-start items-start gap-y-3 py-4">
+                <h2 className="text-green-500 font-semibold text-[30px] px-4 sm:px-6">
+                    Latest Blogs
+                </h2>
+
+                <div className="w-full">
+                    <Slider ref={sliderRef} {...settings}>
+                        {blogs?.length > 0 ? blogs.map((item, index) => (
+                            <div key={index} className="pr-6 pl-4 sm:pl-6 md:pl-0">
+                                <BlogCard {...item} />
+                            </div>
+                        )) : Array(6).fill(0).map((_, index) => (
+                            <div key={index} className="pr-6 pl-4 sm:pl-6 md:pl-0">
+                                <BlogCardSkeleton />
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
+
+                <div className="w-full flex justify-center gap-x-1 items-center py-4">
+                    <ArrowsWrapper onClick={() => sliderRef.current?.slickPrev()}>
+                        <IoIosArrowBack
+                            size={15}
+                            className="group-hover:-translate-x-1 transition-all duration-500"
+                        />
+                    </ArrowsWrapper>
+
+
+                    <div className="flex justify-center items-center gap-x-2 lg:gap-x-3">
+                        {blogs.length > 0 ? blogs.map((_, index) => (
+                            <Dot key={index} index={index} />
+                        )) : Array(6).fill(0).map((_, index) => (
+                            <Dot key={index} index={index} />
+                        ))}
+                    </div>
+
+                    <ArrowsWrapper onClick={() => sliderRef.current?.slickNext()}>
+                        <IoIosArrowForward
+                            size={15}
+                            className="group-hover:translate-x-1 transition-all duration-500"
+                        />
+                    </ArrowsWrapper>
+                </div>
             </div>
         </div>
     </>

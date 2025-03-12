@@ -58,6 +58,9 @@ const OurClientsSlider = () => {
         slidesToScroll: 1,
         arrows: false,
         infinite: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        centerMode: true,
         beforeChange: (_, next: number) => setActiveSlide(next),
         responsive: [
             {
