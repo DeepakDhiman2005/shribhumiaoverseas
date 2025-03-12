@@ -30,11 +30,11 @@ const ProductCard = ({
     // const [blobImage, setBlobImage] = useState<string | null>(null);
     const blobImage = true;
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isExplor, setIsExplor] = useState<boolean>(false);
+    const [isExplore, setIsExplore] = useState<boolean>(false);
     // const { search } = useLocation();
     // const dispatch: AppDispatch = useDispatch();
     
-    const handleExplor = () => setIsExplor(!isExplor);
+    const handleExplore = () => setIsExplore(!isExplore);
     // const handleOpen = () => setIsOpen(!isOpen);
     // const navigate = useNavigate();
 
@@ -57,8 +57,8 @@ const ProductCard = ({
     return (
         <>
             <Dialog
-                open={isExplor}
-                handler={handleExplor}
+                open={isExplore}
+                handler={handleExplore}
                 animate={{
                     mount: { scale: 1, y: 0 },
                     unmount: { scale: 0.9, y: -100 },
@@ -68,7 +68,7 @@ const ProductCard = ({
                 <DialogBody className="w-full flex justify-center items-center relative">
                     <button
                         className="cursor-pointer text-black absolute top-4 right-4 hover:text-red-700 active:text-red-900 transition-all duration-300"
-                        onClick={handleExplor}
+                        onClick={handleExplore}
                     >
                         <RxCross2 size={30} />
                     </button>
@@ -95,7 +95,7 @@ const ProductCard = ({
 
             >
                 {/* <Link to={`/product-details${search}&product=456322`}> */}
-                    <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden" onClick={handleExplor}>
+                    <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden" onClick={handleExplore}>
                         {blobImage ? (
                             <img
                                 // src={blobImage}
@@ -106,7 +106,7 @@ const ProductCard = ({
                         ) : (
                             <div className="w-full h-[150px] bg-gray-200 animate-pulse"></div>
                         )}
-                        <div className="absolute top-1/2 scale-0 group-hover:scale-100 transition-all duration-500  px-4 py-2 bg-green-600/80 text-white font-medium">Explor</div>
+                        <div className="absolute top-1/2 scale-0 group-hover:scale-100 transition-all duration-500  px-4 py-2 bg-green-600/80 text-white font-medium">Explore</div>
                     </div>
                 {/* </Link> */}
                 <div className="bg-gray-200  transition-all duration-500">
