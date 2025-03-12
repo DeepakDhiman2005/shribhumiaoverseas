@@ -82,7 +82,23 @@ const ProductsMain = () => {
 
             <p className="text-start w-full my-6">
                 {/* {category?.description} */}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid delectus doloremque eveniet autem odio provident ipsam tempore quos, suscipit temporibus commodi dolore numquam, dolorum dolorem accusamus maiores corrupti blanditiis esse ducimus! Amet perspiciatis doloribus, cum mollitia laudantium sed officiis quis illum magni eveniet veritatis vitae voluptatem tempora odit ipsa nobis commodi labore aut minus a. Minus mollitia nobis, neque magnam cupiditate dolore ex, aliquid soluta aut, perspiciatis assumenda blanditiis nisi maiores aliquam repellendus laudantium labore laborum amet voluptas! Maxime beatae tempore fugiat architecto saepe dolore aut accusamus, magnam, illo, ullam officiis enim ad. Tempora, dignissimos autem dicta ad error repellendus magnam. Voluptatem, nihil! Numquam iste repellat ad voluptas adipisci est quod porro ducimus aspernatur magnam! Sunt rem expedita assumenda sed?
+                {categoryName && subCategoryName ? (
+                    filterCategory
+                        .filter((item) => item.category?.name === categoryName)
+                        .flatMap((item) =>
+                            item.subCategories
+                                ?.filter((it) => it.name === subCategoryName)
+                                .map((it) => (
+                                    it.description
+                                )) ?? []
+                        )
+                ) : categoryName ? (
+                    filterCategory
+                        .filter((item) => item.category?.name === categoryName)
+                        .map((item) => (
+                            item.category?.description
+                        ))
+                ) : null}
             </p>
 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6">

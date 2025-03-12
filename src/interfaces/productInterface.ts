@@ -1,0 +1,17 @@
+export interface ProductDetail {
+    title?: string,
+    price?: string,
+    weight?: number | string,
+    width?: number | string,
+    height?: number | string,
+    gusset?: number | string,
+    image?: File | string | null,
+    images?: Array<{ image?: File | string | null }>,
+    material?: string,
+    design?: string,
+    capacity?: string,
+    quantity?: string,
+    description?: string,
+    code?: string,
+    _id?: string,
+}

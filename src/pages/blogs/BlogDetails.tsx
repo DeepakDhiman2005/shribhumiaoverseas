@@ -44,17 +44,17 @@ const BlogDetails = () => {
         }
     }, [blogName]);
 
-    // useEffect(() => {
-    //     if (blogDetails?.description && descriptionRef.current) {
-    //         descriptionRef.current.innerHTML = blogDetails.description;
-    //     }
-    //     if (blogDetails?.image) {
-    //         dispatch(getBlogImageRedux(blogDetails?._id as string, (blob: Blob) => {
-    //             const _url = URL.createObjectURL(blob);
-    //             setImageUrl(_url);
-    //         }));
-    //     }
-    // }, [blogDetails]);
+    useEffect(() => {
+        if (blogDetails?.description && descriptionRef.current) {
+            descriptionRef.current.innerHTML = blogDetails.description;
+        }
+        // if (blogDetails?.image) {
+        //     dispatch(getBlogImageRedux(blogDetails?._id as string, (blob: Blob) => {
+        //         const _url = URL.createObjectURL(blob);
+        //         setImageUrl(_url);
+        //     }));
+        // }
+    }, [blogDetails]);
 
     const sliderRef = useRef<Slider | null>(null);
     const [activeSlide, setActiveSlide] = useState<number>(0);

@@ -4,6 +4,9 @@ import { useState } from "react";
 import QuoteModal from "../modals/QuoteModal";
 // import { useNavigate } from "react-router-dom";
 import MyButton from "../buttons/MyButton";
+// import { Link, useLocation } from "react-router-dom";
+import { Dialog, DialogBody } from "@material-tailwind/react";
+import { RxCross2 } from "react-icons/rx";
 // import { AppDispatch } from "../../redux/store";
 // import { useDispatch } from "react-redux";
 // import { getProductImageRedux } from "../../redux/features/products";
@@ -27,8 +30,11 @@ const ProductCard = ({
     // const [blobImage, setBlobImage] = useState<string | null>(null);
     const blobImage = true;
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isExplor, setIsExplor] = useState<boolean>(false);
+    // const { search } = useLocation();
     // const dispatch: AppDispatch = useDispatch();
-
+    
+    const handleExplor = () => setIsExplor(!isExplor);
     // const handleOpen = () => setIsOpen(!isOpen);
     // const navigate = useNavigate();
 
@@ -50,9 +56,9 @@ const ProductCard = ({
 
     return (
         <>
-            {/* <Dialog
-                open={isOpen}
-                handler={handleOpen}
+            <Dialog
+                open={isExplor}
+                handler={handleExplor}
                 animate={{
                     mount: { scale: 1, y: 0 },
                     unmount: { scale: 0.9, y: -100 },
@@ -62,7 +68,7 @@ const ProductCard = ({
                 <DialogBody className="w-full flex justify-center items-center relative">
                     <button
                         className="cursor-pointer text-black absolute top-4 right-4 hover:text-red-700 active:text-red-900 transition-all duration-300"
-                        onClick={handleOpen}
+                        onClick={handleExplor}
                     >
                         <RxCross2 size={30} />
                     </button>
@@ -73,11 +79,11 @@ const ProductCard = ({
                         className="transition-all duration-300 w-[90%] sm:w-1/2"
                     />
                 </DialogBody>
-            </Dialog> */}
+            </Dialog>
 
             <QuoteModal
                 isOpen={isOpen}
-                productCode="456322"
+                productCode={name}
                 setIsOpen={setIsOpen}
             />
 
@@ -88,19 +94,21 @@ const ProductCard = ({
             // onClick={() => navigate('/contact')}
 
             >
-                <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden">
-                    {blobImage ? (
-                        <img
-                            // src={blobImage}
-                            src={image}
-                            alt="image"
-                            className="group-hover:scale-105 object-fill transition-all duration-300 h-full"
-                        />
-                    ) : (
-                        <div className="w-full h-[150px] bg-gray-200 animate-pulse"></div>
-                    )}
-                    <div className="absolute top-1/2 scale-0 group-hover:scale-100 transition-all duration-500  px-4 py-2 bg-green-600/80 text-white font-medium">Explor</div>
-                </div>
+                {/* <Link to={`/product-details${search}&product=456322`}> */}
+                    <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden" onClick={handleExplor}>
+                        {blobImage ? (
+                            <img
+                                // src={blobImage}
+                                src={image}
+                                alt="image"
+                                className="group-hover:scale-105 object-fill transition-all duration-300 h-full"
+                            />
+                        ) : (
+                            <div className="w-full h-[150px] bg-gray-200 animate-pulse"></div>
+                        )}
+                        <div className="absolute top-1/2 scale-0 group-hover:scale-100 transition-all duration-500  px-4 py-2 bg-green-600/80 text-white font-medium">Explor</div>
+                    </div>
+                {/* </Link> */}
                 <div className="bg-gray-200  transition-all duration-500">
                     <h2 className="uppercase font-semibold py-1 bg-green-600 text-center text-white w-full">{name}</h2>
                     <div className="flex flex-col justify-center items-center  px-2 gap-y-1">

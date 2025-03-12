@@ -6,7 +6,10 @@ import MiddlewareProvider from "../middleware/MiddlewareProvider";
 const Home = React.lazy(() => import("../pages/home/Home"));
 const About = React.lazy(() => import("../pages/about/About"));
 const Contact = React.lazy(() => import("../pages/contact/Contact"));
+
+// products
 const Products = React.lazy(() => import("../pages/products/Products"));
+const ProductDetails = React.lazy(() => import("../pages/products/ProductDetails"));
 
 // auth
 const Login = React.lazy(() => import("../pages/auth/login/Login"));
@@ -102,6 +105,14 @@ const pages: Array<pagesChildrenInterface> = [
         meta: {
             title: 'Products',
             description: 'Shri Bhumia Overseas - Products'
+        }
+    },
+    {
+        path: '/product-details',
+        element: <ProductDetails />,
+        meta: {
+            title: 'Product Details',
+            description: 'Product details page'
         }
     },
     {
