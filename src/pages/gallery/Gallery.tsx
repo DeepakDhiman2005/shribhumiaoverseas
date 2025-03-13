@@ -6,10 +6,12 @@ import "../../styles/gallery.scss";
 import GalleryImageCard from "../../components/cards/GalleryImageCard";
 import getAllProducts from "../../functions/getAllProducts";
 import LineHeading from "../../components/headings/LineHeading";
+import { useMediaQuery } from "react-responsive";
 
 const Gallery = () => {
     const gallery: GalleryInterface = useSelector((state: RootState) => state.gallery);
     const dispatch: AppDispatch = useDispatch();
+    const isMobile = useMediaQuery({ maxWidth: 720 });
     // const [images, setImages] = useState<string[]>([]);
     // const [videos, setVideos] = useState<string[]>([]);
 
@@ -46,7 +48,7 @@ const Gallery = () => {
     return <>
         <main className="w-full">
             <img
-                src="/images/banners/gallery.png"
+                src={isMobile ? "/images/banners/gallery-phone-size.jpg" : "/images/banners/gallery.png"}
                 alt="image"
                 className="w-full h-auto"
             />

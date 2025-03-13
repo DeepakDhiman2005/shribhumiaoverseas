@@ -164,8 +164,8 @@ const BlogDetails = () => {
 
                 <div ref={descriptionRef} className="w-full flex flex-col justify-start items-start gap-y-4"></div>
             </div>
-            <div className="w-full md:w-[30%] flex sticky top-[55px] left-0 md:px-auto flex-col justify-start items-start gap-y-3 py-4">
-                <h2 className="text-green-500 font-semibold text-[30px] px-4 sm:px-6">
+            <div className="w-full md:w-[30%] flex sticky top-[60px] left-0 md:px-auto flex-col justify-start items-start gap-y-3 py-4">
+                <h2 className="text-green-500 font-semibold text-[30px] px-4 sm:px-6 md:px-0">
                     Latest Blogs
                 </h2>
 

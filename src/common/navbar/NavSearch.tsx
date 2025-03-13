@@ -82,7 +82,7 @@ const NavSearch = () => {
                         ref={inputRef}
                         type="text"
                         placeholder="Search Here..."
-                        className="outline-none px-2.5 transition-all placeholder:text-sm placeholder:text-gray-400 duration-300 focus:border-green-800 text-black w-[250px]"
+                        className="outline-none px-2.5 transition-all placeholder:text-sm placeholder:text-gray-400 duration-300 focus:border-green-800 text-black md:w-[250px]"
                         // onFocus={() => setIsShow(true)} // Open menu on focus
                     />
                     <div>

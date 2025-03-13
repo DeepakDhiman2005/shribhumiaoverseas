@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {
-    Card,
+    // Card,
     Typography,
     List,
     ListItem,
@@ -12,6 +12,7 @@ import {
     MenuList,
     Menu,
     MenuItem,
+    Drawer,
 } from "@material-tailwind/react";
 import { GoHomeFill } from "react-icons/go";
 import { AiOutlineProduct } from "react-icons/ai";
@@ -52,7 +53,13 @@ const Sidebar = () => {
     }, [pathname, search]);
 
     return (
-        <Card className={`h-screen rounded-none p-4 shadow-xl shadow-blue-gray-900/5 fixed top-0 left-0 z-50 transition-all duration-500 overflow-hidden ${sidebar ? "w-full px-auto" : "w-0 px-0"}`}>
+        // <Card className={`h-screen rounded-none p-4 shadow-xl shadow-blue-gray-900/5 fixed top-0 left-0 z-50 transition-all duration-500 overflow-hidden ${sidebar ? "w-full px-auto" : "w-0 px-0"}`}>
+        <Drawer
+            open={sidebar} 
+            onClose={closeSidebar} 
+            className="p-4 overflow-hidden"
+            // size={400}
+        >
             <div className="mb-2 p-2 w-full flex justify-between items-center">
                 <Typography variant="h5" color="blue-gray">
                     Shri Bhumia
@@ -61,8 +68,8 @@ const Sidebar = () => {
                     <RxCross2 size={22} />
                 </button>
             </div>
-            <div className='flex flex-col sm:flex-row gap-x-4 gap-y-2 justify-center items-center w-full'>
-                <div className='flex justify-center flex-col gap-y-4 sm:flex-row items-center gap-x-2'>
+            <div className='flex flex-col md:flex-row gap-x-4 gap-y-2 justify-center items-center w-full'>
+                <div className='flex justify-center flex-col gap-y-4 sm:flex-row w-full items-center gap-x-2'>
                     <NavSearch />
                 </div>
                 <Link to={"/contact"}>
@@ -108,7 +115,7 @@ const Sidebar = () => {
                                                                         <MenuHandler>
                                                                             <span className='w-full block py-2'>{it.category}</span>
                                                                         </MenuHandler>
-                                                                        <MenuList className='max-h-[300px]'>
+                                                                        <MenuList className='max-h-[300px] z-[10000]'>
                                                                             {it.subCategories.map((itl, i) => (
                                                                                 <MenuItem key={i} className='p-0 w-full rounded-md my-0.5 group'>
                                                                                     <Link to={`/products?category=${it.category.toLowerCase().split(' ').join('-')}&subcategory=${itl.toLowerCase().split(' ').join("-")}`} className='w-full py-1.5 group-hover:text-green-700 transition-all duration-300 px-2 block'>{itl}</Link>
@@ -151,7 +158,9 @@ const Sidebar = () => {
                     ))
                 }
             </List>
-        </Card>
+        </Drawer>
+
+        // </Card>
     );
 }
 
