@@ -17,7 +17,7 @@ const GalleryImageCard = ({ item }: { item?: string }) => {
             className="relative"
             size="xl"
         >
-            <button className="absolute top-4 right-6 hover:text-red-700 transition-all duration-300 text-black" onClick={handleOpen}>
+            <button className="absolute top-4 z-30 right-6 hover:text-red-700 transition-all duration-300 text-black" onClick={handleOpen}>
                 <RxCross2 size={30} />
             </button>
             <div

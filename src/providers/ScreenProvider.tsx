@@ -20,8 +20,8 @@ const ScreenProvider = ({
         </div>
     </> : <>
         {/* <Navbar /> */}
-        <Navbar />
         <Sidebar />
+        <Navbar />
         {children}
         <Footer />
     </>

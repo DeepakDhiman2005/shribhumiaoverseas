@@ -67,7 +67,7 @@ const ProductCard = ({
             >
                 <DialogBody className="w-full flex justify-center items-center relative">
                     <button
-                        className="cursor-pointer text-black absolute top-4 right-4 hover:text-red-700 active:text-red-900 transition-all duration-300"
+                        className="cursor-pointer z-30 text-black absolute top-4 right-4 hover:text-red-700 active:text-red-900 transition-all duration-300"
                         onClick={handleExplore}
                     >
                         <RxCross2 size={30} />

@@ -55,10 +55,10 @@ const Sidebar = () => {
     return (
         // <Card className={`h-screen rounded-none p-4 shadow-xl shadow-blue-gray-900/5 fixed top-0 left-0 z-50 transition-all duration-500 overflow-hidden ${sidebar ? "w-full px-auto" : "w-0 px-0"}`}>
         <Drawer
-            open={sidebar} 
-            onClose={closeSidebar} 
-            className="p-4 overflow-hidden"
-            // size={400}
+            open={sidebar}
+            onClose={closeSidebar}
+            className="py-4 px-2 overflow-hidden"
+        // size={400}
         >
             <div className="mb-2 p-2 w-full flex justify-between items-center">
                 <Typography variant="h5" color="blue-gray">
