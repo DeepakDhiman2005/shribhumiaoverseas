@@ -100,7 +100,7 @@ const Testimonials = () => {
                         trigger: containerRef.current,
                         start: "top 80%",
                         end: "top 50%",
-                        scrub: 0.5,
+                        // scrub: 0.5,
                     },
                 });
 

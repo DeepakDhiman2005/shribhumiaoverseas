@@ -2,7 +2,7 @@ const Dot = ({ index, activeSlide, onClick }: { index: number, activeSlide: numb
     return (
         <div
             onClick={onClick}
-            className={`bg-gray-300 w-2 h-2 transition-all duration-300 cursor-pointer rounded-full ${activeSlide === index ? "scale-125 bg-green-700" : ""
+            className={`bg-gray-300 w-2 h-2 transition-all duration-300 cursor-pointer rounded-full ${activeSlide === index ? " bg-green-700 w-4" : ""
                 }`}
         />
     );

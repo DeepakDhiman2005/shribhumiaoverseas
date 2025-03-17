@@ -1,12 +1,13 @@
 import React from 'react';
 // icons
 import { FaUser } from "react-icons/fa6";
-import { FaDirections, FaMapMarkedAlt } from "react-icons/fa";
-import { MdCall } from "react-icons/md";
+import { FaBuilding, FaDirections, FaMapMarkedAlt } from "react-icons/fa";
+import { MdCall, MdEmail } from "react-icons/md";
 import MyButton from "../../components/buttons/MyButton";
 import { useMediaQuery } from "react-responsive";
 import ContactInput from './ContactInput';
 import ContactMessage from './ContactMessage';
+import { IoCall } from 'react-icons/io5';
 
 const Contact = () => {
     const isMobile = useMediaQuery({ maxWidth: 720 });
@@ -106,15 +107,42 @@ const Contact = () => {
                 <div className="w-full md:w-1/2 flex justify-start flex-col items-start gap-y-6">
                     <div className="flex flex-col bg-green-700 rounded-lg p-4 sm:p-8 justify-start items-start gap-y-4 w-full">
                         <div className='grid grid-cols-2 w-full gap-x-4'>
-                            <ContactInput placeholder='Full Name' />
-                            <ContactInput placeholder='Phone Number' />
+                            <ContactInput
+                                name='name'
+                                placeholder='Full Name'
+                                icon={<FaUser size={15} />}
+                                color='white'
+                            />
+                            <ContactInput
+                                name='mobile'
+                                placeholder='Phone Number'
+                                icon={<IoCall size={16} />}
+                                color='white'
+                            />
                         </div>
                         <div className='grid grid-cols-2 w-full gap-x-4'>
-                            <ContactInput placeholder='Email' />
-                            <ContactInput placeholder='Company Name' />
+                            <ContactInput
+                                name='email'
+                                placeholder='Email'
+                                icon={<MdEmail size={16} />}
+                                color='white'
+                            />
+                            <ContactInput
+                                name='company' 
+                                icon={<FaBuilding size={16} />}
+                                placeholder='Company Name'
+                                color='white'
+                            />
                         </div>
-                        <ContactInput placeholder='Address' />
-                        <ContactMessage placeholder='Message' />
+                        <ContactInput
+                            name='address' placeholder='Address'
+                            icon={<FaMapMarkedAlt size={16} />}
+                            color='white'
+                        />
+                        <ContactMessage
+                            placeholder='Message'
+                            color='white'
+                        />
                         <div className="flex justify-start items-center">
                             <MyButton className="bg-white text-green-700 hover:bg-green-900 transition-all duration-700 hover:text-white">Submit Now</MyButton>
                         </div>

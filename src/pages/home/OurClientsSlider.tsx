@@ -26,7 +26,7 @@ const OurClientsSlider = () => {
                     trigger: containerRef.current,
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
 
@@ -54,13 +54,13 @@ const OurClientsSlider = () => {
     }, []);
 
     const settings: Settings = {
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         arrows: false,
         infinite: true,
         autoplay: true,
         autoplaySpeed: 2000,
-        centerMode: true,
+        // centerMode: true,
         beforeChange: (_, next: number) => setActiveSlide(next),
         responsive: [
             {
@@ -88,14 +88,14 @@ const OurClientsSlider = () => {
         <div ref={containerRef} className="flex flex-col justify-center items-center w-full">
             <LineHeading ref={lineHeading}>What our Client say About us</LineHeading>
 
-            <div ref={slidingRef} className="w-full relative">
+            <div ref={slidingRef} className="w-full relative px-auto md:px-8">
                 <ArrowsWrapper onClick={() => sliderRef.current?.slickPrev()} direction="left">
                     <IoIosArrowBack size={20} className="group-hover:-translate-x-1 transition-all duration-500" />
                 </ArrowsWrapper>
                 <Slider ref={sliderRef} {...settings}>
                     {
                         clients.map((item, index) => (
-                            <div key={index} className="w-full outline-none px-4 py-2">
+                            <div key={index} className="w-full outline-none px-2 sm:px-4 py-2">
                                 <ClientCard {...item} />
                             </div>
                         ))

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
 
 export interface TestimonialCardInterface {
@@ -14,8 +14,8 @@ const TestimonialCard = ({
     timing = "",
     color = "",
 }: TestimonialCardInterface) => {
-    const [isHover, setIsHover] = useState<boolean>(false);
-    const limit: number = 100;
+    // const [isHover, setIsHover] = useState<boolean>(false);
+    // const limit: number = 100;
     const Shape = () => {
         return (
             <svg
@@ -31,10 +31,13 @@ const TestimonialCard = ({
 
     return (
         <div className="w-full flex flex-col justify-start items-start gap-y-5 h-full"
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
+        // onMouseEnter={() => setIsHover(true)}
+        // onMouseLeave={() => setIsHover(false)}
         >
             <div className="bg-gray-900 rounded-md py-5 px-6 flex flex-col justify-start items-start gap-y-2 relative text-white">
+                {/* <p className="text-[16px] italic">"{content.length > limit ? isHover ? content: content.substring(0, limit) + "..." : content}"</p> */}
+                <p className="text-[16px] italic">"{content}"</p>
+
                 <div className="flex justify-start items-center gap-x-1">
                     {Array(5)
                         .fill(0)
@@ -42,8 +45,7 @@ const TestimonialCard = ({
                             <TiStarFullOutline key={index} size={20} className="text-yellow-600" />
                         ))}
                 </div>
-                <p className="text-[16px] italic">"{content.length > limit ? isHover ? content: content.substring(0, limit) + "..." : content}"</p>
-                {/* Adjusted position */}
+
                 <div className="absolute -bottom-3 left-[10%]">
                     <Shape />
                 </div>

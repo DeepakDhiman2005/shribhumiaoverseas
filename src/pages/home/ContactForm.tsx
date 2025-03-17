@@ -2,26 +2,38 @@ import { Suspense } from "react";
 import MyButton from "../../components/buttons/MyButton";
 import ContactInput from "../contact/ContactInput";
 import ContactMessage from "../contact/ContactMessage";
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { IoCall } from "react-icons/io5";
 // import MyInputField from "../../components/fields/MyInputField";
 // import "../../styles/custom-form-field.scss";
 
 const ContactForm = () => {
     return <>
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-x-7 gap-y-8 py-2 px-4 sm:px-8 bg-gray-100">
-            <form className="py-2 px-4 sm:px-8 w-full bg-green-700 rounded-lg flex flex-col justify-start items-start gap-y-3">
-                <h2 className="font-semibold text-[25px] text-gray-50 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-3/4 after:bg-green-400 after:h-[2px]">Get In Touch With Us</h2>
+            <form className="py-2 px-0 md:px-8 w-full rounded-lg flex flex-col justify-start items-start gap-y-3">
+                <h2 className="font-semibold text-[25px] text-green-700 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-3/4 after:bg-green-400 after:h-[2px]">Get In Touch With Us</h2>
                 <div className="flex flex-col justify-start items-start gap-y-3 w-full">
                     <ContactInput
                         placeholder="Full Name"
+                        name="name"
+                        icon={<FaUser size={15} />}
                     />
                     <ContactInput
                         placeholder="Email"
+                        name="email"
+                        icon={<MdEmail size={16} />}
+                    />
+                    <ContactInput
+                        placeholder="Contact No."
+                        name="mobile"
+                        icon={<IoCall size={16} />}
                     />
                     <ContactMessage
                         placeholder="Message"
                     />
                     <div className="flex justify-start items-center">
-                        <MyButton className="bg-white border border-green-700 hover:border-green-900 transition-all duration-300 hover:text-white hover:bg-green-900 text-green-700">Submit Now</MyButton>
+                        <MyButton className="hover:bg-white border border-green-700 hover:border-green-900 transition-all duration-300 text-white bg-green-700 hover:text-green-700">Submit Now</MyButton>
                     </div>
                 </div>
             </form>

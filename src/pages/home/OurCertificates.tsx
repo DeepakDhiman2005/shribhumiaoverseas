@@ -87,7 +87,7 @@ const OurCertificates = () => {
                     trigger: containerRef.current,
                     start: 'top 80%',  // Trigger earlier for a smoother entrance
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
 
@@ -97,8 +97,8 @@ const OurCertificates = () => {
             }, {
                 y: 0,
                 opacity: 1,
-                duration: 1.2,  // Increase duration
-                ease: "power3.out",  // Smoother easing
+                duration: 0.7,  // Increase duration
+                ease: "power2.out",  // Smoother easing
             });
 
             tl.fromTo(desc, {
@@ -107,8 +107,8 @@ const OurCertificates = () => {
             }, {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                ease: "power3.out",
+                duration: 0.7,
+                ease: "power2.out",
             }, "-=0.8"); // Overlap animations slightly
 
             tl.fromTo(slides, {
@@ -117,8 +117,8 @@ const OurCertificates = () => {
             }, {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                ease: "power3.out",
+                duration: 0.8,
+                ease: "power2.out",
             }, "-=0.8");
 
         }, containerRef);

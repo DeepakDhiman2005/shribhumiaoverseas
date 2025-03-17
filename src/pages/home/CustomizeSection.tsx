@@ -19,7 +19,7 @@ const CustomizeSection = () => {
                         trigger: element,
                         start: 'top 80%',
                         end: 'top 50%',
-                        scrub: 0.5,
+                        // scrub: 0.5,
                     }
                 });
                 tl.fromTo(divs[0] as HTMLElement, {

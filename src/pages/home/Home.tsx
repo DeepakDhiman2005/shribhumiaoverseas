@@ -52,7 +52,7 @@ const Home = () => {
                     trigger: ourProductsRef.current,
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
             tl.fromTo(productHeading, {
@@ -61,7 +61,7 @@ const Home = () => {
             }, {
                 y: 0,
                 opacity: 1,
-                duration: 1.2,
+                duration: 0.5,
                 ease: "power3.inOut",
             });
             tl.fromTo(productDesc, {
@@ -70,7 +70,7 @@ const Home = () => {
             }, {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
+                duration: 0.5,
                 ease: "power3.inOut",
             });
             tl.fromTo(productSlider, {
@@ -79,7 +79,7 @@ const Home = () => {
             }, {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
+                duration: 0.6,
                 ease: "power3.inOut",
             });
 
@@ -90,12 +90,12 @@ const Home = () => {
                 opacity: 1,
                 x: 0,
                 ease: "power2.inOut",
-                duration: 1.2,
+                duration: 0.7,
                 scrollTrigger: {
                     trigger: aboutRef.current,
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
 
@@ -106,12 +106,12 @@ const Home = () => {
                 opacity: 1,
                 x: 0,
                 ease: "power2.inOut",
-                duration: 1.2,
+                duration: 0.7,
                 scrollTrigger: {
                     trigger: aboutRef.current,
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
 
@@ -122,12 +122,12 @@ const Home = () => {
                 opacity: 1,
                 x: 0,
                 ease: "power2.inOut",
-                duration: 1.2,
+                duration: 0.7,
                 scrollTrigger: {
                     trigger: visionRef.current,
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
 
@@ -138,12 +138,12 @@ const Home = () => {
                 opacity: 1,
                 x: 0,
                 ease: "power1.inOut",
-                duration: 1.2,
+                duration: 0.7,
                 scrollTrigger: {
                     trigger: visionRef.current,
                     start: 'top 80%',
                     end: 'top 50%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
         }, containerRef);

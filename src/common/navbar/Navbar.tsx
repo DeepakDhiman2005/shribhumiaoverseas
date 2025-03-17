@@ -6,7 +6,7 @@ import NavLink from './NavLink';
 import { Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSidebar } from '../../redux/features/action';
 import "./navbar.scss";
 import gsap from 'gsap';
@@ -21,12 +21,14 @@ import { Tooltip } from 'antd';
 // import ProductMenu from './ProductMenu';
 import { IoIosArrowDown } from 'react-icons/io';
 import categories from '../../configs/myCategories';
+import { RootState } from '../../redux/store';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
     const navRef = useRef(null);
     const [isShow, setIsShow] = useState(true);
+    const auth = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
 
     const onScrollHandleNavbar = () => {
@@ -95,7 +97,7 @@ const Navbar = () => {
         return <>
             {
                 navLinkConfig.map((item, index) => (
-                    !item.menuShow ?<div key={index}>
+                    !item.menuShow ? <div key={index}>
                         {
                             item.menuShow ? <>
                                 {/* <Menu allowHover placement='bottom'>
@@ -114,7 +116,7 @@ const Navbar = () => {
                                 </Link>
                             </>
                         }
-                    </div>: null
+                    </div> : null
                 ))
             }
         </>
@@ -157,7 +159,7 @@ const Navbar = () => {
                                         <RxHamburgerMenu size={24} />
                                     </div>
                                     <Tooltip title="Open Admin Panel" placement='bottom' className="-mb-1.5">
-                                        <Link to={"/admin/dashboard"}>
+                                        <Link to={auth.isAuthenticated ? "/admin/dashboard" : '/auth/login'}>
                                             <button className='cursor-pointer'>
                                                 <RxAvatar size={30} />
                                             </button>
@@ -184,11 +186,11 @@ const Navbar = () => {
                                     <RxHamburgerMenu size={24} />
                                 </div>
                                 {/* <Tooltip title="Open Admin Panel" placement='bottom' className="-mb-1.5"> */}
-                                    <Link to={"/admin/dashboard"}>
-                                        <button className='cursor-pointer'>
-                                            <RxAvatar size={30} />
-                                        </button>
-                                    </Link>
+                                <Link to={auth.isAuthenticated ? "/admin/dashboard" : '/auth/login'}>
+                                    <button className='cursor-pointer'>
+                                        <RxAvatar size={30} />
+                                    </button>
+                                </Link>
                                 {/* </Tooltip> */}
                             </div>
                         </>

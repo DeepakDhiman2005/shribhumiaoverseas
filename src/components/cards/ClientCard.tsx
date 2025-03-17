@@ -1,14 +1,17 @@
-import { FaStar } from "react-icons/fa";
+// import { FaStar } from "react-icons/fa";
 import { ClientInterface } from "../../configs/clients";
+import { IoTriangleSharp } from "react-icons/io5";
 
 const ClientCard = ({
     name = "",
     description = "",
+    image,
 }: ClientInterface) => {
     return <>
-        <div className="h-max-[400px] h-[450px] sm:h-auto lg:h-[380px] px-6 lg:px-8 py-4 rounded-lg bg-green-300 my-2 text-black flex flex-col justify-evenly items-center gap-y-2 w-full">
-            <p className="font-medium text-center w-full">"{description}"</p>
-            <div>
+        <div className="w-full flex flex-col justify-start items-start gap-y-3">
+            <div className="h-max-[400px] h-[320px] sm:h-auto lg:h-[200px] px-4 sm:px-6 lg:px-8 py-4 rounded-lg bg-green-300 my-2 text-black flex flex-col justify-evenly items-center gap-y-2 w-full relative">
+                <p className="font-medium text-center w-full">"{description}"</p>
+                {/* <div>
                 <div className="flex justify-center items-center gap-x-1">
                     {
                         Array(4).fill(0).map((_, index) => (
@@ -20,6 +23,14 @@ const ClientCard = ({
                 <div className="flex justify-center items-start text-center font-semibold">
                     <span>— {name}</span>
                 </div>
+            </div> */}
+                <IoTriangleSharp size={30} className="text-green-300 rotate-180 absolute -bottom-[20px] left-[10%]" />
+            </div>
+            <div className="w-full flex justify-start px-4 items-center gap-x-4">
+                <img src={image} alt="image" className="w-14 h-14 rounded-full" />
+                <span className="font-medium text-[15px]">
+                    {name}
+                </span>
             </div>
         </div>
     </>

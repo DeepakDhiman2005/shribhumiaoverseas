@@ -21,7 +21,7 @@ const WhyChooseUs = () => {
                     trigger: containerRef.current,
                     start: "top 80%",
                     end: 'top 20%',
-                    scrub: 0.5,
+                    // scrub: 0.5,
                 }
             });
             const heading = contentRef.current?.querySelector('h2') as HTMLElement;
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
                 opacity: 1,
                 y: 0,
                 ease: "power2.inOut",
-                duration: 0.7,
+                duration: 0.3,
             });
 
             para?.forEach((item) => {
@@ -47,7 +47,7 @@ const WhyChooseUs = () => {
                     opacity: 1,
                     y: 0,
                     ease: "power2.inOut",
-                    duration: 0.7,
+                    duration: 0.3,
                 });
             })
 
@@ -61,7 +61,7 @@ const WhyChooseUs = () => {
                     y: 0,
                     scale: 1,
                     ease: "power1.inOut",
-                    duration: 1.4,
+                    duration: 0.3,
                 });
             })
 
