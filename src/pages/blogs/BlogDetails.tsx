@@ -12,6 +12,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import BlogCardSkeleton from "../../components/skeletons/BlogCardSkeleton";
 import { blogInterface } from "../../interfaces/blogInterface";
 import { useMediaQuery } from "react-responsive";
+import Dot from "../../components/dots/Dot";
 
 const BlogDetails = () => {
     const { search } = useLocation();
@@ -106,16 +107,6 @@ const BlogDetails = () => {
         );
     };
 
-    const Dot = ({ index }: { index: number }) => {
-        return (
-            <div
-                onClick={() => sliderRef.current?.slickGoTo(index)}
-                className={`bg-gray-400 w-2 h-2 transition-all duration-300 cursor-pointer rounded-full ${activeSlide === index ? "scale-150 bg-green-700" : ""
-                    }`}
-            />
-        );
-    };
-
     return <>
         <img
             src={
@@ -194,9 +185,14 @@ const BlogDetails = () => {
 
                     <div className="flex justify-center items-center gap-x-2 lg:gap-x-3">
                         {blogs.length > 0 ? blogs.map((_, index) => (
-                            <Dot key={index} index={index} />
+                            <Dot
+                                key={index} 
+                                index={index}
+                                activeSlide={activeSlide}
+                                onClick={() => sliderRef.current?.slickGoTo(index)}
+                            />
                         )) : Array(6).fill(0).map((_, index) => (
-                            <Dot key={index} index={index} />
+                            <div key={index} className="bg-gray-400 w-2 h-2 transition-all duration-300 cursor-pointer rounded-full" />
                         ))}
                     </div>
 

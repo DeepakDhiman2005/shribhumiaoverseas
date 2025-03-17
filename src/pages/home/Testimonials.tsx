@@ -44,48 +44,54 @@ const Testimonials = () => {
     }
 
     const details = [
-        {
-            title: 'PARRS PRODUCTS (New Zealand)',
-            content: 'Shri Bhumia Overseas has been an incredible partner in providing high-quality, eco-friendly bags. Their attention to detail and commitment to sustainability make them our go-to supplier. The craftsmanship is top-notch, and deliveries are always on time!',
-            timing: '1 months ago',
-            color: 'bg-purple-800',
-        },
+        // {
+        //     title: 'PARRS PRODUCTS (New Zealand)',
+        //     content: 'Shri Bhumia Overseas has been an incredible partner in providing high-quality, eco-friendly bags. Their attention to detail and commitment to sustainability make them our go-to supplier. The craftsmanship is top-notch, and deliveries are always on time!',
+        //     timing: '1 months ago',
+        //     color: 'bg-purple-800',
+        //     image: '/images/clients/1.png',
+        // },
         {
             title: 'Re-loved Apparel (Australia)',
             content: 'We were looking for ethically made, reusable bags for our brand, and Shri Bhumia Overseas exceeded our expectations. Their team worked closely with us to customize our designs, and the final product was exactly what we envisioned!',
             timing: '1 months ago',
             color: 'bg-green-700',
+            image: '/images/clients/1.png',
         },
         {
             title: 'Al Haddad (Malaysia)',
             content: 'Exceptional quality and service! The team at Shri Bhumia Overseas delivered beautifully crafted jute and cotton bags that perfectly aligned with our brand values. Their dedication to sustainability is truly inspiring.',
             timing: '2 months ago',
             color: 'bg-blue-700',
+            image: '/images/clients/2.png',
         },
         {
             title: 'Koopman International BV (The Netherlands)',
             content: "We've been sourcing bags from Shri Bhumia Overseas for years, and they never disappoint. Their commitment to quality, ethical manufacturing, and timely delivery makes them a reliable partner for our business.",
             timing: '2 months ago',
             color: 'bg-orange-700',
+            image: '/images/clients/3.png',
         },
         {
             title: 'Dabur India',
             content: 'As a leading brand, we needed sustainable packaging solutions, and Shri Bhumia Overseas provided just that. Their bags are durable, stylish, and eco-friendly – exactly what we needed!',
             timing: '3 months ago',
             color: 'bg-purple-800',
+            image: '/images/clients/4.png',
         },
         {
             title: 'Tree Top Trading (Colombia)',
             content: 'The best supplier we have worked with! Their professionalism, attention to detail, and ability to meet bulk order demands set them apart from the competition. Highly recommended!',
             timing: '4 months ago',
             color: 'bg-gray-800',
+            image: '/images/clients/5.png',
         },
-        {
-            title: 'The Domensch Gonza (Uruguay)',
-            content: 'Shri Bhumia Overseas stands out for their commitment to sustainability and product excellence. Their jute and cotton bags are not just high-quality but also help us promote an eco-conscious brand image.',
-            timing: '4 months ago',
-            color: 'bg-red-700',
-        }
+        // {
+        //     title: 'The Domensch Gonza (Uruguay)',
+        //     content: 'Shri Bhumia Overseas stands out for their commitment to sustainability and product excellence. Their jute and cotton bags are not just high-quality but also help us promote an eco-conscious brand image.',
+        //     timing: '4 months ago',
+        //     color: 'bg-red-700',
+        // }
     ]
 
     useEffect(() => {

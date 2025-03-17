@@ -6,6 +6,7 @@ export interface TestimonialCardInterface {
     content?: string,
     timing?: string,
     color?: string,
+    image?: string,
 }
 
 const TestimonialCard = ({
@@ -13,6 +14,7 @@ const TestimonialCard = ({
     content = "",
     timing = "",
     color = "",
+    image,
 }: TestimonialCardInterface) => {
     // const [isHover, setIsHover] = useState<boolean>(false);
     // const limit: number = 100;
@@ -51,9 +53,14 @@ const TestimonialCard = ({
                 </div>
             </div>
             <div className="flex justify-start items-start w-full gap-x-3">
-                <div
+                {/* <div
                     className={`w-10 h-10 uppercase font-semibold text-white rounded-full text-[18px] text-center flex justify-center items-center ${color}`}
-                >{title.charAt(0)}</div>
+                >{title.charAt(0)}</div> */}
+                <div
+                    className={`w-10 h-10 uppercase font-semibold text-white rounded-full overflow-hidden text-[18px] text-center flex justify-center items-center ${color}`}
+                >
+                    <img src={image} alt="image" className="w-full h-full object-fill" />
+                </div>
                 <div className="flex flex-col justify-start items-start">
                     <h3 className="font-semibold">{title}</h3>
                     <p className="font-[12px]">{timing}</p>

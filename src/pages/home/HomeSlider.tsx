@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import Slider, { Settings } from "react-slick";
 import { useRef, useState } from "react";
 import MyButton from "../../components/buttons/MyButton";
+import Dot from "../../components/dots/Dot";
 
 const HomeSlider = ({
     children,
@@ -77,16 +78,16 @@ const HomeSlider = ({
         );
     };
 
-    const Dot = ({ index }: { index: number }) => {
-        return (
-            <div
-                onClick={() => sliderRef.current?.slickGoTo(index)}
-                className={`bg-gray-200 w-2 h-2 transition-all duration-300 cursor-pointer rounded-full ${
-                    activeSlide === index ? "scale-150 bg-green-700" : ""
-                }`}
-            />
-        );
-    };
+    // const Dot = ({ index }: { index: number }) => {
+    //     return (
+    //         <div
+    //             onClick={() => sliderRef.current?.slickGoTo(index)}
+    //             className={`bg-gray-200 w-2 h-2 transition-all duration-300 cursor-pointer rounded-full ${
+    //                 activeSlide === index ? "scale-150 bg-green-700" : ""
+    //             }`}
+    //         />
+    //     );
+    // };
 
     return (
         <div className={`w-full relative`}>
@@ -113,7 +114,11 @@ const HomeSlider = ({
                     <div className="w-full h-[90%]">{children}</div>
                     <div className="w-full h-[10%] flex justify-center items-center gap-x-3 ">
                         {(isMobile ? phoneImages : images).map((_, index) => (
-                            <Dot key={index} index={index} />
+                            <Dot
+                                key={index} index={index}
+                                onClick={() => sliderRef.current?.slickGoTo(index)}
+                                activeSlide={activeSlide}
+                            />
                         ))}
                     </div>
                 </div>

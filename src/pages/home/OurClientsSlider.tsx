@@ -66,21 +66,21 @@ const OurClientsSlider = () => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                 }
             },
             {
                 breakpoint: 720,
                 settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 460,
-                settings: {
                     slidesToShow: 1,
                 }
             },
+            // {
+            //     breakpoint: 460,
+            //     settings: {
+            //         slidesToShow: 1,
+            //     }
+            // },
         ]
     }
 

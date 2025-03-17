@@ -70,7 +70,7 @@ const WhyChooseUs = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full flex justify-end items-center py-4 px-10 sm:px-12 relative">
+        <div ref={containerRef} className="w-full flex justify-end items-center py-4 px-4 sm:px-12 relative">
             {/* Background Overlay */}
             <div
                 className="absolute inset-0 -z-[1] brightness-[0.55] bg-black/50 bg-fixed bg-cover bg-right-bottom"
