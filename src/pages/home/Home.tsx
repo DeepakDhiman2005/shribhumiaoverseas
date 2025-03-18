@@ -182,11 +182,11 @@ const Home = () => {
             <div ref={aboutRef} className=" w-full bg-gray-100 py-6 flex overflow-x-hidden overflow-y-auto justify-center flex-col md:flex-row items-center px-4 sm:px-4 gap-y-8 md:gap-y-auto gap-x-4">
                 <div className="w-full md:w-1/2 left flex justify-center md:justify-start px-10 items-center">
                     {/* <div className="w-3/4 relative -translate-y-10"> */}
-                    <div className="w-full relative">
+                    <div className="w-full flex justify-center items-center relative">
                         <img
                             src={"/images/about-uss.jpg"}
                             alt="image"
-                            className="rounded-md w-full h-full"
+                            className="rounded-md w-full lg:w-[80%] h-full"
                         />
                     </div>
                 </div>
