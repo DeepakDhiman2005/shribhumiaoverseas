@@ -5,6 +5,7 @@ import React from "react";
 import DashboardSidebar from "../common/sidebar/DashboardSidebar";
 import Sidebar from "../common/sidebar/Sidebar";
 import Navbar from "../common/navbar/Navbar";
+import "swiper/swiper-bundle.css";
 
 const ScreenProvider = ({
     children

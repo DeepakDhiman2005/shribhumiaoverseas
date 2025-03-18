@@ -170,13 +170,7 @@ const Home = () => {
 
     return <>
         <main ref={containerRef} className="w-full">
-            <HomeSlider className=''>
-                {/* <div className='w-full h-full flex flex-col justify-center items-start text-start gap-y-4 py-10 text-white'>
-                    <h2 className='font-semibold text-[40px] leading-tight uppercase text-gray-200'>Eco-Friendly Craftsmanship by Shri Bhumia Overseas</h2>
-                    <p>Shri Bhumia Overseas is a leading manufacturer and exporter of premium jute, cotton, recycled cotton, Juco, and canvas bags. With 21+ years of expertise, we prioritize sustainability, ethical production, and high-quality craftsmanship.</p>
-                    <MyButton className='bg-green-800 border border-solid border-green-800 transition-all duration-500 hover:bg-white hover:text-green-800'>Learn More</MyButton>
-                </div> */}
-            </HomeSlider>
+            <HomeSlider />
 
             {/* about */}
             <div ref={aboutRef} className=" w-full bg-gray-100 py-6 flex overflow-x-hidden overflow-y-auto justify-center flex-col md:flex-row items-center px-4 sm:px-4 gap-y-8 md:gap-y-auto gap-x-4">
@@ -235,9 +229,9 @@ const Home = () => {
             <Div className='flex-col-reverse lg:flex-row-reverse my-5 justify-center items-center'>
                 <div className='flex flex-col gap-y-1 justify-start items-start w-full lg:w-1/2'>
                     <div className='flex flex-col justify-start items-start px-4 sm:px-10 md:px-auto'>
-                    <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
-                        <SubHeading>Mission & Vision</SubHeading>
-                    </Div>
+                        <Div className='flex-col -space-x-1 -space-y-1 w-full text-start'>
+                            <SubHeading>Mission & Vision</SubHeading>
+                        </Div>
                         <p><b>Mission:</b> We are committed to reducing plastic waste by promoting eco-friendly, reusable bags, contributing to a greener planet.</p>
                         <p><b>Vision:</b> To see Jute and Cotton bags in every household, eliminating single-use plastics and encouraging sustainable choices worldwide.</p>
                         <b>Core Values:</b>
