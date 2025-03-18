@@ -116,7 +116,7 @@ const BlogDetails = () => {
             }
             loading="lazy"
             alt="image"
-            className="w-full h-auto"
+            className="h-auto"
         />
         <div className="flex justify-start flex-col md:flex-row items-start w-full">
             <div className="flex flex-col justify-start items-start w-full md:w-[70%] my-4 px-4 sm:px-6 md:px-10 gap-y-3">

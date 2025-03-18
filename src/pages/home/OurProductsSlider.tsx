@@ -6,6 +6,7 @@ import getAllProducts from "../../functions/getAllProducts";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ArrowsWrapper from "../../components/arrows/ArrowWrapper";
 import Dot from "../../components/dots/Dot";
+// import allProducts from "../../configs/products";
 
 const OurProductsSlider = ({
     products = [],
@@ -15,9 +16,10 @@ const OurProductsSlider = ({
     const sliderRef = useRef<Slider | null>(null);
     const [activeSlide, setActiveSlide] = useState<number>(0);
 
-    const myProducts = useMemo(() => {
+    const myProducts = useMemo<ProductCardInterface[]>(() => {
         console.log(products);
         return getAllProducts(15);
+        // return allProducts;
     }, []);
 
     const settings: Settings = {

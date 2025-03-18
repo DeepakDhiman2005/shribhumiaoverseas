@@ -32,16 +32,16 @@ const HomeSlider = ({
     };
 
     const images = [
-        "bags-banner2.png",
+        // "bags-banner2.png",
         "Canvas-bag.png",
-        "wine-bottle-bags.png",
-        "Latop-bag.png",
+        // "wine-bottle-bags.png",
+        "Laptop-bag.png",
         "lpad-sleeve-bag.png",
-        "Lunch-bags-beach-bag.png",
-        // "onference-bags.png",
-        "Juco-promotional-bags.png",
-        "shopping-bag.jpg",
-        "Tote-bag.jpg",
+        "Lunch-bags-beach-bags.png",
+        "conference-bags.png",
+        // "Juco-promotional-bags.png",
+        // "shopping-bag.jpg",
+        // "Tote-bag.jpg",
         "women-Trendy-Bags-Drawstring-pouches.png"
     ];
 
@@ -49,7 +49,7 @@ const HomeSlider = ({
         "phone-size.jpg",
         "Canvas-bag-phone-size.png",
         "wine-bottle-bags-phone-size.jpg",
-        // "conference-bags-phone.png",
+        "conference-bags-phone.png",
         "laptop-bag-phone.png",
         "lpad-bag-phone.png",
         "lunch-bags-phhone.png",
@@ -90,7 +90,7 @@ const HomeSlider = ({
     // };
 
     return (
-        <div className={`w-full relative`}>
+        <div className={`w-full relative h-auto`}>
             <Slider ref={sliderRef} {...settings} className="!m-0 !p-0">
                 {(isMobile ? phoneImages : images).map((item, index) => (
                     <div key={index} className="w-full h-auto overflow-hidden !p-0 !m-0 leading-none">
@@ -99,7 +99,8 @@ const HomeSlider = ({
                                 // src={item}
                                 src={`/images/banners/${item}`}
                                 alt="image"
-                                className="w-full h-[450px] brightness-[1.15] block"
+                                className="w-full object-cover"
+                                loading="lazy"
                             />
                         </div>
                     </div>

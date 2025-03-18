@@ -7,6 +7,7 @@ import MyButton from "../buttons/MyButton";
 // import { Link, useLocation } from "react-router-dom";
 import { Dialog, DialogBody } from "@material-tailwind/react";
 import { RxCross2 } from "react-icons/rx";
+// import { Link } from "react-router-dom";
 // import { AppDispatch } from "../../redux/store";
 // import { useDispatch } from "react-redux";
 // import { getProductImageRedux } from "../../redux/features/products";
@@ -18,6 +19,14 @@ export interface ProductCardInterface {
     width?: number | string;
     gusset?: number | string;
     _id?: number | string;
+    category?: string;
+    subCategory?: string;
+    price?: string,
+    material?: string,
+    weight?: string,
+    capacity?: string,
+    quantity?: string,
+    pattern?: string,
 }
 
 const ProductCard = ({
@@ -26,6 +35,9 @@ const ProductCard = ({
     height = "",
     width = "",
     gusset = "",
+    // category = "",
+    // subCategory = "",
+    // _id = 0,
 }: ProductCardInterface) => {
     // const [blobImage, setBlobImage] = useState<string | null>(null);
     const blobImage = true;
@@ -33,6 +45,10 @@ const ProductCard = ({
     const [isExplore, setIsExplore] = useState<boolean>(false);
     // const { search } = useLocation();
     // const dispatch: AppDispatch = useDispatch();
+
+    // const detailsUrl = useMemo<string>(() => {
+    //     return `/product-details?category=${category}&product=${_id}${subCategory && subCategory !== "" ? `&subcategory=${subCategory}`: ''}`;
+    // }, [category, subCategory, _id]);
     
     const handleExplore = () => setIsExplore(!isExplore);
     // const handleOpen = () => setIsOpen(!isOpen);
@@ -95,7 +111,9 @@ const ProductCard = ({
 
             >
                 {/* <Link to={`/product-details${search}&product=456322`}> */}
+                {/* <Link to={detailsUrl}> */}
                     <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden" onClick={handleExplore}>
+                    {/* <div className="w-full h-[180px] flex justify-center relative items-center overflow-hidden"> */}
                         {blobImage ? (
                             <img
                                 // src={blobImage}

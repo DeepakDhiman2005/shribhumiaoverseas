@@ -31,7 +31,7 @@ const Footer = () => {
         },
         {
             name: 'Contact Us',
-            link: '/contact us'
+            link: '/contact'
         }
     ]
 

@@ -53,7 +53,7 @@ const Gallery = () => {
                 className="w-full h-auto"
             />
             <div className="flex flex-col justify-center items-center py-4 w-full">
-                <LineHeading>our products</LineHeading>
+                <LineHeading>our Pictures</LineHeading>
 
                 <div className="w-full py-8 px-4">
                     {/* <div className="gallery-section w-full"> */}
