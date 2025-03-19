@@ -39,18 +39,18 @@ const ShowProducts = () => {
     const banner = useMemo<{ isDesktop: string, isMobile: string } | null>(() => {
         if (categoryName === "cotton-bags") {
             return {
-                isDesktop: "/images/banners/shopping-bag.jpg",
-                isMobile: '/images/banners/phone-size-shopping-bag.jpg',
+                isDesktop: "/images/banners/cotton-bags.jpg",
+                isMobile: '/images/banners/cotton-bags.jpg',
             }
         } else if (categoryName === "juco-bags") {
             return {
-                isDesktop: '/images/banners/Juco-promotional-bags.png',
-                isMobile: '/images/banners/Juco-promotional-bags-PHONE.jpg',
+                isDesktop: '/images/banners/juco-bags-banner.jpg',
+                isMobile: '/images/banners/juco-bags-banner.jpg',
             }
         } else if (categoryName === "jute-bags") {
             return {
-                isDesktop: '/images/banners/Tote-bag.jpg',
-                isMobile: "/images/banners/phone-size-tote-bags.jpg"
+                isDesktop: '/images/banners/jute-bags-banner.jpg',
+                isMobile: "/images/banners/jute-bags-banner.jpg"
             }
         } else if (categoryName === "canvas-bags") {
             return {
