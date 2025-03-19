@@ -48,9 +48,10 @@ const Gallery = () => {
     return <>
         <main className="w-full">
             <img
-                src={isMobile ? "/images/banners/gallery-phone-size.jpg" : "/images/banners/gallery.png"}
+                src={isMobile ? "/images/banners/gallery-mobile-banner.png" : "/images/banners/gallery-banner.png"}
                 alt="image"
-                className="w-full h-auto"
+                className="bg-gray-300 h-auto"
+                loading="lazy"
             />
             <div className="flex flex-col justify-center items-center py-4 w-full">
                 <LineHeading>our Pictures</LineHeading>

@@ -95,10 +95,19 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-y-2">
-                    <h2 className="font-medium text-[18px]">Our Location</h2>
+                    <h2 className="font-medium text-[18px]">Our Factory Location</h2>
                     <Suspense fallback={<h2>Loader...</h2>}>
-                        <iframe
+                        {/* <iframe
                             src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d112013.97187311274!2d77.28881919467095!3d28.676582953764356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d28.676667799999997!2d77.37120259999999!5e0!3m2!1sen!2sin!4v1740817977798!5m2!1sen!2sin"
+                            width="100%"
+                            height="100px"
+                            style={{ border: 0, borderRadius: '6px' }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe> */}
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d8238.954879724293!2d88.56582636758233!3d22.703995564724696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sGolabari%2C%20P.o%20%3A%20Golabari%20Bazar%2C%20P.S%20%3A-%20Shasan%2C%20North%2024%20Paragana%20WB%20743423!5e0!3m2!1sen!2sin!4v1742296978423!5m2!1sen!2sin"
                             width="100%"
                             height="100px"
                             style={{ border: 0, borderRadius: '6px' }}
@@ -112,7 +121,7 @@ const Footer = () => {
             <div className="w-full flex justify-start items-start flex-col xl:flex-row text-white  py-8 px-8 sm:px-10 gap-x-10 gap-y-8">
                 <FooterDiv className="gap-y-3" title="About Shri Bhumia Overseas" parentClass="w-full">
                     {/* <p className="text-[14px] font-medium">Shri Bhumia Overseas is a manufacturer supplier and exporter of bags is a renowned jute and cotton, Recycle Cotton, Juco, and Canvas bags manufacturer based in Ghaziabad Uttar Pradesh with 5000 Sq Ft factory in Kolkata West Bengal.</p> */}
-                    <p className="text-[14px] font-medium">Shri Bhumia Overseas is a manufacturer supplier and exporter of bags is a renowned jute and cotton, Recycle Cotton, Juco, and Canvas bags manufacturer based in Ghaziabad Uttar Pradesh with 5000 Sq Ft factory in Kolkata West Bengal.</p>
+                    <p className="text-[14px] font-medium">Shri Bhumia Overseas is a manufacturer supplier and exporter of bags is a renowned jute and cotton, Recycle Cotton, Juco, and Canvas bags manufacturer based in Ghaziabad Uttar Pradesh with 15,000 Sq Ft factory in Kolkata West Bengal. With over 21 years of experience in the industry, we have become a trusted name for delivering high-quality eco-friendly bags.</p>
                     {/* <div className="flex justify-center items-center gap-x-2">
                         <SocialMediaButton
                             title="Facebook"
@@ -176,6 +185,14 @@ const Footer = () => {
                                 </div>
                                 <div className="flex justify-start w-[88%] flex-col text-[12px] items-start">
                                     <p className="w-full">Registered Office: A 112/3, Janakpuri, Vrindavan Garden Near Raj bagh Metro Station</p>
+                                </div>
+                            </div>
+                            <div className="flex justify-start items-center w-full">
+                                <div className="w-[8%]">
+                                    <FaMapMarkedAlt size={16} className="text-green-700" />
+                                </div>
+                                <div className="flex justify-start w-[88%] flex-col text-[12px] items-start">
+                                    <p className="w-full">Factory Location: Golabari, P.o : Golabari Bazar, P.S :- Shasan, North 24 Paragana WB 743423</p>
                                 </div>
                             </div>
                         </div>

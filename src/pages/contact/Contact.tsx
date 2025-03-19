@@ -74,10 +74,10 @@ const Contact = () => {
         <main className="w-full flex flex-col justify-start items-start gap-y-5">
             <img
                 src={
-                    isMobile ? "/images/banners/contact-us.jpg" : "/images/banners/contact.png"
+                    isMobile ? "/images/banners/contact-mobile-banner.png" : "/images/banners/contact-banner.png"
                 }
                 alt="image"
-                className="w-full h-auto"
+                className="h-auto"
             />
             <div className="w-full py-8 px-4 sm:px-12 flex gap-x-12 justify-start flex-col gap-y-12 md:flex-row items-start">
                 <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-y-6">

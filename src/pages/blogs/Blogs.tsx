@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import BlogCard from "../../components/cards/BlogCard";
 import { useMediaQuery } from "react-responsive";
-import { blogs } from "../home/OurBlogsSection";
+import blogs from "../../configs/allBlogs";
 import LineHeading from "../../components/headings/LineHeading";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
@@ -62,11 +62,11 @@ const Blogs = () => {
                 src={
                     isMobile ?
                         "/images/banners/blog.jpg"
-                        : "/images/banners/blog.png"
+                        : "/images/banners/blog-banner.png"
                 }
                 loading="lazy"
                 alt="image"
-                className="w-full h-auto"
+                className="object-fill bg-gray-300 h-auto"
             />
             <div className="w-full px-4 sm:px-10 py-4 flex flex-col justify-center items-center gap-y-10">
                 <LineHeading>Our Blogs</LineHeading>

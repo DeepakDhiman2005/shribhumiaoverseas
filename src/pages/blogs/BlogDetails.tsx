@@ -5,7 +5,7 @@ import BlogCard from "../../components/cards/BlogCard";
 import MyButton from "../../components/buttons/MyButton";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 // import { useDispatch } from "react-redux";
-import { blogs } from "../home/OurBlogsSection";
+import blogs from "../../configs/allBlogs";
 // import { AppDispatch } from "../../redux/store";
 // import { getBlogImageRedux } from "../../redux/features/blog";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -112,8 +112,8 @@ const BlogDetails = () => {
             src={
                 isMobile ?
                     "/images/banners/blog.jpg"
-                    : "/images/banners/blog.png"
-            }
+                    : "/images/banners/blog-banner.png"
+                }
             loading="lazy"
             alt="image"
             className="h-auto"
@@ -145,7 +145,7 @@ const BlogDetails = () => {
                             className="w-full h-[200px] animate-pulse"
                         ></div>
                 }
-                <div className="leading-[40px]">
+                <div className="leading-[44px]">
                     <h1 className="font-semibold text-[30px] sm:text-[40px] text-green-700 text-center capitalize">{blogDetails?.title || ''}</h1>
                     <div className="text-[16px] flex justify-start items-center gap-x-2">
                         <FaRegCalendarAlt size={13} />

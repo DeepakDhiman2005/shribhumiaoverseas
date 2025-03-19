@@ -2,7 +2,8 @@
 
 // import { ProductCardInterface } from "../../components/cards/ProductCard";
 import ProductSidebar from "./ProductSidebar"; 
-import ProductsMain from "./ProductsMain";
+import ShowProducts from "./ShowProducts";
+// import ProductsMain from "./ProductsMain";
 
 const Products = () => {
     // const response = await fetch(`http://localhost:3000/api/products?category=${params.category}`);
@@ -22,7 +23,8 @@ const Products = () => {
     return <>
         <div className="w-full flex justify-start items-start gap-x-8 px-5 sm:px-5 md:px-7 py-4">
             <ProductSidebar />
-            <ProductsMain />
+            {/* <ProductsMain /> */}
+            <ShowProducts />
         </div>
     </>
 }

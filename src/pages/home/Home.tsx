@@ -187,7 +187,7 @@ const Home = () => {
                 <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-y-4 right">
                     <div className='flex flex-col justify-start items-start'>
                         <h2 className="font-semibold text-[35px] text-gray-900">About us</h2>
-                        <p>SHRI BHUMIA OVERSEAS is a  manufacturer supplier and exporter of bags is a renowned jute and cotton, Recycle Cotton, Juco, and Canvas bags manufacturer based in Ghaziabad Uttar Pradesh with 5000 Sq Ft factory in Kolkata West Bengal. With over 21 years of experience in the industry, we have become a trusted name for delivering high-quality eco-friendly bags. We take pride in our commitment to sustainability and ethical practices.</p>
+                        <p>SHRI BHUMIA OVERSEAS is a  manufacturer supplier and exporter of bags is a renowned jute and cotton, Recycle Cotton, Juco, and Canvas bags manufacturer based in Ghaziabad Uttar Pradesh with 15,000 Sq Ft factory in Kolkata West Bengal. With over 21 years of experience in the industry, we have become a trusted name for delivering high-quality eco-friendly bags. We take pride in our commitment to sustainability and ethical practices.</p>
                     </div>
                     <Link to={'/about'}>
                         <MyButton className='rounded-full bg-green-800'>Learn More</MyButton>
@@ -208,7 +208,7 @@ const Home = () => {
                     {/* <div className="w-3/4 relative -translate-y-10"> */}
                     <div className="w-full relative">
                         <img
-                            src={"/images/map.png"}
+                            src={"/images/map2.jpg"}
                             alt="image"
                             className="rounded-md object-fill w-full h-full"
                         />
@@ -217,7 +217,7 @@ const Home = () => {
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-start items-start right gap-y-2">
                     <h2 className="font-semibold text-[35px] text-gray-900 leading-tight">Our Clients</h2>
-                    <p>We take pride in our strong, long-standing partnerships with esteemed global brands, including PARRS PRODUCTS (New Zealand), Re-loved Apparel (Australia), Al Haddad (Malaysia), Koopman International BV (Netherlands), Dabur (India), Tree Top Trading (Colombia), and The Domensch Gonza (Uruguay), along with key partners in America, the Gulf, and Russia. Our commitment to excellence and reliability has earned us the trust of industry leaders worldwide.</p>
+                    <p>We take pride in our strong, long-standing partnerships with esteemed global brands, including PARRS PRODUCTS (New Zealand), Re-loved Apparel (Australia), Al Haddad (Malaysia), Koopman International BV (Netherlands), Dabur (India), Tree Top Trading (Colombia), and The Domensch Gonza (Uruguay), along with key partners in America, the Gulf, Russia, and across South America, including Brazil, Colombia, and Peru. Our commitment to excellence and reliability has earned us the trust of industry leaders worldwide.</p>
                     <Link to={'/about'}>
                         <MyButton className='rounded-full bg-green-800'>Learn More</MyButton>
                     </Link>
