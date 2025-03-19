@@ -54,7 +54,7 @@ const ShowProducts = () => {
             }
         } else if (categoryName === "canvas-bags") {
             return {
-                isDesktop: '/images/banners/conference-bags.png',
+                isDesktop: '/images/banners/Canvas-bag.png',
                 isMobile: '/images/banners/Canvas-bag-phone-size.png',
             }
         } else {
