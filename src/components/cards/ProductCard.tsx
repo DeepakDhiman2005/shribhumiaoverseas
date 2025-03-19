@@ -5,8 +5,7 @@ import QuoteModal from "../modals/QuoteModal";
 // import { useNavigate } from "react-router-dom";
 import MyButton from "../buttons/MyButton";
 // import { Link, useLocation } from "react-router-dom";
-import { Dialog, DialogBody } from "@material-tailwind/react";
-import { RxCross2 } from "react-icons/rx";
+import ProductViewerModal from "../modals/ProductViewerModal";
 // import { Link } from "react-router-dom";
 // import { AppDispatch } from "../../redux/store";
 // import { useDispatch } from "react-redux";
@@ -72,31 +71,21 @@ const ProductCard = ({
 
     return (
         <>
-            <Dialog
-                open={isExplore}
-                handler={handleExplore}
-                animate={{
-                    mount: { scale: 1, y: 0 },
-                    unmount: { scale: 0.9, y: -100 },
+            <ProductViewerModal
+                isOpen={isExplore}
+                setIsOpen={handleExplore}
+                image={image}
+                openQuote={() => {
+                    handleExplore();
+                    setIsOpen(true);
                 }}
-                size="xl"
-            >
-                <DialogBody className="w-full flex justify-center items-center relative">
-                    <button
-                        className="cursor-pointer z-30 text-black absolute top-4 right-4 hover:text-red-700 active:text-red-900 transition-all duration-300"
-                        onClick={handleExplore}
-                    >
-                        <RxCross2 size={30} />
-                    </button>
-                    <img
-                        // src={blobImage || `/product-images/${image}`}
-                        src={image}
-                        alt="image"
-                        className="transition-all duration-300 w-[90%] sm:w-1/2"
-                    />
-                </DialogBody>
-            </Dialog>
-
+                details={{
+                    name: name,
+                    width,
+                    height,
+                    gusset
+                }}
+            />
             <QuoteModal
                 isOpen={isOpen}
                 productCode={name}

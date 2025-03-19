@@ -55,7 +55,7 @@ const QuoteModal = ({
 
     return (
         <MyModal isOpen={isOpen} setIsOpen={handleOpen}>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full text-black px-8 pb-10 flex flex-col justify-start items-start gap-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full text-black px-8 pb-8 flex flex-col justify-start items-start gap-y-4">
                 <h2 className="font-semibold text-[18px]">Get quote for this product</h2>
                 <div className="flex flex-col justify-start items-start w-full gap-y-4">
                     <div className="w-full">
