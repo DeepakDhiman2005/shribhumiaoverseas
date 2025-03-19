@@ -74,7 +74,7 @@ const Contact = () => {
         <main className="w-full flex flex-col justify-start items-start gap-y-5">
             <img
                 src={
-                    isMobile ? "/images/banners/contact-mobile-banner.png" : "/images/banners/contact-banner.png"
+                    isMobile ? "/images/banners/contact-us.jpg" : "/images/banners/contact-banner.png"
                 }
                 alt="image"
                 className="h-auto"
