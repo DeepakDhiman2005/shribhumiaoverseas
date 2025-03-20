@@ -4,7 +4,7 @@ import { Button, Input } from "@material-tailwind/react";
 import MyButton from "../../components/buttons/MyButton";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import TableSkeleton from "../../components/skeletons/TableSkeleton";
@@ -19,6 +19,7 @@ interface StateInterface {
     loading?: boolean,
     isSelected?: blogInterface | null,
     isDeleted?: boolean,
+    search?: string,
 }
 
 const DashboardBlogs: React.FC = () => {
@@ -28,8 +29,17 @@ const DashboardBlogs: React.FC = () => {
         loading: false,
         isSelected: null,
         isDeleted: false,
+        search: ''
     });
     const manageState = (value: StateInterface) => setState({ ...state, ...value });
+
+    const filterBlogs = useMemo(() => {
+        let search = state.search?.toLowerCase();
+        if (!search) return blogs;
+        return blogs.filter(
+            (item) => item.title?.toLowerCase()?.includes(search) || item.date?.includes(search)
+        );
+    }, [state.search, blogs]);
 
     const callApi = () => {
         manageState({ loading: true });
@@ -92,6 +102,8 @@ const DashboardBlogs: React.FC = () => {
                     <Input
                         crossOrigin={"anonymous"}
                         label="Search"
+                        className="!text-black"
+                        onChange={(e) => manageState({ search: e.target.value })}
                     />
                 </div>
                 <Link to={"/admin/add-blog"} className="w-auto h-auto">
@@ -103,7 +115,8 @@ const DashboardBlogs: React.FC = () => {
             </div>
             <div className="w-full">
                 <DataTable
-                    data={blogs || []}
+                    // data={blogs || []}
+                    data={filterBlogs || []}
                     progressPending={state.loading as boolean}
                     progressComponent={<TableSkeleton />}
                     columns={columns}

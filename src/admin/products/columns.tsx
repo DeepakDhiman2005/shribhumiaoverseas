@@ -7,6 +7,7 @@ import { MdDeleteOutline } from "react-icons/md";
 // import Categories from "../../configs/categories";
 import { Link } from "react-router-dom";
 import { CategoryInterface, SubCategoryInterface } from "../../interfaces/categoryInterface";
+import LoadProductImageRow from "./LoadProductImageRow";
 
 // Define TypeScript interface for product data
 export interface ProductRow {
@@ -38,6 +39,11 @@ const columns = ({
             selector: (row) => row.name || "-",
             wrap: true,
             sortable: true,
+        },
+        {
+            name: 'Image',
+            // selector: row => row?.image as string || '-',
+            cell: (row) => (<LoadProductImageRow id={row?.image as string} />),
         },
         {
             name: "Category",

@@ -9,6 +9,7 @@ export interface MyButtonInterface {
     children: React.ReactNode,
     placement?: TooltipPlacement,
     title?: string | null,
+    disabled?: boolean,
     onClick?: () => void,
 }
 const MyButton = ({
@@ -16,12 +17,13 @@ const MyButton = ({
     className = "",
     title = null,
     placement = "top",
+    disabled = false,
     children,
     onClick,
 }: MyButtonInterface) => {
     return <>
         <Tooltip title={title} placement={placement} className="outline-none">
-            <Button type={type} onClick={onClick} className={`shadow-none outline-none hover:shadow-none normal-case rounded-md font-medium text-[15px] py-2 px-4 ${className}`}>{children}</Button>
+            <Button disabled={disabled} type={type} onClick={onClick} className={`shadow-none outline-none hover:shadow-none normal-case rounded-md font-medium text-[15px] py-2 px-4 ${className}`}>{children}</Button>
         </Tooltip>
     </>
 }

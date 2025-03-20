@@ -10,7 +10,6 @@ interface LocationInterface {
 
 const middleware = (location: LocationInterface): boolean => {
     const token = handleToken();
-    return true;
     if (token) {
         if (location.pathname.startsWith('/admin')) {
             return token?.isAuthenticated ? true : false;

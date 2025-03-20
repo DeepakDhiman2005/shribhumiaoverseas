@@ -5,7 +5,7 @@ import { Input } from "@material-tailwind/react";
 import MyButton from "../../components/buttons/MyButton";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProductRedux, getAllProductsRedux, ProductsInterface } from "../../redux/features/products";
@@ -22,6 +22,15 @@ const DashboardProducts: React.FC = () => {
     const [isDelete, setIsDelete] = useState<boolean>(false);
     const [isCategoryOpen, setIsCategoryOpen] = useState<boolean>(false);
     const [isSubCategoryOpen, setIsSubCategoryOpen] = useState<boolean>(false);
+    const [search, setSearch] = useState<string>('');
+
+    const filterProducts = useMemo(() => {
+        if (!search) return products.products;
+        let mySearch = search.toLowerCase();
+        return products.products.filter(
+            (item) => item.name?.toLowerCase()?.includes(mySearch) || item.category?.name?.toLowerCase()?.includes(mySearch) || item.subCategory?.name?.toLowerCase()?.includes(mySearch)
+        );
+    }, [search, products.products]);
 
     const handleCategoryOpen = () => setIsCategoryOpen(true);
     const handleSubCategoryOpen = () => setIsSubCategoryOpen(true);
@@ -60,14 +69,16 @@ const DashboardProducts: React.FC = () => {
             setIsOpen={setIsSubCategoryOpen}
         />
         <DashboardProvider title="Products" className="space-y-2">
-            <div className="w-full py-2 flex justify-between items-center">
+            <div className="w-full py-2 flex flex-col gap-y-2 md:flex-row justify-between items-start md:items-center">
                 <div>
                     <Input
                         crossOrigin={"anonymous"}
+                        className="!text-black"
                         label="Search"
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
-                <div className="flex justify-center items-center gap-x-2">
+                <div className="flex justify-center flex-col gap-y-2 sm:flex-row items-start sm:items-center gap-x-2">
                     <MyButton className="flex justify-center items-center bg-[#000000] gap-x-2" onClick={handleCategoryOpen}>
                         <FaPlus size={16} />
                         <span>Add Category</span>
@@ -86,7 +97,8 @@ const DashboardProducts: React.FC = () => {
             </div>
             <div className="w-full">
                 <DataTable
-                    data={products.products || []}
+                    // data={products.products || []}
+                    data={filterProducts || []}
                     progressPending={loading}
                     progressComponent={<TableSkeleton />}
                     columns={columns({

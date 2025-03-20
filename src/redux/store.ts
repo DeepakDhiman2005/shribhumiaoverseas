@@ -9,6 +9,7 @@ import productReducer from './features/products';
 import userReducer from './features/user';
 import categoryReducer from './features/category';
 import blogReducer from './features/blog';
+import bannersReducer from './features/banners';
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
     products: productReducer,
     category: categoryReducer,
     blogs: blogReducer,
+    banners: bannersReducer,
   },
 });
 

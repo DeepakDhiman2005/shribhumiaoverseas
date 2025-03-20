@@ -18,7 +18,19 @@ const DashboardCards = () => {
         <div className="grid grid-cols-4 gap-6">
             <Card
                 title="Total Products"
+                number={65}
+            />
+            <Card
+                title="Total Blogs"
                 number={10}
+            />
+            <Card
+                title="Total Categories"
+                number={4}
+            />
+            <Card
+                title="Total Sub Categories"
+                number={40}
             />
         </div>
     </>
