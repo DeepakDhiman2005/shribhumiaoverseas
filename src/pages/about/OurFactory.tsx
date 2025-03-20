@@ -12,6 +12,7 @@ const OurFactory = () => {
                 <video
                     src="/images/company-images/factory/1.mp4"
                     controls
+                    controlsList="nodownload"
                     className="w-full sm:w-3/4 rounded-lg"
                 ></video>
             </div>
