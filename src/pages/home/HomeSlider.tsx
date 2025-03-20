@@ -19,6 +19,7 @@ const HomeSlider = ({
     const swiperRef = useRef<SwiperType | null>(null);
 
     const images = [
+        "shopping-banner.png",
         "promotional-banner.png",
         "canvas-banner.png",
         "tote-banner.png",
@@ -32,17 +33,22 @@ const HomeSlider = ({
     ];
 
     const phoneImages = [
-        "phone-size.jpg",
-        "Canvas-bag-phone-size.png",
-        "wine-bottle-bags-phone-size.jpg",
-        "conference-bags-phone.png",
-        "laptop-bag-phone.png",
-        "lpad-bag-phone.png",
-        "lunch-bags-phhone.png",
-        "Juco-promotional-bags-PHONE.jpg",
-        "phone-size-shopping-bag.jpg",
-        "phone-size-tote-bags.jpg",
-        "women-Trendy-Bags-Drawstring-pouches-phone.jpg",
+        "shopping-banner-mobile.png",
+        "promotional-banner-mobile.png",
+        "canvas-banner-mobile.png",
+        "tote-banner-mobile.png",
+        "wine-banner-mobile.png",
+        // "phone-size.jpg",
+        // "Canvas-bag-phone-size.png",
+        // "wine-bottle-bags-phone-size.jpg",
+        // "conference-bags-phone.png",
+        // "laptop-bag-phone.png",
+        // "lpad-bag-phone.png",
+        // "lunch-bags-phhone.png",
+        // "Juco-promotional-bags-PHONE.jpg",
+        // "phone-size-shopping-bag.jpg",
+        // "phone-size-tote-bags.jpg",
+        // "women-Trendy-Bags-Drawstring-pouches-phone.jpg",
     ];
 
     return (
