@@ -49,7 +49,7 @@ const Products = () => {
             }
         } else if (categoryName === "canvas-bags") {
             return {
-                isDesktop: '/images/banners/Canvas-bag.png',
+                isDesktop: '/images/banners/canvas-page-banner.png',
                 isMobile: '/images/banners/Canvas-bag-phone-size.png',
             }
         } else {

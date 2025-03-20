@@ -15,7 +15,7 @@ const ProductSidebar = () => {
     return <>
         <aside className="w-[20%] hidden sticky top-[100px] left-0 md:block">
             <h2 className="font-medium text-[22px] bg-green-700 text-white text-center py-2">Categories</h2>
-            <div className="border border-solid border-gray-700 px-2 py-2 h-[450px] overflow-y-scroll flex flex-col justify-start items-start gap-y-2">
+            <div className="border border-solid border-gray-700 px-2 py-2 max-h-[450px] overflow-y-scroll flex flex-col justify-start items-start gap-y-2">
                 {/* {
                     Categories.map((item, index) => (
                         <Link key={index} to={`/products?category=${item.category as string}`}>
