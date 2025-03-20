@@ -11,7 +11,7 @@ import { useMediaQuery } from "react-responsive";
 const Gallery = () => {
     const gallery: GalleryInterface = useSelector((state: RootState) => state.gallery);
     const dispatch: AppDispatch = useDispatch();
-    const isMobile = useMediaQuery({ maxWidth: 720 });
+    const isMobile = useMediaQuery({ maxWidth: 600 });
     // const [images, setImages] = useState<string[]>([]);
     // const [videos, setVideos] = useState<string[]>([]);
 
@@ -58,7 +58,7 @@ const Gallery = () => {
 
                 <div className="w-full py-8 px-4">
                     {/* <div className="gallery-section w-full"> */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-6 lg:px-8 w-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 px-4 md:px-6 lg:px-8 w-full">
                         {
                             galleryImages.length > 0 ? galleryImages.map((item, index) => (
                                 <GalleryImageCard key={index} item={item.image} />

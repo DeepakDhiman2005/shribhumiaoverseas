@@ -178,7 +178,8 @@ const Home = () => {
                     {/* <div className="w-3/4 relative -translate-y-10"> */}
                     <div className="w-full flex justify-center items-center relative">
                         <img
-                            src={"/images/about-uss.jpg"}
+                            // src={"/images/about-uss.jpg"}
+                            src={"/images/ourbags.png"}
                             alt="image"
                             className="rounded-md w-full lg:w-[80%] h-full"
                         />

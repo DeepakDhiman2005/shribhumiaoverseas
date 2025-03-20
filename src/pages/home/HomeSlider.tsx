@@ -2,7 +2,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCube, Autoplay } from "swiper/modules";
-import { useState, useRef } from "react";
+import { useState, useRef, Suspense } from "react";
 import MyButton from "../../components/buttons/MyButton";
 import Dot from "../../components/dots/Dot";
 import { Swiper as SwiperType } from "swiper";
@@ -19,12 +19,16 @@ const HomeSlider = ({
     const swiperRef = useRef<SwiperType | null>(null);
 
     const images = [
-        "Canvas-bag.png",
-        "Laptop-bag.png",
-        "lpad-sleeve-bag.png",
-        "Lunch-bags-beach-bags.png",
-        "conference-bags.png",
-        "women-Trendy-Bags-Drawstring-pouches.png"
+        "promotional-banner.png",
+        "canvas-banner.png",
+        "tote-banner.png",
+        "designer-banner.png",
+        "wine-banner.png",
+        // "Laptop-bag.png",
+        // "lpad-sleeve-bag.png",
+        // "Lunch-bags-beach-bags.png",
+        // "conference-bags.png",
+        // "women-Trendy-Bags-Drawstring-pouches.png"
     ];
 
     const phoneImages = [
@@ -44,39 +48,41 @@ const HomeSlider = ({
     return (
         <div className={`w-full relative overflow-hidden h-auto`}>
             {/* Swiper with Cube Effect */}
-            <Swiper
-                effect="cube"
-                grabCursor
-                loop={true}
-                cubeEffect={{
-                    shadow: false,
-                    slideShadows: false,
-                    shadowOffset: 20,
-                    shadowScale: 0.94,
-                }}
-                speed={2000}
-                autoplay={{
-                    delay: 1400,
-                    disableOnInteraction: false,
-                }}
-                modules={[EffectCube, Autoplay]}
-                onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-                onSwiper={(swiper) => (swiperRef.current = swiper)}
-                className="max-w-full"
-            >
-                {(isMobile ? phoneImages : images).map((item, index) => (
-                    <SwiperSlide key={index} className="w-full h-auto overflow-hidden !p-0 !m-0 leading-none">
-                        <div className="w-full h-auto">
-                            <img
-                                src={`/images/banners/${item}`}
-                                alt="image"
-                                className="w-full object-cover"
-                                loading="lazy"
-                            />
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <Suspense fallback={<div className="h-[450px] animate-pulse w-full"></div>}>
+                <Swiper
+                    effect="cube"
+                    grabCursor
+                    loop={true}
+                    cubeEffect={{
+                        shadow: false,
+                        slideShadows: false,
+                        shadowOffset: 20,
+                        shadowScale: 0.94,
+                    }}
+                    speed={2000}
+                    autoplay={{
+                        delay: 1400,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[EffectCube, Autoplay]}
+                    onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
+                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    className="max-w-full"
+                >
+                    {(isMobile ? phoneImages : images).map((item, index) => (
+                        <SwiperSlide key={index} className="w-full h-auto overflow-hidden !p-0 !m-0 leading-none">
+                            <div className="w-full h-auto">
+                                <img
+                                    src={`/images/banners/${item}`}
+                                    alt="image"
+                                    className="w-full object-cover"
+                                    loading="lazy"
+                                />
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </Suspense>
 
             {/* Custom Navigation Buttons */}
             <div className={`absolute top-0 left-0 w-full z-20 items-center flex justify-between h-full px-4 ${className}`}>

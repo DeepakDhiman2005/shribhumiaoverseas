@@ -32,7 +32,7 @@ const GalleryImageCard = ({ item }: { item?: string }) => {
             >
                 View to Click
             </div>
-            <img src={item} alt="Gallery Image" className="object-fill w-full h-full" />
+            <img src={item} alt="Gallery Image" className="object-contain w-full h-full" />
         </div>
     </>
 }

@@ -125,7 +125,7 @@ const Navbar = () => {
     return (
         <nav
             ref={navRef}
-            className={`w-full flex flex-col justify-center shadow-sm items-center transition-all overflow-hidden duration-500 ease-in-out ${!isShow ? 'fixed top-0 left-0 z-50 bg-white/45 backdrop-blur-sm' : 'sticky top-0 left-0 z-50 translate-y-0 opacity-100 bg-white'}`}
+            className={`w-full flex flex-col justify-center shadow-sm items-center transition-all overflow-hidden duration-500 ease-in-out ${!isShow ? 'fixed top-0 left-0 z-50 bg-white' : 'sticky top-0 left-0 z-50 translate-y-0 opacity-100 bg-white'}`}
         >
             {/* Top Contact Section */}
             <section className={`border-b border-solid border-b-gray-300 transition-all duration-500 ease-in-out ${!isShow ? 'opacity-0 h-0 overflow-hidden' : 'hidden md:flex opacity-100 h-auto py-1.5'} flex-col md:flex-row justify-end px-12 items-center w-full bg-green-700 text-white`} id='nav-top-section'>
